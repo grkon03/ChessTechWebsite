@@ -1,0 +1,14 @@
+version: '3' # docker-composeのバージョンを指定
+services: 
+  nginx: # サービス名
+    container_name: "nginx" # コンテナ名
+    image: nginx:1.14 # image名を指定。ここではDockerHub上のnginxイメージを指定している。
+    links: # ここで指定したサービス名とのリンクを作成する
+      - php # サービス名”php”と”nginx”を関連付ける
+  php:
+    container_name: "php"
+    image: php:7.2-apache
+    ports:
+      - '80:80'
+    volumes:
+      - .:/var/www/html
