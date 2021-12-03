@@ -1,0 +1,15 @@
+/* setting */
+
+@font-face {
+    font-family: 'debonair-inline';
+    src: url("../fonts/debonair-inline-font/DebonairInlineNf-Gv6A.ttf");
+    font-style: normal;
+    font-weight: 400;
+}
+
+@font-face {
+    font-family: 'chogokuboso-gothic';
+    src: url("../fonts/chogokubosogothic/chogokubosogothic_5.ttf");
+    font-style: normal;
+    font-weight: 400;
+}

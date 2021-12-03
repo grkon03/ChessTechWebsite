@@ -3,7 +3,8 @@
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link href="./css/main.css" rel="stylesheet">
+        <link href="./css/setting.css" rel="stylesheet">
+        <link href="./css/header.css" rel="stylesheet">
         <script>console.log("prevent Google Chrome css Transition");</script>
         <title>東工大チェスサークル ChessTech</title>
     </head>
