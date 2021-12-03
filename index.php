@@ -13,7 +13,7 @@
         <header>
             <?php
                 require("./template/header_template.php");
-                write_header();
+                write_header(0);
             ?>
         </header>
         <div id="main">
@@ -22,7 +22,7 @@
         <footer>
             <?php
                 require("./template/footer_template.php");
-                write_footer();
+                write_footer(0);
             ?>
         </footer>
     </body>

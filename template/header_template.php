@@ -1,5 +1,14 @@
 <?php
-    function write_header () {
+    require_once(dirname(__FILE__) . "/../util/util.php");
+    /* 
+        $rank   : The depth of directory
+            ex) calender/index.php  : $rank = 1
+                index.php           : $rank = 0
+     */
+    function write_header ($rank) {
+        
+        $pl = path_linker($rank);
+
         $header = <<<EOF
         <div class="floatbox">
             <div id="header_title">
@@ -7,7 +16,7 @@
             </div>
             <div id="header_menu">
                 <div class="header_menu_item">
-                    <a href="./calender.php">Calender</a>
+                    <a href="{$pl}calender/">Calender</a>
                 </div>
                 <div class="header_menu_item">
                     <a href="">Activity</a>
