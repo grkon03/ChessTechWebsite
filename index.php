@@ -10,19 +10,17 @@
     </head>
     <body>
         <header>
-            <div class="floatbox">
-                <div id="header_title">
-                    ChessTech
-                </div>
-                <div id="header_menu">
-                    <div class="header_menu_item">
-                        <a href="./calender.php">Calender</a>
-                    </div>
-                    <div class="header_menu_item">
-                        <a href="">Log in</a>
-                    </div>
-                </div>
-            </div>
+            <?php
+                require("./template/header_template.php");
+                write_header();
+            ?>
         </header>
+        <div>
+
+        </div>
+        <footer>
+            <?php
+            ?>
+        </footer>
     </body>
 </html>
