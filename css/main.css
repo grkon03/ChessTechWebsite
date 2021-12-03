@@ -27,6 +27,15 @@ header #header_menu {
     font-family: chogokuboso-gothic;
 }
 
+header #header_menu a {
+    color: #111;
+}
+
+header #header_menu .header_menu_item {
+    display: inline-block;
+    margin-right: 30px;
+}
+
 .floatbox::after {
     content: "";
     clear: both;
@@ -37,20 +46,37 @@ header #header_menu a {
     text-decoration: none;
 }
 
-@media screen and (max-width:900px) {
+@media screen and (max-width:700px) {
     /* for smartphone */
 
     header {
-        height: 60px;
+        height: 100px;
         padding: 10px;
     }
 
     header #header_title {
         font-size: 40px;
+        font-weight: 900;
+    }
+
+    header #header_menu {
+        font-size: 20px;
+    }
+
+    header #header_menu a {
+        text-decoration: underline;
+    }
+
+    header #header_menu .header_menu_item {
+        font-family: '角ゴシック';
+        margin: 10px 10px 10px 0;
+        padding: 5px;
+        border: 1px solid #333;
+        background: #ffffff;
     }
 }
 
-@media screen and (min-width:901px) {
+@media screen and (min-width:701px) {
     /* for pc */
 
     header {
@@ -76,7 +102,6 @@ header #header_menu a {
 
     header #header_menu a {
         position: relative;
-        color: #111;
         transition: 0.8s;
     }
 
