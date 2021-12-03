@@ -10,6 +10,12 @@
                     <a href="./calender.php">Calender</a>
                 </div>
                 <div class="header_menu_item">
+                    <a href="">Activity</a>
+                </div>
+                <div class="header_menu_item">
+                    <a href="">About</a>
+                </div>
+                <div class="header_menu_item">
                     <a href="">Log in</a>
                 </div>
             </div>
