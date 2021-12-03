@@ -7,22 +7,37 @@
     font-weight: 400;
 }
 
-/* for all */
-
-header {
-    background: #ddeecc;
+@font-face {
+    font-family: 'chogokuboso-gothic';
+    src: url("../fonts/chogokubosogothic/chogokubosogothic_5.ttf");
+    font-style: normal;
+    font-weight: 400;
 }
 
-header div {
-    display:inline-block;
-    margin:auto;
+/* for all */
+header {
+    background: #f3f3f3;
 }
 
 header #header_title {
     font-family: debonair-inline;
 }
 
-@media screen and (max-width:600px) {
+header #header_menu {
+    font-family: chogokuboso-gothic;
+}
+
+.floatbox::after {
+    content: "";
+    clear: both;
+    display: block;
+}
+
+header #header_menu a {
+    text-decoration: none;
+}
+
+@media screen and (max-width:900px) {
     /* for smartphone */
 
     header {
@@ -35,15 +50,50 @@ header #header_title {
     }
 }
 
-@media screen and (min-width:601px) {
+@media screen and (min-width:901px) {
     /* for pc */
 
     header {
         height: 100px;
-        padding: auto;
+        padding: 10px;
     }
 
     header #header_title {
+        float: left;
         font-size: 80px;
+    }
+
+    header #header_menu {
+        height: 100%;
+        padding: 30px 20px;
+        float: right;
+        font-size: 30px;
+    }
+
+    header #header_menu_item {
+        height: 60px;
+    }
+
+    header #header_menu a {
+        position: relative;
+        color: #111;
+        transition: 0.8s;
+    }
+
+    header #header_menu a::after {
+        position: absolute;
+        bottom: -4px;
+        left: 0;
+        content: '';
+        width: 100%;
+        height: 2px;
+        background: #333;
+        transform: scale(0, 1);
+        transform-origin: center top;
+        transition: transform .3s;
+    }
+
+    header #header_menu a:hover::after {
+        transform: scale(1, 1);
     }
 }
