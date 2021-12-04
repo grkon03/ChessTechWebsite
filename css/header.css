@@ -7,6 +7,11 @@ header #header_title {
     font-family: debonair-inline;
 }
 
+header #header_title a {
+    text-decoration: none;
+    color: #333;
+}
+
 header #header_menu {
     font-family: chogokuboso-gothic;
 }

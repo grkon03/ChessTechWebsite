@@ -12,7 +12,7 @@
         $header = <<<EOF
         <div class="floatbox">
             <div id="header_title">
-                ChessTech
+                <a href="{$pl}">ChessTech</a>
             </div>
             <div id="header_menu">
                 <div class="header_menu_item">
