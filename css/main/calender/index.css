@@ -1,0 +1,31 @@
+/* for all */
+
+@media screen and (max-width: 700px) {
+    /* for smartphone */
+}
+
+@media screen and (min-width: 701px) {
+    /* for pc */
+
+    #main #calender_wrap {
+        width: 660px;
+        margin: 10px auto;
+    }
+
+    #main #calender_wrap h1 {
+        border-bottom: 1px solid #333;
+    }
+
+    #main #calender_wrap table {
+        width: 630px;
+    }
+
+    #main #calender_wrap th, td {
+        width: 90px;
+        height: 90px;
+    }
+
+    #main #calender_wrap th {
+        font-size: 40px;
+    }
+}
