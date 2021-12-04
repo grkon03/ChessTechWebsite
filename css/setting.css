@@ -14,20 +14,6 @@
     font-weight: 400;
 }
 
-@font-face {
-    font-family: 'genei-nu-gothic';
-    src: url('../fonts/GenEiNuGothic-EB_v1.1/GenEiNuGothic-EB.ttf');
-    font-style: normal;
-    font-weight: 400;
-}
-
-@font-face {
-    font-family: 'genjyuu-gothic';
-    src: url('../fonts/genjyuugothic-20150607/GenJyuuGothic-Bold.ttf');
-    font-style: normal;
-    font-weight: 400;
-}
-
 /* body */
 body {
     font-family: serif;
