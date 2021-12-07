@@ -16,16 +16,78 @@
         border-bottom: 1px solid #333;
     }
 
-    #main #calender_wrap table {
+    #main #calender_wrap #calender_month a {
+        background: #77aa55;
+        display: inline-block;
+        padding: 10px;
+        color: white;
+        font-size: 20px;
+        text-decoration: none;
+    }
+
+    #main #calender_wrap #calender_month a:hover {
+        background: #689b46;
+        cursor: pointer;
+    }
+
+    #main #calender_wrap #calender_month_back {
+        border-top-left-radius: 15px;
+    }
+
+    #main #calender_wrap #calender_month_next {
+        border-top-right-radius: 15px;
+    }
+    
+    #main #calender_wrap #calender_month_now {
+        display: inline-block;
+        padding: 10px;
+        font-size: 20px;
+        font-weight: 600;
+        color: #333;
+    }
+
+    #main #calender_wrap #calender_table {
         width: 630px;
     }
 
-    #main #calender_wrap th, td {
+    #main #calender_wrap #calender_table tr {
         width: 90px;
-        height: 90px;
+        height: 40px;
+        font-size: 20px;
     }
 
-    #main #calender_wrap th {
-        font-size: 40px;
+    #main #calender_wrap #calender_table td {
+        width: 90px;
+        height: 90px;
+        font-size: 10px;
     }
+
+    #main #calender_wrap #calender_table td {
+        vertical-align: top;
+    }
+
+    #main #calender_wrap #calender_table td .calender_date {
+        color: #665444;
+        font-size: 20px;
+        font-weight: 600;
+    }
+
+    #main #calender_wrap #calender_table td a.calender_activity_item {
+        display: block;
+        font-size: 15px;
+        background: #eee;
+        border: 1px solid #3434aa;
+        padding: 3px;
+        border-radius: 5px;
+        text-align: center;
+        transition: 0.3s;
+    }
+
+    #main #calender_wrap #calender_table td a.calender_activity_item:hover {
+        cursor: pointer;
+        border-color: #eee;
+        background: #3434aa;
+        color: white;
+    }
+
 }

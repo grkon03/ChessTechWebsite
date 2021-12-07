@@ -21,9 +21,14 @@
         <div id="main">
             <div id="calender_wrap">
                 <h1>活動予定カレンダー</h1>
+                <div id="calender_month">
+                    <a id="calender_month_back">前の月</a>
+                    <span id="calender_month_now">12月</span>
+                    <a id="calender_month_next">次の月</a>
+                </div>
                 <div id="calender_application">
-                    <table border="7">
-                        <tbody>
+                    <table border="7" id="calender_table">
+                        <thead>
                             <tr>
                                 <th bgcolor="#abacbc">月</th>
                                 <th bgcolor="#ef6445">火</th>
@@ -33,8 +38,16 @@
                                 <th bgcolor="#e1ac63">土</th>
                                 <th bgcolor="#d76342">日</th>
                             </tr>
+                        </thead>
+                        <tbody>
                             <tr>
-                                <td></td>
+                                <td>
+                                    <div>
+                                        <div class="calender_date">1</div>
+                                        <a class="calender_activity_item">Japanオープン</a>
+                                        <a class="calender_activity_item">Japanオープン</a>
+                                    </div>
+                                </td>
                                 <td></td>
                                 <td></td>
                                 <td></td>
@@ -80,6 +93,17 @@
                             </tr>
                         </tbody>
                     </table>
+                </div>
+                <div id="calender_supplement">
+                    <h4>補足</h4>
+                    <ul>
+                        <li>
+                            活動予定をクリックすることで、詳細を見ることができます。
+                        </li>
+                        <li>
+                            部員はログインをすることで、参加・不参加を入力することができます。
+                        </li>
+                    </ul>
                 </div>
             </div>
         </div>

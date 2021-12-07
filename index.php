@@ -29,10 +29,10 @@
                 ご連絡のある方は、<strong>Twitter</strong>のダイレクトメッセージか、<strong>お問い合わせフォーム</strong>からよろしくお願いします。
             </p>
             <div class="main_link_set">
-                <a class="main_link_item">
+                <a class="main_link_item" href="https://lichess.org/team/0hFIsUIf">
                     lichess のチーム
                 </a>
-                <a class="main_link_item">
+                <a class="main_link_item" href="https://twitter.com/tokyotechchess">
                     Twitter
                 </a>
                 <a class="main_link_item">
@@ -43,7 +43,7 @@
                 活動予定, 記録などはこちらです。上のメニューの<strong>Calender</strong>, <strong>Activity</strong>からも閲覧できます。
             </p>
             <div class="main_link_set">
-                <a class="main_link_item">
+                <a class="main_link_item" href="./calender/">
                     活動予定(カレンダー)
                 </a>
                 <a class="main_link_item">
