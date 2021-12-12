@@ -39,16 +39,35 @@
                                 <th bgcolor="#d76342">日</th>
                             </tr>
                         </thead>
+                        <!--
+                            例：
+                                <td>
+                                    <div>
+                                        <div class="calender_date">1</div>
+                                        <a class="calender_activity_item">テストテストテスト</a>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div>
+                                        <div class="calender_date">1</div>
+                                        <a class="calender_activity_item">テストテストテスト</a>
+                                    </div>
+                                </td>
+                        -->
                         <tbody>
                             <tr>
                                 <td>
                                     <div>
                                         <div class="calender_date">1</div>
-                                        <a class="calender_activity_item">Japanオープン</a>
-                                        <a class="calender_activity_item">Japanオープン</a>
+                                        <a class="calender_activity_item">テストテストテスト</a>
                                     </div>
                                 </td>
-                                <td></td>
+                                <td>
+                                    <div>
+                                        <div class="calender_date">1</div>
+                                        <a class="calender_activity_item">テストテストテスト</a>
+                                    </div>
+                                </td>
                                 <td></td>
                                 <td></td>
                                 <td></td>
@@ -102,6 +121,9 @@
                         </li>
                         <li>
                             部員はログインをすることで、参加・不参加を入力することができます。
+                        </li>
+                        <li>
+                            スマートフォンでご覧の方はスクロールができます。
                         </li>
                     </ul>
                 </div>

@@ -1,7 +1,77 @@
 /* for all */
 
+#main #calender_wrap h1 {
+    border-bottom: 1px solid #333;
+}
+
 @media screen and (max-width: 700px) {
     /* for smartphone */
+    #main #calender_wrap {
+        width: 100%;
+    }
+
+    #main #calender_application {
+        overflow-x: scroll;
+    }
+
+    #main #calender_wrap #calender_month a {
+        background: #77aa55;
+        display: inline-block;
+        padding: 5px;
+        color: white;
+        font-size: 15px;
+        text-decoration: none;
+    }
+
+    #main #calender_wrap #calender_month_back {
+        border-top-left-radius: 7px;
+    }
+
+    #main #calender_wrap #calender_month_next {
+        border-top-right-radius: 7px;
+    }
+
+    #main #calender_wrap #calender_month_now {
+        font-size: 15px;
+        font-weight: 600;
+    }
+
+    #main #calender_wrap #calender_table {
+        width: 600px;
+    }
+    
+    #main #calender_wrap #calender_table th {
+        width: calc(100% / 7);
+        height: 20px;
+    }
+
+    #main #calender_wrap #calender_table td {
+        width: calc(100% / 7);
+        height: 50px;
+    }
+
+    #main #calender_wrap #calender_table td .calender_date {
+        color: #665444;
+        font-size: 20px;
+        font-weight: 600;
+    }
+
+    #main #calender_wrap #calender_table td a.calender_activity_item {
+        display: block;
+        font-size: 15px;
+        background: #eee;
+        border: 1px solid #3434aa;
+        padding: 3px;
+        border-radius: 5px;
+        text-align: center;
+    }
+
+    #main #calender_wrap #calender_table td a.calender_activity_item:active {
+        cursor: pointer;
+        border-color: #eee;
+        background: #3434aa;
+        color: white;
+    }
 }
 
 @media screen and (min-width: 701px) {
@@ -10,10 +80,6 @@
     #main #calender_wrap {
         width: 660px;
         margin: 10px auto;
-    }
-
-    #main #calender_wrap h1 {
-        border-bottom: 1px solid #333;
     }
 
     #main #calender_wrap #calender_month a {
