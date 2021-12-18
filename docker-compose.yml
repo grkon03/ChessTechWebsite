@@ -12,15 +12,15 @@ services:
       - '80:80'
     volumes:
       - .:/var/www/html
-  mysqldb:
+  mysql:
     platform: linux/x86_64
     image: mysql:5.7
-    container_name: mysql_container
+    container_name: "mysql"
     environment:
       MYSQL_ROOT_PASSWORD: root
-      MYSQL_DATABASE: my_testdb
-      MYSQL_USER: docker
-      MYSQL_PASSWORD: docker
+      MYSQL_DATABASE: db_chesstech
+      MYSQL_USER: root
+      MYSQL_PASSWORD: root
       TZ: 'Asia/Tokyo'
     volumes:
       - ./mysql/db/data:/var/lib/mysql
