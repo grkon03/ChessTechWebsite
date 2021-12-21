@@ -1,7 +1,7 @@
 <?php
     $dsn = 'mysql:dbname=db_chesstech;host=mysql;port=3306;charset=utf8';
-    $user = 'root';
-    $password = 'root';
+    $user = 'user';
+    $password = 'password';
 
     try {
         $dbh = new PDO($dsn, $user, $password);
@@ -10,5 +10,4 @@
         echo "接続失敗: " . $e->getMessage() . "\n";
         exit();
     }
-    phpinfo();
 ?>

@@ -1,6 +1,6 @@
-version: '3' # docker-composeのバージョンを指定
+version: '3'
 services: 
-  nginx: # サービス名
+  nginx:
     container_name: "nginx"
     image: nginx:1.14
     links:
@@ -14,13 +14,13 @@ services:
       - ./php:/var/www/html
   mysql:
     platform: linux/x86_64
-    image: mysql:8.0
+    image: mysql:5.7
     container_name: "mysql"
     environment:
       MYSQL_ROOT_PASSWORD: root
       MYSQL_DATABASE: db_chesstech
-      MYSQL_USER: root
-      MYSQL_PASSWORD: root
+      MYSQL_USER: user
+      MYSQL_PASSWORD: password
       TZ: 'Asia/Tokyo'
     volumes:
       - ./mysql/db/data:/var/lib/mysql
