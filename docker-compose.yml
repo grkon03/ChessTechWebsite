@@ -11,7 +11,7 @@ services:
     ports:
       - '80:80'
     volumes:
-      - .:/var/www/html
+      - ./php:/var/www/html
   mysql:
     platform: linux/x86_64
     image: mysql:5.7
