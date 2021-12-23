@@ -40,6 +40,24 @@
         $pdo->commit();
         */
 
+        $id = "grkon";
+        $pass = "ayasu0u327";
+
+        $sql = "SELECT * FROM Members WHERE id = :id AND pass= :pass";
+        $stmt = $pdo->prepare($sql);
+        $stmt->bindValue(":id", $id, PDO::PARAM_STR);
+        $stmt->bindValue(":pass", $pass, PDO::PARAM_STR);
+
+        $res = $stmt->execute();
+
+        if ($res) {
+            $data = $stmt->fetch();
+            if ($data == false) {
+                echo "データなし<br />";
+            }
+            var_dump($data);
+        }
+
         echo "正常に完了";
     } catch (PDOException $e) {
         echo "接続失敗: " . $e->getMessage() . "\n";

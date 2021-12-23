@@ -32,8 +32,8 @@
 
         //メンバーを新規登録
         public function CreateMember(Member $mem) {
-            $new_member = "INSERT INTO Members (id, pass, name, handle_name, grade, authority, position)";
-            $new_member .= " VALUES (:id, :pass, :name, :handle_name, :grade, :authority, :position);";
+            $sql = "INSERT INTO Members (id, pass, name, handle_name, grade, authority, position)";
+            $sql .= " VALUES (:id, :pass, :name, :handle_name, :grade, :authority, :position);";
 
             $id = $mem->id;
             $pass = $mem->pass;
@@ -45,7 +45,7 @@
 
             $this->pdo->beginTransaction();
 
-            $stmt = $this->pdo->prepare($new_member);
+            $stmt = $this->pdo->prepare($sql);
 
             $stmt->bindValue(":id", $id, PDO::PARAM_STR);
             $stmt->bindValue(":pass", $pass, PDO::PARAM_STR);
@@ -58,6 +58,27 @@
             $stmt->execute();
 
             $this->pdo->commit();
+
+            return true;
+        }
+
+        //メンバーの認証
+        public function AuthenticateMember(string $id, string $pass) {
+            $sql = "SELECT * FROM Members WHERE id = :id AND pass = :pass";
+
+            $stmt = $this->pdo->prepare($sql);
+
+            $stmt->bindValue(":id", $id, PDO::PARAM_STR);
+            $stmt->bindValue(":pass", $pass, PDO::PARAM_STR);
+
+            $res = $stmt->execute();
+
+            if ($res) {
+                if ($stmt->fetch() == true) {
+                    return true;
+                }
+            }
+            return false;
         }
     }
 ?>
