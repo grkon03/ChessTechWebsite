@@ -36,9 +36,6 @@
 
         //メンバーを新規登録(成功すればtrueを返す, そうでなければfalseを返す)
         public function CreateMember(Member $mem) {
-            $sql = "INSERT INTO Members (id, pass, name, handle_name, grade, authority, position)";
-            $sql .= " VALUES (:id, :pass, :name, :handle_name, :grade, :authority, :position);";
-
             $id = $mem->id;
             $pass = $mem->pass;
             $name = $mem->name;
@@ -46,6 +43,21 @@
             $grade = $mem->grade;
             $authority = $mem->authority;
             $position = $mem->position;
+
+            $sql = "SELECT * FROM Members WHERE id = :id";
+            
+            $stmt = $this->pdo->prepare($sql);
+            $stmt->bindValue(":id", $id, PDO::PARAM_STR);
+
+            $res = $stmt->execute();
+            if ($res) {
+                if ($stmt->fetch() != false) {
+                    return false;
+                }
+            }
+
+            $sql = "INSERT INTO Members (id, pass, name, handle_name, grade, authority, position)";
+            $sql .= " VALUES (:id, :pass, :name, :handle_name, :grade, :authority, :position);";
 
             $this->pdo->beginTransaction();
 
