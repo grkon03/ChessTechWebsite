@@ -11,6 +11,15 @@
         public $authority;
         public $position;
     }
+
+    class Schedule {
+        public $id;
+        public $name;
+        public $date;
+        public $detail;
+        public $members_join;
+        public $members_notjoin;
+    }
     
     // MySQLにPDOでアクセス
     
@@ -124,6 +133,31 @@
                 $mem->position = $data["position"];
 
                 return $mem;
+            }
+
+            return null;
+        }
+
+        //スケジュールの全情報取得(何もなければnullを返す)
+        public function GetAllSchedules() {
+            $sql = "SELECT * FROM Schedules";
+
+            $res = $this->pdo->query($sql);
+
+            if ($res) {
+                $data = $res->fetch();
+                $schedules = array();
+                foreach ($data as $e) {
+                    $sch = new Schedule();
+                    $sch->id = $e["id"];
+                    $sch->name = $e["name"];
+                    $sch->date = $e["date"];
+                    $sch->detail = $e["detail"];
+                    $sch->members_join = $e["members_join"];
+                    $sch->members_notjoin = $e["members_notjoin"];
+                    array_push($schedules, $sch);
+                }
+                return $schedules;
             }
 
             return null;
