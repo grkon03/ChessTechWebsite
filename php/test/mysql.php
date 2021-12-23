@@ -5,11 +5,11 @@
 
     try {
         $pdo = new PDO($dsn, $user, $password);
+        echo "接続成功<br />";
         $tables = $pdo->query("SHOW TABLES");
         while($re = $tables->fetch(PDO::FETCH_ASSOC)){
             var_dump($re);
         }
-        echo "接続成功\n";
     } catch (PDOException $e) {
         echo "接続失敗: " . $e->getMessage() . "\n";
         exit();

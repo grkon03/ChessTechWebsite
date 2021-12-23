@@ -3,8 +3,8 @@ DROP TABLE IF EXISTS Schedules;
 
 -- Circle Members
 CREATE TABLE `Members` (
-    `login_id` VARCHAR(20) NOT NULL PRIMARY KEY, -- id string to use for login
-    `login_pass` VARCHAR(20) NOT NULL, -- password string to use for login
+    `id` VARCHAR(20) NOT NULL PRIMARY KEY, -- id string to use for login
+    `pass` VARCHAR(20) NOT NULL, -- password string to use for login
     `name` VARCHAR(20) NOT NULL, -- name
     `handle_name` VARCHAR(20) NOT NULL, -- handle name
     `grade` VARCHAR(3) NOT NULL, -- grade
