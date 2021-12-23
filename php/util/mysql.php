@@ -34,7 +34,7 @@
 
         // 関数群
 
-        //メンバーを新規登録
+        //メンバーを新規登録(成功すればtrueを返す, そうでなければfalseを返す)
         public function CreateMember(Member $mem) {
             $sql = "INSERT INTO Members (id, pass, name, handle_name, grade, authority, position)";
             $sql .= " VALUES (:id, :pass, :name, :handle_name, :grade, :authority, :position);";
@@ -66,7 +66,7 @@
             return true;
         }
 
-        //メンバーの認証
+        //メンバーの認証(idとpassが正しければtrue, そうでなければfalseを返す)
         public function AuthenticateMember(string $id, string $pass) {
             $sql = "SELECT * FROM Members WHERE id = :id AND pass = :pass";
 
@@ -78,11 +78,43 @@
             $res = $stmt->execute();
 
             if ($res) {
-                if ($stmt->fetch() == true) {
+                if ($stmt->fetch() != false) {
                     return true;
                 }
             }
             return false;
+        }
+
+        //メンバーの情報取得(idが存在しなければnullを返す)
+        public function GetMember(string $id) {
+            $sql = "SELECT * FROM Members WHERE id = :id";
+
+            $stmt = $this->pdo->prepare($sql);
+
+            $stmt->bindValue(":id", $id, PDO::PARAM_STR);
+
+            $res = $stmt->execute();
+
+            if ($res) {
+                $data = $stmt->fetch();
+
+                if ($data == false) {
+                    return null;
+                }
+
+                $mem = new Member();
+                $mem->id = $data["id"];
+                $mem->pass = $data["pass"];
+                $mem->name = $data["name"];
+                $mem->handle_name = $data["handle_name"];
+                $mem->grade = $data["grade"];
+                $mem->authority = $data["authority"];
+                $mem->position = $data["position"];
+
+                return $mem;
+            }
+
+            return null;
         }
     }
 ?>
