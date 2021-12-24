@@ -41,7 +41,7 @@
         */
 
         $id = "grkon";
-        $pass = "ayasu0u327";
+        $pass = "yasu0u327";
 
         $sql = "SELECT * FROM Members WHERE id = :id AND pass= :pass";
         $stmt = $pdo->prepare($sql);

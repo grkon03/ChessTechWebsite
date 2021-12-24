@@ -3,22 +3,22 @@
 
     /* 型としてのクラス */
     class Member {
-        public $id;
-        public $pass;
-        public $name;
-        public $handle_name;
-        public $grade;
-        public $authority;
-        public $position;
+        public string $id;
+        public string $pass;
+        public string $name;
+        public string $handle_name;
+        public int $grade;
+        public string $authority;
+        public string $position;
     }
 
     class Schedule {
-        public $id;
-        public $name;
-        public $date;
-        public $detail;
-        public $members_join;
-        public $members_notjoin;
+        public int $id;
+        public string $name;
+        public DateTime $date;
+        public string $detail;
+        public string $members_join;
+        public string $members_notjoin;
     }
     
     // MySQLにPDOでアクセス
@@ -43,7 +43,7 @@
 
         // 関数群
 
-        //メンバーを新規登録(成功すればtrueを返す, そうでなければfalseを返す)
+        // メンバーを新規登録(成功すればtrueを返す, そうでなければfalseを返す)
         public function CreateMember(Member $mem) {
             $id = $mem->id;
             $pass = $mem->pass;
@@ -87,7 +87,7 @@
             return true;
         }
 
-        //メンバーの認証(idとpassが正しければtrue, そうでなければfalseを返す)
+        // メンバーの認証(idとpassが正しければtrue, そうでなければfalseを返す)
         public function AuthenticateMember(string $id, string $pass) {
             $sql = "SELECT * FROM Members WHERE id = :id AND pass = :pass";
 
@@ -138,7 +138,58 @@
             return null;
         }
 
-        //スケジュールの全情報取得(何もなければnullを返す)
+        // スケジュールを新規登録(成功すればtrue, そうでなければfalseを返す. id はなしで良い)
+        public function CreateSchedule(Schedule $sch) {
+            // idの発行をする
+            $date = $sch->date;
+            $sql = "SELECT * FROM Schedules WHERE id = :id";
+
+            for ($i = 1;; $i++) {
+                $id = intval($date->format("Ymd")) * 10 + $i;
+                $stmt = $this->pdo->prepare($sql);
+                $stmt->bindValue(":id", $id, PDO::PARAM_INT);
+                $res = $stmt->execute();
+                if ($res) {
+                    $data = $stmt->fetch();
+                    if ($data == false) {
+                        break;
+                    }
+                } else {
+                    break;
+                }
+            }
+
+            $sch->id = $id;
+
+            $id = $sch->id;
+            $name = $sch->name;
+            $date = $sch->date->format("Y-m-d H:i:s");
+            $detail = $sch->detail;
+            $members_join = $sch->members_join;
+            $members_notjoin = $sch->members_notjoin;
+
+            $sql = "INSERT INTO Schedules (id, name, date, detail, members_join, members_notjoin)";
+            $sql .= "VALUES (:id, :name, :date, :detail, :members_join, :members_notjoin)";
+
+            $this->pdo->beginTransaction();
+
+            $stmt = $this->pdo->prepare($sql);
+
+            $stmt->bindValue(":id", $id, PDO::PARAM_INT);
+            $stmt->bindValue(":name", $name, PDO::PARAM_STR);
+            $stmt->bindValue(":date", $date, PDO::PARAM_STR);
+            $stmt->bindValue(":detail", $detail, PDO::PARAM_STR);
+            $stmt->bindValue(":members_join", $members_join, PDO::PARAM_STR);
+            $stmt->bindValue(":members_notjoin", $members_notjoin, PDO::PARAM_STR);
+
+            $stmt->execute();
+
+            $this->pdo->commit();
+
+            return true;
+        }
+
+        // スケジュールの全情報取得(何もなければnullを返す)
         public function GetAllSchedules() {
             $sql = "SELECT * FROM Schedules";
 
@@ -151,7 +202,7 @@
                     $sch = new Schedule();
                     $sch->id = $e["id"];
                     $sch->name = $e["name"];
-                    $sch->date = $e["date"];
+                    $sch->date = new DateTime($e["date"]);
                     $sch->detail = $e["detail"];
                     $sch->members_join = $e["members_join"];
                     $sch->members_notjoin = $e["members_notjoin"];
