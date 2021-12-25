@@ -283,6 +283,96 @@
             return true;
         }
 
+        // スケジュールの情報修正(成功したらtrue, 失敗したらfalseを返す)
+        public function UpdateSchedule(Schedule $sch) {
+            $exist = $this->GetSchedule($sch->id);
+            if ($exist == null) {
+                return false;
+            }
+
+            $sql = "UPDATE Schedules SET  ";
+
+            $comma = false;
+            $b_name = false;
+            $b_date_start = false;
+            $b_date_end = false;
+            $b_detail = false;
+            $b_members_join = false;
+            $b_members_notjoin = false;
+
+            if ($sch->name != null) {
+                $sql .= "name = :name";
+                $b_name = true;
+                $comma = true;
+            }
+            if ($sch->date_start != null) {
+                if ($comma) {
+                    $sql .= ", ";
+                }
+                $sql .= "date_start = :date_start";
+                $b_date_start = true;
+                $comma = true;
+            }
+            if ($sch->date_end != null) {
+                if ($comma) {
+                    $sql .= ", ";
+                }
+                $sql .= "date_end = :date_end";
+                $b_date_end = true;
+                $comma = true;
+            }
+            if ($sch->detail != null) {
+                if ($comma) {
+                    $sql .= ", ";
+                }
+                $sql .= "detail = :detail";
+                $b_detail = true;
+                $comma = true;
+            }
+            if ($sch->members_join != null) {
+                if ($comma) {
+                    $sql .= ", ";
+                }
+                $sql .= "members_join = :members_join";
+                $b_members_join = true;
+                $comma = true;
+            }
+            if ($sch->members_notjoin != null) {
+                if ($comma) {
+                    $sql .= ", ";
+                }
+                $sql .= "members_notjoin = :members_notjoin";
+                $b_members_notjoin = true;
+            }
+            $sql .= " WHERE id = :id";
+
+            $stmt = $this->pdo->prepare($sql);
+
+            $stmt->bindValue(":id", $sch->id, PDO::PARAM_INT);
+            if ($b_name) {
+                $stmt->bindValue(":name", $sch->name, PDO::PARAM_STR);
+            }
+            if ($b_date_start) {
+                $stmt->bindValue(":date_start", $sch->date_start->format("Y-m-d H:i:s"), PDO::PARAM_STR);
+            }
+            if ($b_date_end) {
+                $stmt->bindValue(":date_end", $sch->date_end->format("Y-m-d H:i:s"), PDO::PARAM_STR);
+            }
+            if ($b_detail) {
+                $stmt->bindValue(":detail", $sch->detail, PDO::PARAM_STR);
+            }
+            if ($b_members_join) {
+                $stmt->bindValue(":members_join", $sch->members_join, PDO::PARAM_STR);
+            }
+            if ($b_members_notjoin) {
+                $stmt->bindValue(":members_notjoin", $sch->members_notjoin, PDO::PARAM_STR);
+            }
+
+            $stmt->execute();
+
+            return true;
+        }
+
         // スケジュールの情報取得(idが存在しなければnullを返す)
         public function GetSchedule(int $id) {
             $sql = "SELECT * FROM Schedules WHERE id = :id";
