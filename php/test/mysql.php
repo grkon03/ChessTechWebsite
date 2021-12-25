@@ -5,6 +5,7 @@
     require("./../util/mysql.php");
 
     try {
+        /*
         $sql_util = new MYSQL_UTIL();
         $s = new Schedule();
         $s->name = "テストイベント";
@@ -13,6 +14,7 @@
         $s->members_join = "grkon";
         $s->members_notjoin = "";
         $sql_util->CreateSchedule($s);
+        */
     } catch (PDOException $e) {
         echo "接続失敗: " . $e->getMessage() . "\n";
         exit();
