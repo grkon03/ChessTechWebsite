@@ -3,22 +3,22 @@
 
     /* 型としてのクラス */
     class Member {
-        public string $id;
-        public string $pass;
-        public string $name;
-        public string $handle_name;
-        public int $grade;
-        public string $authority;
-        public string $position;
+        public $id;
+        public $pass;
+        public $name;
+        public $handle_name;
+        public $grade;
+        public $authority;
+        public $position;
     }
 
     class Schedule {
-        public int $id;
-        public string $name;
-        public DateTime $date;
-        public string $detail;
-        public string $members_join;
-        public string $members_notjoin;
+        public $id;
+        public $name;
+        public $date;
+        public $detail;
+        public $members_join;
+        public $members_notjoin;
     }
     
     // MySQLにPDOでアクセス
