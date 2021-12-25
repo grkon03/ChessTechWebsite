@@ -3,23 +3,23 @@
 
     /* 型としてのクラス */
     class Member {
-        public $id;
-        public $pass;
-        public $name;
-        public $handle_name;
-        public $grade;
-        public $authority;
-        public $position;
+        public $id = null;
+        public $pass = null;
+        public $name = null;
+        public $handle_name = null;
+        public $grade = null;
+        public $authority = null;
+        public $position = null;
     }
 
     class Schedule {
-        public $id;
-        public $name;
-        public $date_start;
-        public $date_end;
-        public $detail;
-        public $members_join;
-        public $members_notjoin;
+        public $id = null;
+        public $name = null;
+        public $date_start = null;
+        public $date_end = null;
+        public $detail = null;
+        public $members_join = null;
+        public $members_notjoin = null;
     }
     
     // MySQLにPDOでアクセス
@@ -84,6 +84,97 @@
             $stmt->execute();
 
             $this->pdo->commit();
+
+            return true;
+        }
+
+        // メンバーの修正(成功すればtrue, そうでなければfalseを返す)
+        public function UpdateMember(Member $mem) {
+            $exist = $this->GetMember($mem->id);
+            if ($exist == null) {
+                return false;
+            }
+
+            $sql = "UPDATE Members SET ";
+            
+            $comma = false;
+            $b_pass = false;
+            $b_name = false;
+            $b_handle_name = false;
+            $b_grade = false;
+            $b_authority = false;
+            $b_position = false;
+
+            if ($mem->pass != null) {
+                $sql .= "pass = :pass";
+                $b_pass = true;
+                $comma = true;
+            }
+            if ($mem->name != null) {
+                if ($comma) {
+                    $sql .= ", ";
+                }
+                $sql .= "name = :name";
+                $b_name = true;
+                $comma = true;
+            }
+            if ($mem->handle_name != null) {
+                if ($comma) {
+                    $sql .= ", ";
+                }
+                $sql .= "handle_name = :handle_name";
+                $b_handle_name = true;
+                $comma = true;
+            }
+            if ($mem->grade != null) {
+                if ($comma) {
+                    $sql .= ", ";
+                }
+                $sql .= "grade = :grade";
+                $b_grade = true;
+                $comma = true;
+            }
+            if ($mem->authority != null) {
+                if ($comma) {
+                    $sql .= ", ";
+                }
+                $sql .= "authority = :authority";
+                $b_authority = true;
+                $comma = true;
+            }
+            if ($mem->position != null) {
+                if ($comma) {
+                    $sql .= ", ";
+                }
+                $sql .= "position = :position";
+                $b_position = true;
+            }
+            $sql .= " WHERE id = :id";
+
+            $stmt = $this->pdo->prepare($sql);
+
+            $stmt->bindValue(":id", $mem->id, PDO::PARAM_STR);
+
+            if ($b_pass) {
+                $stmt->bindValue(":pass", $mem->pass, PDO::PARAM_STR);
+            }
+            if ($b_name) {
+                $stmt->bindValue(":name", $mem->name, PDO::PARAM_STR);
+            }
+            if ($b_handle_name) {
+                $stmt->bindValue(":handle_name", $mem->handle_name, PDO::PARAM_STR);
+            }
+            if ($b_grade) {
+                $stmt->bindValue(":grade", $mem->grade, PDO::PARAM_STR);
+            }
+            if ($b_authority) {
+                $stmt->bindValue(":authority", $mem->authority, PDO::PARAM_INT);
+            }
+            if ($b_position) {
+                $stmt->bindValue(":position", $mem->position, PDO::PARAM_STR);
+            }
+            
+            $stmt->execute();
 
             return true;
         }

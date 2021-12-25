@@ -23,6 +23,10 @@ classes:
                 - CreateMember(Member $mem)
                     - $mem の情報に基づいて Members テーブルにデータを追加
                     - 成功したら true, 失敗したら false を返す
+                - UpdateMember(Member $mem)
+                    - $mem の情報に基づいて Members テーブルのデータを編集
+                    - 編集されるデータは id が $mem->id であるデータ
+                    - 成功したら true, 失敗したら false を返す
                 - AuthenticateMember($id, $pass)
                     - id が $id, pass が $pass であるようなデータが Members テーブルに存在するか調べる
                     - 存在したら true, 存在しなければ false を返す

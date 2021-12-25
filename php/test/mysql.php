@@ -5,8 +5,10 @@
     require("./../util/mysql.php");
 
     try {
+        
         $sql_util = new MYSQL_UTIL();
         $s = new Schedule();
+        /*
         $s->name = "テストイベント2";
         $s->date_start = new DateTime("2021-12-31 00:00:00");
         $s->date_end = new DateTime("2021-12-31 12:00:00");
@@ -20,6 +22,26 @@
         $res = $sql_util->pdo->query($sql);
         $data = $res->fetchAll();
         var_dump($data);
+        */
+        /*
+        $data = $sql_util->GetAllSchedules();
+        var_dump($data);
+        */
+        /*
+        $m = new Member();
+        $m->id = "grkon";
+        $m->pass = "yasu0u327";
+        $m->name = "安田桜輔";
+        $m->handle_name = "grkon";
+        $m->grade = "21B";
+        $m->authority = 1;
+        $m->position = "部長,在籍中";
+        $sql_util->CreateMember($m);
+        */
+        $upd_m = new Member();
+        $upd_m->id = "grkon";
+        $upd_m->authority = 2;
+        $sql_util->UpdateMember($upd_m);
     } catch (PDOException $e) {
         echo "接続失敗: " . $e->getMessage() . "\n";
         exit();
