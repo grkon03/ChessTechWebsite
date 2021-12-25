@@ -142,11 +142,11 @@
         // スケジュールを新規登録(成功すればtrue, そうでなければfalseを返す. id はなしで良い)
         public function CreateSchedule(Schedule $sch) {
             // idの発行をする
-            $date = $sch->date;
+            $date_start = $sch->date_start;
             $sql = "SELECT * FROM Schedules WHERE id = :id";
 
             for ($i = 1;; $i++) {
-                $id = intval($date->format("ymd")) * 10 + $i;
+                $id = intval($date_start->format("ymd")) * 10 + $i;
                 $stmt = $this->pdo->prepare($sql);
                 $stmt->bindValue(":id", $id, PDO::PARAM_INT);
                 $res = $stmt->execute();
@@ -199,7 +199,7 @@
             $res = $this->pdo->query($sql);
 
             if ($res) {
-                $data = $res->fetch();
+                $data = $res->fetchAll();
                 $schedules = array();
                 foreach ($data as $e) {
                     $sch = new Schedule();

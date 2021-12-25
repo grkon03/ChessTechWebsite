@@ -5,16 +5,21 @@
     require("./../util/mysql.php");
 
     try {
-        /*
         $sql_util = new MYSQL_UTIL();
         $s = new Schedule();
-        $s->name = "テストイベント";
-        $s->date = new DateTime("2021-12-30 00:00:00");
-        $s->detail = "テスト用のイベントです";
-        $s->members_join = "grkon";
-        $s->members_notjoin = "";
-        $sql_util->CreateSchedule($s);
-        */
+        $s->name = "テストイベント2";
+        $s->date_start = new DateTime("2021-12-31 00:00:00");
+        $s->date_end = new DateTime("2021-12-31 12:00:00");
+        $s->detail = "テスト用のイベント2です";
+        $s->members_join = "";
+        $s->members_notjoin = "grkon";
+        //$sql_util->CreateSchedule($s);
+        //$data = $sql_util->GetAllSchedules();
+        $sql = "SELECT * FROM Schedules";
+
+        $res = $sql_util->pdo->query($sql);
+        $data = $res->fetchAll();
+        var_dump($data);
     } catch (PDOException $e) {
         echo "接続失敗: " . $e->getMessage() . "\n";
         exit();
