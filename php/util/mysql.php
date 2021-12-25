@@ -15,7 +15,8 @@
     class Schedule {
         public $id;
         public $name;
-        public $date;
+        public $date_start;
+        public $date_end;
         public $detail;
         public $members_join;
         public $members_notjoin;
@@ -145,7 +146,7 @@
             $sql = "SELECT * FROM Schedules WHERE id = :id";
 
             for ($i = 1;; $i++) {
-                $id = intval($date->format("Ymd")) * 10 + $i;
+                $id = intval($date->format("ymd")) * 10 + $i;
                 $stmt = $this->pdo->prepare($sql);
                 $stmt->bindValue(":id", $id, PDO::PARAM_INT);
                 $res = $stmt->execute();
@@ -163,13 +164,14 @@
 
             $id = $sch->id;
             $name = $sch->name;
-            $date = $sch->date->format("Y-m-d H:i:s");
+            $date_start = $sch->date_start->format("Y-m-d H:i:s");
+            $date_end = $sch->date_end->format("Y-m-d H:i:s");
             $detail = $sch->detail;
             $members_join = $sch->members_join;
             $members_notjoin = $sch->members_notjoin;
 
-            $sql = "INSERT INTO Schedules (id, name, date, detail, members_join, members_notjoin)";
-            $sql .= "VALUES (:id, :name, :date, :detail, :members_join, :members_notjoin)";
+            $sql = "INSERT INTO Schedules (id, name, date_start, date_end, detail, members_join, members_notjoin)";
+            $sql .= "VALUES (:id, :name, :date_start, :date_end, :detail, :members_join, :members_notjoin)";
 
             $this->pdo->beginTransaction();
 
@@ -177,7 +179,8 @@
 
             $stmt->bindValue(":id", $id, PDO::PARAM_INT);
             $stmt->bindValue(":name", $name, PDO::PARAM_STR);
-            $stmt->bindValue(":date", $date, PDO::PARAM_STR);
+            $stmt->bindValue(":date_start", $date_start, PDO::PARAM_STR);
+            $stmt->bindValue(":date_end", $date_end, PDO::PARAM_STR);
             $stmt->bindValue(":detail", $detail, PDO::PARAM_STR);
             $stmt->bindValue(":members_join", $members_join, PDO::PARAM_STR);
             $stmt->bindValue(":members_notjoin", $members_notjoin, PDO::PARAM_STR);
@@ -202,7 +205,8 @@
                     $sch = new Schedule();
                     $sch->id = $e["id"];
                     $sch->name = $e["name"];
-                    $sch->date = new DateTime($e["date"]);
+                    $sch->date_start = new DateTime($e["date_start"]);
+                    $sch->date_end = new DateTime($e["date_end"]);
                     $sch->detail = $e["detail"];
                     $sch->members_join = $e["members_join"];
                     $sch->members_notjoin = $e["members_notjoin"];

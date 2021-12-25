@@ -16,7 +16,8 @@ CREATE TABLE `Members` (
 CREATE TABLE `Schedules` (
     `id` INT NOT NULL PRIMARY KEY, -- schedule integer id
     `name` VARCHAR(30) NOT NULL, -- acitivity name
-    `date` TIMESTAMP NOT NULL, -- date of the plan
+    `date_start` TIMESTAMP NOT NULL, -- date of start of the event
+    `date_end` TIMESTAMP NOT NULL, -- date of end of the event 
     `detail` VARCHAR(200) NOT NULL, -- activity detail
     `members_join` VARCHAR(200) NOT NULL, -- Members.id who plan to join : split by ','
     `members_notjoin` VARCHAR(200) NOT NULL -- Members.id who plan not to join : split by ','
