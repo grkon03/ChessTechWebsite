@@ -146,7 +146,7 @@
             $sql = "SELECT * FROM Schedules WHERE id = :id";
 
             for ($i = 1;; $i++) {
-                $id = intval($date_start->format("ymd")) * 10 + $i;
+                $id = intval($date_start->format("ymd")) * 100 + $i;
                 $stmt = $this->pdo->prepare($sql);
                 $stmt->bindValue(":id", $id, PDO::PARAM_INT);
                 $res = $stmt->execute();
