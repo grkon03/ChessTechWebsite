@@ -11,11 +11,12 @@ $ docker-compose up -d --build
 でリビルドしてください。
 ## MySQL関連
 ### エラー等
-MySQLでテーブルが見つからないや、サーバーが見つからないといった類のエラーが起きた
+MySQLでテーブルが見つからないや、サーバーが見つからないといった類のエラーが起きた場合は、
 ```
 $ docker-compose ps
 ```
-でサーバーが立っているかを確認してください。MySQLのサーバーが更新されない場合は、
+でサーバーが立っているかを確認してください。
+MySQLのサーバーが更新されない場合は、
 ```yaml:docker-compose.yml
 volumes:
     - ./mysql/db/data:/var/lib/mysql
