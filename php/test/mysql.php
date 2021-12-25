@@ -38,10 +38,14 @@
         $m->position = "部長,在籍中";
         $sql_util->CreateMember($m);
         */
+        /*
         $upd_m = new Member();
         $upd_m->id = "grkon";
         $upd_m->authority = 2;
         $sql_util->UpdateMember($upd_m);
+        */
+        $data = $sql_util->GetSchedule(2112301);
+        var_dump($data);
     } catch (PDOException $e) {
         echo "接続失敗: " . $e->getMessage() . "\n";
         exit();

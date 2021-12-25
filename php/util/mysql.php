@@ -283,6 +283,36 @@
             return true;
         }
 
+        // スケジュールの情報取得(idが存在しなければnullを返す)
+        public function GetSchedule(int $id) {
+            $sql = "SELECT * FROM Schedules WHERE id = :id";
+            
+            $stmt = $this->pdo->prepare($sql);
+            $stmt->bindValue(":id", $id, PDO::PARAM_INT);
+            
+            $res = $stmt->execute();
+            if ($res) {
+                $data = $stmt->fetch();
+                if ($data == false) {
+                    return null;
+                }
+            } else {
+                return null;
+            }
+
+            $sch = new Schedule();
+
+            $sch->id = $data["id"];
+            $sch->name = $data["name"];
+            $sch->date_start = new DateTime($data["date_start"]);
+            $sch->date_end = new DateTime($data["date_end"]);
+            $sch->detail = $data["detail"];
+            $sch->members_join = $data["members_join"];
+            $sch->members_notjoin = $data["members_notjoin"];
+
+            return $sch;
+        }
+
         // スケジュールの全情報取得(何もなければnullを返す)
         public function GetAllSchedules() {
             $sql = "SELECT * FROM Schedules";

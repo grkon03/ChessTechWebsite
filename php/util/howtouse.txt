@@ -32,12 +32,15 @@ classes:
                     - 存在したら true, 存在しなければ false を返す
                 - GetMember($id)
                     - id が $id であるようなデータを Members テーブルから探す
-                    - 存在すれば Members 型変数としてデータを返す、存在しなければ null 返す
+                    - 存在すれば Members 型変数としてデータを返す、存在しなければ null を返す
             - Schedules テーブル関連
                 - CreateSchedule(Schedule $sch)
                     - $sch の情報に基づいて Schedules テーブルにデータを追加
                     - $sch->id は指定しなくて良い
                     - 成功したら true, 失敗したら false を返す
+                - GetSchedule(int $id)
+                    - id が $id であるようなデータを Schedules テーブルから探す
+                    - 存在すれば Schedules 型変数としてデータを返す、存在しなければ null を返す
                 - GetAllScheducles()
                     - Schedules テーブルのデータを全て入手する
                     - Schedule 型変数の配列としてデータを返す、存在しなければ null を返す
