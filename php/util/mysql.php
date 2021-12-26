@@ -444,5 +444,21 @@
 
             return null;
         }
+
+        // スケジュールの消去(成功したら true, 失敗したら false を返す)
+        public function DeleteSchedule(int $id) {
+            $exist = $this->GetSchedule($id);
+            if ($exist == null) {
+                return false;
+            }
+            
+            $sql = "DELETE FROM Schedules WHERE id = :id";
+            
+            $stmt = $this->pdo->prepare($sql);
+            $stmt->bindValue(":id", $id, PDO::PARAM_INT);
+            $stmt->execute();
+
+            return true;
+        }
     }
 ?>

@@ -57,6 +57,7 @@
         /*
         $sql_util->DeleteMember("grkon");
         */
+        $sql_util->DeleteSchedule(2112301);
     } catch (PDOException $e) {
         echo "接続失敗: " . $e->getMessage() . "\n";
         exit();
