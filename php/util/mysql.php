@@ -230,6 +230,22 @@
             return null;
         }
 
+        // メンバーの消去(成功したらtrue, 失敗したらfalseを返す)
+        public function DeleteMember(string $id) {
+            $exist = $this->GetMember($id);
+            if ($exist == null) {
+                return false;
+            }
+
+            $sql = "DELETE FROM Members WHERE id = :id";
+
+            $stmt = $this->pdo->prepare($sql);
+            $stmt->bindValue(":id", $id, PDO::PARAM_STR);
+            $stmt->execute();
+
+            return true;
+        }
+
         // スケジュールを新規登録(成功すればtrue, そうでなければfalseを返す. id はなしで良い)
         public function CreateSchedule(Schedule $sch) {
             // idの発行をする

@@ -33,6 +33,9 @@ classes:
                 - GetMember($id)
                     - id が $id であるようなデータを Members テーブルから探す
                     - 存在すれば Members 型変数としてデータを返す、存在しなければ null を返す
+                - DeleteMember($id)
+                    - id が $id であるようなデータを Members テーブルから消去する
+                    - 成功したら true, 失敗したら false を返す
             - Schedules テーブル関連
                 - CreateSchedule(Schedule $sch)
                     - $sch の情報に基づいて Schedules テーブルにデータを追加

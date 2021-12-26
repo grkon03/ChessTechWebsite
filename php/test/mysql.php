@@ -48,10 +48,15 @@
         $data = $sql_util->GetSchedule(2112301);
         var_dump($data);
         */
+        /*
         $sch = new Schedule();
         $sch->id = 2112301;
         $sch->name = "テストイベント";
         var_dump($sql_util->UpdateSchedule($sch));
+        */
+        /*
+        $sql_util->DeleteMember("grkon");
+        */
     } catch (PDOException $e) {
         echo "接続失敗: " . $e->getMessage() . "\n";
         exit();
