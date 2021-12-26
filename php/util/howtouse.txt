@@ -3,7 +3,9 @@ util.php
 ---------------
 functions:
     - path_linker($rank)
-        - "./" に "../" を $rank 個付け足した文字列を返します
+        - "./" に "../" を $rank 個付け足した文字列を返す
+    - arrayToString(array $arr)
+        - $arr の要素をカンマで区切った文字列へと変換し、それを返す
 
 ---------------
 mysql.php

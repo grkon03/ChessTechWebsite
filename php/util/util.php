@@ -6,4 +6,20 @@
         }
         return $pl;
     }
+
+    // 配列をカンマで区切られた文字列に変形
+    function arrayToString(array $arr) {
+        $str = "";
+        $comma = false;
+        foreach ($arr as $e) {
+            if ($comma) {
+                $str .= ",";
+            } else {
+                $comma = true;
+            }
+            $str .= $e;
+        }
+
+        return $str;
+    }
 ?>
