@@ -238,21 +238,21 @@
 
             $data = $res->fetchAll();
             if ($data != false) {
-                $schedules = array();
+                $members = array();
 
                 foreach ($data as $e) {
-                    $sch = new Member();
-                    $sch->id = $e["id"];
-                    $sch->pass = $e["pass"];
-                    $sch->name = $e["name"];
-                    $sch->handle_name = $e["handle_name"];
-                    $sch->grade = $e["grade"];
-                    $sch->authority = $e["authority"];
-                    $sch->position = $e["position"];
-                    array_push($schedules, $sch);
+                    $mem = new Member();
+                    $mem->id = $e["id"];
+                    $mem->pass = $e["pass"];
+                    $mem->name = $e["name"];
+                    $mem->handle_name = $e["handle_name"];
+                    $mem->grade = $e["grade"];
+                    $mem->authority = $e["authority"];
+                    $mem->position = $e["position"];
+                    array_push($members, $mem);
                 }
 
-                return $schedules;
+                return $members;
             }
             
             return null;
@@ -453,8 +453,8 @@
 
             $res = $this->pdo->query($sql);
 
-            if ($res) {
-                $data = $res->fetchAll();
+            $data = $res->fetchAll();
+            if ($data != false) {
                 $schedules = array();
                 foreach ($data as $e) {
                     $sch = new Schedule();
