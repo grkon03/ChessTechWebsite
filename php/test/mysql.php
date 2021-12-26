@@ -8,20 +8,15 @@
         
         $sql_util = new MYSQL_UTIL();
         $s = new Schedule();
+        
         /*
-        $s->name = "テストイベント2";
-        $s->date_start = new DateTime("2021-12-31 00:00:00");
-        $s->date_end = new DateTime("2021-12-31 12:00:00");
-        $s->detail = "テスト用のイベント2です";
-        $s->members_join = "";
-        $s->members_notjoin = "grkon";
-        //$sql_util->CreateSchedule($s);
-        //$data = $sql_util->GetAllSchedules();
-        $sql = "SELECT * FROM Schedules";
-
-        $res = $sql_util->pdo->query($sql);
-        $data = $res->fetchAll();
-        var_dump($data);
+        $s->name = "テストイベント6";
+        $s->date_start = new DateTime("2021-12-31 18:00:00");
+        $s->date_end = new DateTime("2022-02-02 20:00:00");
+        $s->detail = "テスト用のイベント6です";
+        $s->members_join = "grkon";
+        $s->members_notjoin = "";
+        $sql_util->CreateSchedule($s);
         */
         /*
         $data = $sql_util->GetAllSchedules();
@@ -48,20 +43,28 @@
         $data = $sql_util->GetSchedule(2112301);
         var_dump($data);
         */
+        
         /*
         $sch = new Schedule();
-        $sch->id = 2112301;
+        $sch->id = 21123101;
         $sch->name = "テストイベント";
-        var_dump($sql_util->UpdateSchedule($sch));
+        $sql_util->UpdateSchedule($sch);
         */
+        
         /*
         $sql_util->DeleteMember("grkon");
         */
         /*
         $sql_util->DeleteSchedule(2112301);
         */
+        /*
         $data = $sql_util->GetAllMembers();
         var_dump($data);
+        */
+        $sch = $sql_util->GetSchedulesBetween(new DateTime("2022-01-01"), new DateTime("2022-01-31"));
+        echo "<pre>";
+        var_dump($sch);
+        echo "</pre>";
     } catch (PDOException $e) {
         echo "接続失敗: " . $e->getMessage() . "\n";
         exit();

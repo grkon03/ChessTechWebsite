@@ -447,6 +447,37 @@
             return $sch;
         }
 
+        // 期間内のスケジュールの情報取得(何もなければ null を返す), (日付の指定のみ、細かい時間は受け付けない)
+        public function GetSchedulesBetween(DateTime $d_from, DateTime $d_to) {
+            $sql = "SELECT * FROM Schedules WHERE (date_start <= :d_to) AND (date_end >= :d_from)";
+            $sql .= " ORDER BY date_start";
+            
+            $stmt = $this->pdo->prepare($sql);
+            $stmt->bindValue(":d_from", $d_from->format("Y-m-d 00:00:00"), PDO::PARAM_STR);
+            $stmt->bindValue(":d_to", $d_to->format("Y-m-d 23:59:59"), PDO::PARAM_STR);
+            $stmt->execute();
+            
+            $data = $stmt->fetchAll();
+            if ($data == false) {
+                return null;
+            }
+
+            $schedules = array();
+            foreach ($data as $e) {
+                $sch = new Schedule();
+                $sch->id = $e["id"];
+                $sch->name = $e["name"];
+                $sch->date_start = new DateTime($e["date_start"]);
+                $sch->date_end = new DateTime($e["date_end"]);
+                $sch->detail = $e["detail"];
+                $sch->members_join = $e["members_join"];
+                $sch->members_notjoin = $e["members_notjoin"];
+                array_push($schedules, $sch);
+            }
+
+            return $schedules;
+        }
+
         // スケジュールの全情報取得(何もなければnullを返す)
         public function GetAllSchedules() {
             $sql = "SELECT * FROM Schedules";

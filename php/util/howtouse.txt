@@ -33,6 +33,9 @@ classes:
                 - GetMember($id)
                     - id が $id であるようなデータを Members テーブルから探す
                     - 存在すれば Members 型変数としてデータを返す、存在しなければ null を返す
+                - GetAllMembers()
+                    - Members テーブルのデータを全て取得する
+                    - Member 型変数の配列としてデータを返す、存在しなければ null を返す
                 - DeleteMember($id)
                     - id が $id であるようなデータを Members テーブルから消去する
                     - 成功したら true, 失敗したら false を返す
@@ -47,7 +50,11 @@ classes:
                     - 成功したら true, 失敗したら false を返す
                 - GetSchedule(int $id)
                     - id が $id であるようなデータを Schedules テーブルから探す
-                    - 存在すれば Schedules 型変数としてデータを返す、存在しなければ null を返す
+                    - 存在すれば Schedule 型変数としてデータを返す、存在しなければ null を返す
+                - GetSchedulesBetween(DateTime $d_from, DateTime $d_to)
+                    - $d_from から $d_to の期間内にあるスケジュールを Schedules テーブルから探す
+                    - $d_from, $d_to は共に日にちの指定であって、時間帯は指定不可
+                    - 存在すれば Schedule 型変数としてデータを返す、存在しなければ null を返す
                 - GetAllScheducles()
-                    - Schedules テーブルのデータを全て入手する
+                    - Schedules テーブルのデータを全て取得する
                     - Schedule 型変数の配列としてデータを返す、存在しなければ null を返す
