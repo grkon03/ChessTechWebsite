@@ -230,6 +230,34 @@
             return null;
         }
 
+        // メンバーの全情報取得(何もなければ null を返す)
+        public function GetAllMembers() {
+            $sql = "SELECT * FROM Members";
+
+            $res = $this->pdo->query($sql);
+
+            $data = $res->fetchAll();
+            if ($data != false) {
+                $schedules = array();
+
+                foreach ($data as $e) {
+                    $sch = new Member();
+                    $sch->id = $e["id"];
+                    $sch->pass = $e["pass"];
+                    $sch->name = $e["name"];
+                    $sch->handle_name = $e["handle_name"];
+                    $sch->grade = $e["grade"];
+                    $sch->authority = $e["authority"];
+                    $sch->position = $e["position"];
+                    array_push($schedules, $sch);
+                }
+
+                return $schedules;
+            }
+            
+            return null;
+        }
+
         // メンバーの消去(成功したらtrue, 失敗したらfalseを返す)
         public function DeleteMember(string $id) {
             $exist = $this->GetMember($id);
