@@ -327,7 +327,7 @@
             return true;
         }
 
-        // スケジュールの情報修正(成功したらtrue, 失敗したらfalseを返す)
+        // スケジュールの情報修正(成功したらこのid, 失敗したらfalseを返す)
         public function UpdateSchedule(Schedule $sch) {
             $exist = $this->GetSchedule($sch->id);
             if ($exist == null) {
@@ -344,6 +344,8 @@
             $b_members_join = false;
             $b_members_notjoin = false;
 
+            $id_num = 1;
+
             if ($sch->name != null) {
                 $sql .= "name = :name";
                 $b_name = true;
@@ -353,9 +355,29 @@
                 if ($comma) {
                     $sql .= ", ";
                 }
-                $sql .= "date_start = :date_start";
+                $sql .= "date_start = :date_start, id = :id";
                 $b_date_start = true;
                 $comma = true;
+
+                // idの発行をする
+                $date_start = $sch->date_start;
+                $sql_t = "SELECT * FROM Schedules WHERE id = :id";
+    
+                for ($i = 1;; $i++) {
+                    $id_t = intval($date_start->format("ymd")) * 100 + $i;
+                    $stmt_t = $this->pdo->prepare($sql_t);
+                    $stmt_t->bindValue(":id", $id_t, PDO::PARAM_INT);
+                    $res = $stmt_t->execute();
+                    if ($res) {
+                        $data = $stmt_t->fetch();
+                        if ($data == false) {
+                            $id_num = $i;
+                            break;
+                        }
+                    } else {
+                        break;
+                    }
+                }
             }
             if ($sch->date_end != null) {
                 if ($comma) {
@@ -388,16 +410,23 @@
                 $sql .= "members_notjoin = :members_notjoin";
                 $b_members_notjoin = true;
             }
-            $sql .= " WHERE id = :id";
+            $sql .= " WHERE id = :id_old";
+
+            echo $sql;
 
             $stmt = $this->pdo->prepare($sql);
+            
+            $id_old = $sch->id;
 
-            $stmt->bindValue(":id", $sch->id, PDO::PARAM_INT);
+            $stmt->bindParam(":id_old", $id_old, PDO::PARAM_INT);
             if ($b_name) {
                 $stmt->bindValue(":name", $sch->name, PDO::PARAM_STR);
             }
             if ($b_date_start) {
                 $stmt->bindValue(":date_start", $sch->date_start->format("Y-m-d H:i:s"), PDO::PARAM_STR);
+                // id を改める
+                $id = intval($sch->date_start->format("ymd")) * 100 + $id_num;
+                $stmt->bindParam(":id", $id, PDO::PARAM_INT);
             }
             if ($b_date_end) {
                 $stmt->bindValue(":date_end", $sch->date_end->format("Y-m-d H:i:s"), PDO::PARAM_STR);
@@ -414,7 +443,7 @@
 
             $stmt->execute();
 
-            return true;
+            return $id;
         }
 
         // スケジュールの情報取得(idが存在しなければnullを返す)

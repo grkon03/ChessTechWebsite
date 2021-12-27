@@ -49,7 +49,7 @@ classes:
                 - UpdateSchedule(Schedule $sch)
                     - $sch の情報に基づいて Schedules テーブルのデータを編集
                     - 編集されるデータは id が $sch->id であるデータ
-                    - 成功したら true, 失敗したら false を返す
+                    - 成功したらこのデータの id を返す, 失敗したら false を返す
                 - GetSchedule(int $id)
                     - id が $id であるようなデータを Schedules テーブルから探す
                     - 存在すれば Schedule 型変数としてデータを返す、存在しなければ null を返す

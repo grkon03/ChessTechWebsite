@@ -44,12 +44,10 @@
         var_dump($data);
         */
         
-        /*
         $sch = new Schedule();
-        $sch->id = 21123101;
-        $sch->name = "テストイベント";
-        $sql_util->UpdateSchedule($sch);
-        */
+        $sch->id = 21123103;
+        $sch->date_start = new DateTime("2022-01-01 00:00:00");
+        var_dump($sql_util->UpdateSchedule($sch));
         
         /*
         $sql_util->DeleteMember("grkon");
@@ -61,10 +59,12 @@
         $data = $sql_util->GetAllMembers();
         var_dump($data);
         */
+        /*
         $sch = $sql_util->GetSchedulesBetween(new DateTime("2022-01-01"), new DateTime("2022-01-31"));
         echo "<pre>";
         var_dump($sch);
         echo "</pre>";
+        */
     } catch (PDOException $e) {
         echo "接続失敗: " . $e->getMessage() . "\n";
         exit();
