@@ -20,11 +20,43 @@
         </header>
         <div id="main">
             <div id="calender_wrap">
+                <?php
+                    $now = new DateTime("now");
+
+                    $month = $_GET["month"];
+                    if ($month == "") {
+                        $month = $now->format("m");
+                    }
+                    $month = intval($month);
+
+                    $year = $_GET["year"];
+                    if ($year == "") {
+                        $year = $now->format("Y");
+                    }
+                    $year = intval($year);
+
+                    $former_month = $month - 1;
+                    $latter_month = $month + 1;
+                    $former_month_year = $year;
+                    $latter_month_year = $year;
+                    if ($former_month == 0) {
+                        $former_month = 12;
+                        $former_month_year--;
+                    }
+                    if ($latter_month == 13) {
+                        $latter_month = 1;
+                        $latter_month_year++;
+                    }
+                ?>
                 <h1>活動予定カレンダー</h1>
                 <div id="calender_month">
-                    <a id="calender_month_back">前の月</a>
-                    <span id="calender_month_now">12月</span>
-                    <a id="calender_month_next">次の月</a>
+                    <a id="calender_month_back" href="./?<?php echo "month=" . $former_month . "&year=" . $former_month_year; ?>">前の月</a>
+                    <span id="calender_month_now">
+                        <?php
+                            echo $year . "年" . $month . "月";
+                        ?>
+                    </span>
+                    <a id="calender_month_next" href="./?<?php echo "month=" . $latter_month . "&year=" . $latter_month_year; ?>">次の月</a>
                 </div>
                 <div id="calender_application">
                     <table border="7" id="calender_table">
@@ -55,61 +87,55 @@
                                 </td>
                         -->
                         <tbody>
-                            <tr>
-                                <td>
-                                    <div>
-                                        <div class="calender_date">1</div>
-                                        <a class="calender_activity_item">テストテストテスト</a>
-                                    </div>
-                                </td>
-                                <td>
-                                    <div>
-                                        <div class="calender_date">1</div>
-                                        <a class="calender_activity_item">テストテストテスト</a>
-                                    </div>
-                                </td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                            </tr>
-                            <tr>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                            </tr>
-                            <tr>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                            </tr>
-                            <tr>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                            </tr>
-                            <tr>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                            </tr>
+                            <?php
+                                $first_day = new DateTime($year . "-" . sprintf("%02d", $month) . "-" . "01");
+                                $last_day = new DateTime("last day of " . $year . "-" . sprintf("%02d", $month));
+
+                                require("../util/mysql.php");
+                                $sql_util = new MYSQL_UTIL();
+
+                                $week_day = intval($first_day->format("w"));
+                                $week_day = ($week_day + 6) % 7;
+                                $first_week = true;
+                                $last_week = false;
+                                $day = $first_day;
+                                while (true) {
+                                    echo "<tr>";
+                                    for ($i = 0; $i < 7; $i++) {
+                                        if ($first_week || $last_week) {
+                                            echo "<td></td>";
+                                        } else {
+                                            $schedules = $sql_util->GetSchedulesBetween($day, $day);
+
+                                            echo "<td>";
+                                            echo "<div>";
+                                            echo "<div class='calender_date'>" . $day->format("d") . "</div>";
+                                            if ($schedules != null) {
+                                                foreach ($schedules as $sch) {
+                                                    echo "<a class='calender_activity_item'>";
+                                                    echo $sch->name;
+                                                    echo "</a>";
+                                                }
+                                            }
+                                            echo "</div>";
+                                            echo "</td>";
+
+                                            $day->modify("+1 days");
+                                        }
+
+                                        if ($first_week && $i == $week_day) {
+                                            $first_week = false;
+                                        }
+                                        if (!$last_week && intval($day->format("m") != $month)) {
+                                            $last_week = true;
+                                        }
+                                    }
+                                    echo "</tr>";
+                                    if ($last_week) {
+                                        break;
+                                    }
+                                }
+                            ?>
                         </tbody>
                     </table>
                 </div>
