@@ -142,7 +142,7 @@
                 <div id="calender_movemonth">
                     <h4>月を指定して移動</h4>
                     <div id="calender_movemonth_form">
-                        <form>
+                        <form action="./" method="GET">
                             <input min="2000" max="3000" type="number" name="year" id="calender_movemonth_form_year"> 年
                             <input min="1" max="12" type="number" name="month" id="calender_movemonth_form_month"> 月
                             <input type="submit" id="calender_movemonth_form_submit" value="移動">
