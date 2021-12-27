@@ -35,7 +35,7 @@
                 <a class="main_link_item" href="https://twitter.com/tokyotechchess">
                     Twitter
                 </a>
-                <a class="main_link_item">
+                <a class="main_link_item" href="./contact/">
                     お問い合わせフォーム
                 </a>
             </div>

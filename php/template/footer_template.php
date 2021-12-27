@@ -19,6 +19,9 @@
                 <div class="footer_link_item">
                     <a href="">Privacy Policy</a>
                 </div>
+                <div class="footer_link_item">
+                    <a href="{$pl}contact">Contact</a>
+                </div>
             </div>
             <div id="footer_copyright">
                 (c)2021 ChessTech
