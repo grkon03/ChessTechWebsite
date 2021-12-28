@@ -9,7 +9,7 @@
         <link href="./../css/footer.css" rel="stylesheet">
         <link href="./../css/main/contact/index.css" rel="stylesheet">
         <script>console.log("prevent Google Chrome css Transition");</script>
-        <title>Calender | 東工大チェスサークル ChessTech</title>
+        <title>お問い合わせ | 東工大チェスサークル ChessTech</title>
     </head>
     <body>
         <header>
