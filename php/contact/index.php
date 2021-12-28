@@ -28,8 +28,10 @@
                             <dd><input type="text" name="name" required></dd>
                             <dt>メールアドレス</dt>
                             <dd><input type="email" name="mail" required></dd>
+                            <dt>件名</dt>
+                            <dd><input type="text" name="title" required></dd>
                             <dt>お問い合わせ内容</dt>
-                            <dd><textarea name="content"></textarea></dd>
+                            <dd><textarea name="content" required></textarea></dd>
                         </dl>
                         <input type="submit" id="form_submit">
                     </form>
