@@ -1,0 +1,51 @@
+/* for all */
+
+#complete_send {
+    background: #99aade;
+    color: #333;
+}
+
+#complete_send input {
+    background: none;
+    border: none;
+    color: #f3f3f3;
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+
+@media screen and (max-width: 700px) {
+    /* for smartphone */
+
+    #complete_send {
+        width: 80%;
+        margin: 30px auto;
+        padding: 10px;
+    }
+
+    #complete_send h2 {
+        border-bottom: 1px solid #fff;
+    }
+
+    #complete_send input:active {
+        color: #ccc;
+    }
+}
+
+@media screen and (min-width: 701px) {
+    /* for pc */
+
+    #complete_send {
+        width: 600px;
+        margin: 50px auto;
+        padding: 30px;
+    }
+
+    #complete_send h2 {
+        border-bottom: 1px solid #fff;
+    }
+    
+    #complete_send input:hover {
+        color: #ccc;
+    }
+}
