@@ -1,0 +1,96 @@
+/* for all */
+
+body {
+    background-image: url("../../../images/background2.png");
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-attachment: fixed;
+    background-size: cover;
+}
+
+#contact_app {
+    background: rgba(240, 240, 250, 0.93);
+    color: #444;
+}
+
+#form_wrap form dt {
+    width: 200px;
+    border-bottom: 2px solid #bca;
+}
+
+#form_wrap form  input {
+    height: 20px;
+}
+
+#form_wrap form #form_submit {
+    width: 100px;
+    height: 50px;
+    background: #f7f7f7;
+    border:3px solid #bca;
+    border-radius: 10px;
+    cursor: pointer;
+    font-size: 22px;
+    color: #555;
+}
+
+@media screen and (max-width: 700px) {
+    /* for smartphone */
+
+    #contact_app {
+        margin: 10px;
+        padding: 10px;
+        border-radius: 10px;
+    }
+
+    #form_wrap form dd {
+        margin: 10px;
+    }
+
+    #form_wrap form input {
+        width: 80%;
+    }
+
+    #form_wrap form textarea{ 
+        width: 80%;
+        height: 100px;
+    }
+
+    #form_wrap form #form_submit:active {
+        color: #f7f7f7;
+        background: #bca;
+    }
+}
+
+@media screen and (min-width: 701px) {
+    /* for pc */
+
+    #contact_app {
+        width: 600px;
+        margin: 50px auto;
+        padding: 10px;
+        border-radius: 20px;
+    }
+
+    #form_wrap form dd {
+        margin: 10px;
+    }
+
+    #form_wrap form input {
+        width: 500px;
+    }
+
+    #form_wrap form textarea {
+        resize: none;
+        width: 500px;
+        height: 200px;
+    }
+
+    #form_wrap form #form_submit {
+        transition: 0.3s;
+    }
+
+    #form_wrap form #form_submit:hover {
+        color: #f7f7f7;
+        background: #bca;
+    }
+}

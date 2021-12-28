@@ -18,6 +18,24 @@
                 write_header(1);
             ?>
         </header>
+        <div id="main">
+            <div id="contact_app">
+                <h2>お問い合わせフォーム</h2>
+                <div id="form_wrap">
+                    <form action="send.php" method="POST">
+                        <dl>
+                            <dt>お名前/団体名</dt>
+                            <dd><input type="text" name="name" required></dd>
+                            <dt>メールアドレス</dt>
+                            <dd><input type="email" name="mail" required></dd>
+                            <dt>お問い合わせ内容</dt>
+                            <dd><textarea name="content"></textarea></dd>
+                        </dl>
+                        <input type="submit" id="form_submit">
+                    </form>
+                </div>
+            </div>
+        </div>
         <footer>
             <?php
                 require("../template/footer_template.php");
