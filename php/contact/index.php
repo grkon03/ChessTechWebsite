@@ -25,13 +25,13 @@
                     <form action="send.php" method="POST">
                         <dl>
                             <dt>お名前/団体名</dt>
-                            <dd><input type="text" name="name" required></dd>
+                            <dd><input type="text" name="name" value="<?php echo $_POST["name"]; ?>" required></dd>
                             <dt>メールアドレス</dt>
-                            <dd><input type="email" name="mail" required></dd>
+                            <dd><input type="email" name="mail" value="<?php echo $_POST["mail"]; ?>" required></dd>
                             <dt>件名</dt>
-                            <dd><input type="text" name="title" required></dd>
+                            <dd><input type="text" name="title" value="<?php echo $_POST["title"]; ?>" required></dd>
                             <dt>お問い合わせ内容</dt>
-                            <dd><textarea name="content" required></textarea></dd>
+                            <dd><textarea name="content" required><?php echo $_POST["content"]; ?></textarea></dd>
                         </dl>
                         <input type="submit" id="form_submit">
                     </form>
