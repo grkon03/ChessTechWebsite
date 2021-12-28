@@ -60,3 +60,10 @@ classes:
                 - GetAllScheducles()
                     - Schedules テーブルのデータを全て取得する
                     - Schedule 型変数の配列としてデータを返す、存在しなければ null を返す
+
+---------------
+sendmail.php
+---------------
+functions:
+    - sendmail_toChesstech
+        - tokyotechchess@gmail.com にメールを送信する
