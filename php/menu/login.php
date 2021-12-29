@@ -64,7 +64,6 @@
                                 $err_noaccount = true;
                             } else {
                                 $_SESSION["id"] = $id;
-                                $_SESSION["pass"] = $pass;
 
                                 //GETでアクセス元のリンクを得る、なければindexとする
                                 //このときのリンクは /menu からの相対パスとする
