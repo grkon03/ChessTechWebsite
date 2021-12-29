@@ -31,10 +31,13 @@ footer #footer_link #footer_link_title {
 @media screen and (max-width: 700px) {
     /* for smartphone */
     footer #footer_link {
-        padding: 20px;
+        margin: 0 auto;
+        width: fit-content;
+        padding: 20px 60px;
         line-height: 1.5em;
         border-bottom: 1px solid #f1f1f1;
         font-size: 1.2em;
+        text-align: left;
     }
 
     footer #footer_copyright {
