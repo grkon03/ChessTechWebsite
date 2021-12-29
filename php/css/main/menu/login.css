@@ -1,0 +1,120 @@
+/* for all */
+
+body {
+    background-image: url("../../../images/background2.png");
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-attachment: fixed;
+    background-size: cover;
+}
+
+#login_application {
+    background: #eef;
+    color: #444;
+}
+
+#login_application h2 {
+    border-bottom: 1px solid #444;
+}
+
+#login_application #login_form th {
+    text-align: left;
+}
+
+#login_application #login_form #login_form_submit {
+    background: #444;
+    color: #ffffff;
+    border: 0;
+}
+
+@media screen and (max-width: 700px) {
+    /* for smartphone */
+
+    #login_application {
+        width: 80%;
+        margin: 20px auto;
+        padding: 10px;
+    }
+
+    #login_application h2 {
+        font-size: 28px;
+    }
+
+    #login_application #login_form {
+        width: 80%;
+        margin: 20px auto;
+        font-size: 20px;
+    }
+
+    #login_application #login_form th {
+        width: 40%;
+        padding: 10px 0;
+    }
+
+    #login_application #login_form td {
+        width: 60%;
+    }
+
+    #login_application #login_form .login_form_textinput {
+        width: 90%;
+        height: 25px;
+        font-size: 20px;
+    }
+
+    #login_application #login_form #login_form_submit {
+        width: 80px;
+        height: 40px;
+        font-size: 20px;
+        border-radius: 10px;
+    }
+
+    #login_application #login_form #login_form_submit:active {
+        background: #ffffff;
+        color: #444;
+    }
+}
+
+@media screen and (min-width: 701px) {
+    /* for pc */
+
+    #login_application {
+        width: 600px;
+        margin: 50px auto;
+        padding: 30px;
+    }
+
+    #login_application h2 {
+        font-size: 30px;
+    }
+
+    #login_application #login_form {
+        width: 500px;
+        margin: 10px auto;
+        font-size: 22px;
+    }
+
+    #login_application #login_form th {
+        width: 150px;
+        height: 30px;
+        padding: 10px 0;
+    }
+
+    #login_application #login_form .login_form_textinput {
+        width: 300px;
+        height: 27px;
+        font-size: 22px;
+    }
+
+    #login_application #login_form #login_form_submit {
+        width: 100px;
+        height: 50px;
+        border-radius: 10px;
+        font-size: 22px;
+        transition: 0.3s;
+    }
+
+    #login_application #login_form #login_form_submit:hover {
+        background: #ffffff;
+        color: #444;
+    }
+}
