@@ -28,11 +28,11 @@
                                 <!-- ブラウザのサジェストが邪魔にならないように ct_ をつける -->
                                 <tr>
                                     <th>User ID</th>
-                                    <td><input type="text" name="ct_id" class="login_form_textinput" required></td>
+                                    <td><input type="text" name="ct_id" class="login_form_textinput" value="<?php echo $_POST["ct_id"]; ?>" required></td>
                                 </tr>
                                 <tr>
                                     <th>Password</th>
-                                    <td><input type="password" name="ct_pass" class="login_form_textinput" required></td>
+                                    <td><input type="password" name="ct_pass" class="login_form_textinput" value="<?php echo $_POST["ct_pass"]; ?>" required></td>
                                 </tr>
                                 <tr>
                                     <th></th>
@@ -41,6 +41,15 @@
                             </tbody>
                         </table>
                     </form>
+                </div>
+                <div id="login_caution">
+                    <h4>注意事項</h4>
+                    <p>
+                        <ul>
+                            <li>部員以外はログインできません。</li>
+                            <li>部員の方でまだアカウントを登録していない方は、部長などに連絡してください。</li>
+                        </ul>
+                    </p>
                 </div>
             </div>
         </div>
