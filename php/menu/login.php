@@ -1,3 +1,6 @@
+<?php
+    session_start();
+?>
 <!DOCTYPE html>
 <html lang="ja">
     <head>
@@ -22,7 +25,7 @@
             <div id="login_application">
                 <h2>Log in</h2>
                 <div id="login_form">
-                    <form action="./login.php" method="POST">
+                    <form action="./login.php?link=<?php echo $_GET["link"]; ?>" method="POST">
                         <table>
                             <tbody>
                                 <!-- ブラウザのサジェストが邪魔にならないように ct_ をつける -->
@@ -41,6 +44,56 @@
                             </tbody>
                         </table>
                     </form>
+                </div>
+                <div id="login_error">
+                    <?php
+                        $err_novalue = false;
+                        $err_noaccount = false;
+
+                        $id = $_POST["ct_id"];
+                        $pass = $_POST["ct_pass"];
+                        if ($id == "" | $pass == "") {
+                            $err_novalue = true;
+                        } else {
+                            require("../util/mysql.php");
+                            $sql_util = new MYSQL_UTIL();
+
+                            $exist = $sql_util->AuthenticateMember($id, $pass);
+
+                            if (!$exist) {
+                                $err_noaccount = true;
+                            } else {
+                                $_SESSION["id"] = $id;
+                                $_SESSION["pass"] = $pass;
+
+                                //GETでアクセス元のリンクを得る、なければindexとする
+                                //このときのリンクは /menu からの相対パスとする
+                                $link = $_GET["link"];
+                                if ($link == "") {
+                                    $link = "./";
+                                }
+
+                                echo "<script>";
+                                echo "location.href = '" . $link . "';";
+                                echo "</script>";
+                            }
+                        }
+
+                        if ($err_novalue) {
+                            echo "<p>";
+                            echo "不正なアクセスです!<br />";
+                            echo "ログインフォームの値を埋めてからログインしてください!";
+                            echo "</p>";
+                        }
+
+                        if ($err_noaccount) {
+                            echo "<p>";
+                            echo "ログインに失敗しました!<br />";
+                            echo "IDまたはパスワードが間違っている可能性があります!<br />";
+                            echo "何度もログインに失敗する場合は、部長に連絡などして、アカウントの復旧などの申請をしてください!";
+                            echo "</p>";
+                        }
+                    ?>
                 </div>
                 <div id="login_caution">
                     <h4>注意事項</h4>
