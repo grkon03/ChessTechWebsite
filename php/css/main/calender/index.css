@@ -4,6 +4,10 @@
     border-bottom: 1px solid #333;
 }
 
+#main #calender_wrap #calender_table td {
+    vertical-align: top;
+}
+
 @media screen and (max-width: 700px) {
     /* for smartphone */
     #main #calender_wrap {
@@ -47,7 +51,7 @@
 
     #main #calender_wrap #calender_table td {
         width: calc(100% / 7);
-        height: 50px;
+        height: 80px;
     }
 
     #main #calender_wrap #calender_table td .calender_date {
@@ -126,10 +130,6 @@
         width: 90px;
         height: 90px;
         font-size: 10px;
-    }
-
-    #main #calender_wrap #calender_table td {
-        vertical-align: top;
     }
 
     #main #calender_wrap #calender_table td .calender_date {
