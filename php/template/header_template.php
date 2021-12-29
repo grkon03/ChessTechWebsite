@@ -25,7 +25,7 @@
                     <a href="">About</a>
                 </div>
                 <div class="header_menu_item">
-                    <a href="">Log in</a>
+                    <a href="">Member's Menu</a>
                 </div>
             </div>
         </div>
