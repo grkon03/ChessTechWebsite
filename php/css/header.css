@@ -25,12 +25,6 @@ header #header_menu .header_menu_item {
     margin-right: 30px;
 }
 
-.floatbox::after {
-    content: "";
-    clear: both;
-    display: block;
-}
-
 header #header_menu a {
     text-decoration: none;
 }
