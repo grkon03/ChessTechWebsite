@@ -25,7 +25,7 @@
                     <a href="">About</a>
                 </div>
                 <div class="header_menu_item">
-                    <a href="./menu/">Member's Menu</a>
+                    <a href="{$pl}menu/">Member's Menu</a>
                 </div>
             </div>
         </div>
