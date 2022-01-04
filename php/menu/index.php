@@ -40,13 +40,13 @@
                             ようこそ<span id="menu_welcome_name"><?php echo $member->handle_name; ?></span>さん
                         </p>
                         <div id="menu_list">
-                            <a class="menu_list_item">
+                            <a class="menu_list_item" href="./registAvailableDays/">
                                 活動可能日を登録する
                             </a>
-                            <a class="menu_list_item">
+                            <a class="menu_list_item" href="./registJoinableDays/">
                                 参加/非参加予定を登録する
                             </a>
-                            <a class="menu_list_item">
+                            <a class="menu_list_item" href="./changeProfile/">
                                 プロフィールを変更する
                             </a>
                             <?php
@@ -57,7 +57,7 @@
                                 }
 
                                 if ($auth <= 1) {
-                                    echo "<a class='menu_list_item'>";
+                                    echo "<a class='menu_list_item' href='./registSchedules/'>";
                                     echo "予定を作成する";
                                     echo "</a>";
                                 }
@@ -117,7 +117,7 @@
                             メニューは、権限レベルによって変更されます。
                         </li>
                         <li>
-                            権限レベルは、1が最高となっています。
+                            権限レベルは、権限が高いほど数値が小さくなり、1が最高権限となっています。
                         </li>
                         <li>
                             権限レベルは、全体的な設定が変更された場合、権限自体が変更されていない場合でも数値が変更される場合があります。
