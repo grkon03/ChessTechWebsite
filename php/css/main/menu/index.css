@@ -4,8 +4,59 @@
     background: #fcfcfc;
 }
 
+#menu_main {
+    color: #333;
+}
+
+#menu_main h2 {
+    border-bottom: 1px solid #333;
+}
+
+#menu_welcome #menu_welcome_name {
+    color: #626;
+    padding: 0 10px;
+}
+
+#menu_list .menu_list_item {
+    display: block;
+    color: #eee;
+    text-decoration: none;
+    background: #333;
+    padding: 10px;
+    border-bottom: 1px solid #eee;
+    cursor: pointer;
+}
+
+#menu_profile {
+    padding: 20px 5px;
+    border-top: 5px solid #333;
+    border-bottom: 5px solid #333;
+}
+
+#menu_profile #menu_profile_content table th, td {
+    text-align: left;
+    width: 50%;
+}
+
 @media screen and (max-width: 700px) {
     /* for smartphone */
+
+    #menu {
+        width: 250px;
+        margin: 10px auto;
+    }
+
+    #menu_main #menu_welcome {
+        font-size: 1.2em;
+    }
+
+    #menu_profile {
+        margin: 10px 0;
+    }
+    
+    #menu_profile h2 {
+        margin: 3px 0;
+    }
 }
 
 @media screen and (min-width: 701px) {
@@ -19,21 +70,14 @@
     #menu_main {
         width: 450px;
         float: left;
-        color: #333;
     }
 
     #menu_main h2 {
-        border-bottom: 1px solid #333;
         font-size: 40px;
     }
 
     #menu_welcome {
         font-size: 25px;
-    }
-
-    #menu_welcome #menu_welcome_name {
-        color: #626;
-        padding: 0 10px;
     }
 
     #menu_list {
@@ -42,15 +86,8 @@
     }
 
     #menu_list .menu_list_item {
-        display: block;
-        color: #eee;
-        text-decoration: none;
-        background: #333;
         width: 400px;
         font-size: 25px;
-        padding: 10px;
-        border-bottom: 1px solid #eee;
-        cursor: pointer;
     }
 
     #menu_list .menu_list_item:hover {
@@ -59,18 +96,10 @@
 
     #menu_profile {
         width: 220px;
-        padding: 20px 5px;
-        border-top: 5px solid #333;
-        border-bottom: 5px solid #333;
         float: right;
     }
 
     #menu_profile h2 {
         margin: 3px 0;
-    }
-
-    #menu_profile #menu_profile_content table th, td {
-        text-align: left;
-        width: 50%;
     }
 }
