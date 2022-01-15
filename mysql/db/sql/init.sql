@@ -1,5 +1,6 @@
-DROP TABLE IF EXISTS Members;
-DROP TABLE IF EXISTS Schedules;
+-- DROP TABLE IF EXISTS Members;
+-- DROP TABLE IF EXISTS Schedules;
+-- DROP TABLE IF EXISTS JoinableDays;
 
 -- Circle Members
 CREATE TABLE `Members` (
@@ -10,7 +11,19 @@ CREATE TABLE `Members` (
     `grade` VARCHAR(3) NOT NULL, -- grade
     `authority` INT NOT NULL, -- access authority
     `position` VARCHAR(100) -- member position : split by ','
+    `joinable_dayofweek` INT NOT NULL DEFAULT 0 -- joinable day of week
 );
+
+/*
+joinable_dayofweek:
+    SUN: 1
+    MON: 2
+    TUE: 4
+    WED: 8
+    THI: 16
+    FRI: 32
+    SAT: 64
+*/
 
 -- Activity Plan
 CREATE TABLE `Schedules` (
@@ -21,4 +34,12 @@ CREATE TABLE `Schedules` (
     `detail` VARCHAR(200) NOT NULL, -- activity detail
     `members_join` VARCHAR(200) NOT NULL, -- Members.id who plan to join : split by ','
     `members_notjoin` VARCHAR(200) NOT NULL -- Members.id who plan not to join : split by ','
+);
+
+-- Joinable Days
+CREATE TABLE `JoinableDays` (
+    `date` TIMESTAMP NOT NULL PRIMARY KEY, -- the day
+    `joinable` VARCHAR(200) NOT NULL, -- joinable members
+    `maybe_joinable` VARCHAR(200) NOT NULL, -- maybe joinable members
+    `notjoinable` VARCHAR(200) NOT NULL -- not joinable members
 );
