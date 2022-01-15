@@ -21,7 +21,7 @@
         </header>
         <div id="main">
             <div id="menu_page_main">
-                <h2>予定を登録する</h2>
+                <h2>予定を作成する</h2>
             </div>
         </div>
         <footer>
