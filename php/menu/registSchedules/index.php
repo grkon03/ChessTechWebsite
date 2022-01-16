@@ -8,7 +8,7 @@
         <link href="./../../css/header.css" rel="stylesheet">
         <link href="./../../css/footer.css" rel="stylesheet">
         <link href="./../../css/menu.css" rel="stylesheet">
-        <link href="./../../css/main/menu/changeProfile/index.css" rel="stylesheet">
+        <link href="./../../css/main/menu/registSchedules/index.css" rel="stylesheet">
         <script>console.log("prevent Google Chrome css Transition");</script>
         <title>予定を登録する | 東工大チェスサークル ChessTech</title>
     </head>
