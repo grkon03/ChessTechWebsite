@@ -557,6 +557,11 @@
             return true;
         }
 
+        // 活動可能日を登録する TODO
+        public function RegistJoinableDay(DateTime $date, string $user_id, int $state) {
+            
+        }
+
         // 活動可能日の全情報取得(何もなければnullを返す)
         public function GetAllJoinableDays() {
             $sql = "SELECT * FROM JoinableDays";
