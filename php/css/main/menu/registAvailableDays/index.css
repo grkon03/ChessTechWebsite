@@ -1,0 +1,40 @@
+/* for all */
+
+#registAD_weekform #registAD_weekform_submit {
+    background: #333;
+    color: #eee;
+    width: 100px;
+    height: 50px;
+    padding: auto;
+    margin: 10px 0;
+    font-size: 20px;
+    border: 0;
+    border-radius: 10px;
+}
+
+@media screen and (max-width: 700px) {
+    /* for smartphone */
+}
+
+@media screen and (min-width: 701px) {
+    /* for pc */
+
+    #registAD_weekform table th, #registAD_weekform table td {
+        font-size: 20px;
+    }
+
+    #registAD_weekform table input.registAD_checkbox {
+        height: 20px;
+        width: 20px;
+    }
+
+    #registAD_weekform #registAD_weekform_submit {
+        cursor: pointer;
+        transition: 0.2s;
+    }
+
+    #registAD_weekform #registAD_weekform_submit:hover {
+        background: #eee;
+        color: #333;
+    }
+}
