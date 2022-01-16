@@ -10,6 +10,7 @@
         public $grade = null;
         public $authority = null;
         public $position = null;
+        public $joinable_dayofweek = null;
     }
 
     class Schedule {
@@ -20,6 +21,13 @@
         public $detail = null;
         public $members_join = null;
         public $members_notjoin = null;
+    }
+
+    class JoinableDay {
+        public $date = null;
+        public $joinable = null;
+        public $maybe_joinable = null;
+        public $notjoinable = null;
     }
     
     // MySQLにPDOでアクセス
@@ -547,6 +555,30 @@
             $stmt->execute();
 
             return true;
+        }
+
+        // 活動可能日の全情報取得(何もなければnullを返す)
+        public function GetAllJoinableDays() {
+            $sql = "SELECT * FROM JoinableDays";
+
+            $res = $this->pdo->query($sql);
+
+            $data = $res->fetchAll();
+
+            if ($data != false) {
+                $joinabledays = array();
+                foreach ($data as $e) {
+                    $joinableday = new JoinableDay();
+                    $joinableday->date = new DateTime($e["date"]);
+                    $joinableday->joinable = $e["joinable"];
+                    $joinableday->maybe_joinable = $e["maybe_joinable"];
+                    $joinableday->notjoinable = $e["notjoinble"];
+                }
+                array_push($joinabledays, $joinableday);
+                return $joinabledays;
+            }
+
+            return null;
         }
     }
 ?>
