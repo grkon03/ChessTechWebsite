@@ -33,7 +33,7 @@
     border-bottom: 5px solid #333;
 }
 
-#menu_profile #menu_profile_content table th, td {
+#menu_profile #menu_profile_content table th, #menu_profile #menu_profile_content table th td {
     text-align: left;
     width: 50%;
 }
