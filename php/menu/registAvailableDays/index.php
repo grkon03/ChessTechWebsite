@@ -45,6 +45,10 @@
                             <table>
                                 <tbody>
                                     <tr>
+                                        <td><input type="checkbox" class="registAD_checkbox" value="参加する" name="ad_sun"></td>
+                                        <th>日曜日</th>
+                                    </tr>
+                                    <tr>
                                         <td><input type="checkbox" class="registAD_checkbox" value="参加する" name="ad_mon"></td>
                                         <th>月曜日</th>
                                     </tr>
@@ -67,10 +71,6 @@
                                     <tr>
                                         <td><input type="checkbox" class="registAD_checkbox" value="参加する" name="ad_sat"></td>
                                         <th>土曜日</th>
-                                    </tr>
-                                    <tr>
-                                        <td><input type="checkbox" class="registAD_checkbox" value="参加する" name="ad_sun"></td>
-                                        <th>日曜日</th>
                                     </tr>
                                 </tbody>
                             </table>
