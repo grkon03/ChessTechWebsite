@@ -63,6 +63,9 @@ classes:
                     - Schedules テーブルのデータを全て取得する
                     - Schedule 型変数の配列としてデータを返す、存在しなければ null を返す
             - JoinableDays テーブル関連
+                - GetJoinableDays
+                    - 条件が $bind と一致するようなデータを JoinableDays テーブルから探す
+                    - JoinableDay 型変数の配列としてデータを返す、存在しなければ null を返す
                 - GetAllJoinableDays
                     - JoinableDays テーブルのデータをすべて取得する
                     - JoinableDays 型変数の配列としてデータを返す、存在しなければ null を返す

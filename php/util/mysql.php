@@ -559,7 +559,102 @@
 
         // 活動可能日を登録する TODO
         public function RegistJoinableDay(DateTime $date, string $user_id, int $state) {
-            
+
+        }
+
+        // 活動可能日を日付・メンバーなどを指定して取得
+        public function GetJoinableDays(JoinableDay $bind) {
+            $sql = "SELECT * FROM JoinableDays WHERE";
+
+            $and = false;
+            $b_date = false;
+            $b_joinable = false;
+            $b_maybe_joinable = false;
+            $b_notjoinable = false;
+
+            // joinable などは配列となる変数なので、要素を取り出しておく
+            $joinable_array = explode(",", $bind->joinable);
+            $maybe_joinable_array = explode(",", $bind->maybe_joinable);
+            $notjoinable_array = explode(",", $bind->notjoinable);
+
+            $l_ja = count($joinable_array);
+            $l_mja = count($maybe_joinable_array);
+            $l_nja = count($notjoinable_array);
+
+            if ($bind->date != null) {
+                $sql .= " date=:date";
+                $and = true;
+                $b_date = true;
+            }
+            if ($bind->joinable != null) {
+                for ($i = 0; $i < $l_ja; $i++) {
+                    if ($and) {
+                        $sql .= " AND";
+                    }
+                    $sql .= " joinable LIKE :joinable" . $i;
+                    $and = true;
+                    $b_joinable = true;
+                }
+            }
+            if ($bind->maybe_joinable != null) {
+                for ($i = 0; $i < $l_mja; $i++) {
+                    if ($and) {
+                        $sql .= " AND";
+                    }
+                    $sql .= " maybe_joinable LIKE :maybe_joinable" . $i;
+                    $and = true;
+                    $b_maybe_joinable = true;
+                }
+            }
+            if ($bind->notjoinable != null) {
+                for ($i = 0; $i < $l_nja; $i++) {
+                    if ($and) {
+                        $sql .= " AND";
+                    }
+                    $sql .= " notjoinable LIKE :notjoinable" . $i;
+                    $and = true;
+                    $b_notjoinable = true;
+                }
+            }
+
+            $stmt = $this->pdo->prepare($sql);
+
+            if ($b_date) {
+                $stmt->bindValue(":date", $bind->date->format("Y-m-d H:i:s"), PDO::PARAM_STR);
+            }
+            if ($b_joinable) {
+                for ($i = 0; $i < $l_ja; $i++) {
+                    $stmt->bindValue(":joinable" . $i, $joinable_array[$i]);
+                }
+            }
+            if ($b_maybe_joinable) {
+                for ($i = 0; $i < $l_mja; $i++) {
+                    $stmt->bindValue(":maybe_joinable" . $i, $maybe_joinable_array[$i]);
+                }
+            }
+            if ($b_notjoinable) {
+                for ($i = 0; $i < $l_nja; $i++) {
+                    $stmt->bindValue(":notjoinable" . $i, $notjoinable_array[$i]);
+                }
+            }
+
+            $stmt->execute();
+            $data = $stmt->fetchAll();
+
+            if ($data != false) {
+                $joinabledays = array();
+                foreach($data as $e) {
+                    $joinableday = new JoinableDay();
+                    $joinableday->date = new DateTime($e["date"]);
+                    $joinableday->joinable = $e["joinable"];
+                    $joinableday->maybe_joinable = $e["maybe_joinable"];
+                    $joinableday->notjoinable = $e["notjoinble"];
+                }
+                array_push($joinabledays, $joinableday);
+                return $joinabledays;
+            }
+
+            return null;
         }
 
         // 活動可能日の全情報取得(何もなければnullを返す)
