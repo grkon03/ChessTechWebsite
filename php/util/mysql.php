@@ -644,7 +644,7 @@
             $stmt = $this->pdo->prepare($sql);
 
             if ($b_date) {
-                $stmt->bindValue(":date", $bind->date->format("Y-m-d H:i:s"), PDO::PARAM_STR);
+                $stmt->bindValue(":date", $bind->date->format("Y-m-d 00:00:00"), PDO::PARAM_STR);
             }
             if ($b_joinable) {
                 for ($i = 0; $i < $l_ja; $i++) {
