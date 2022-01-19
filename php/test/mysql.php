@@ -65,8 +65,25 @@
         var_dump($sch);
         echo "</pre>";
         */
+        /*
         $joi = new JoinableDay();
         $joi->date = new DateTime("2022-02-22 00:00:00");
+        $joi->joinable = "grkon";
+        $joi->maybe_joinable = "";
+        $joi->notjoinable = "";
+
+        $sql_util->CreateJoinableDay($joi);
+        */
+
+        $joi = new JoinableDay();
+        //$joi->date = new DateTime("2022-02-23 00:00:00");
+        $joi->joinable = "";
+
+        $jois = $sql_util->GetJoinableDays($joi);
+
+        echo "<pre>";
+        var_dump($jois);
+        echo "</pre>";
     } catch (PDOException $e) {
         echo "接続失敗: " . $e->getMessage() . "\n";
         exit();

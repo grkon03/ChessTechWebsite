@@ -567,7 +567,7 @@
             }
 
             $sql = "INSERT INTO JoinableDays (date, joinable, maybe_joinable, notjoinable)";
-            $sql .= " VALUE (:date, :joinable, :maybe_joinable, notjoinable)";
+            $sql .= " VALUE (:date, :joinable, :maybe_joinable, :notjoinable)";
 
             $stmt = $this->pdo->prepare($sql);
 
