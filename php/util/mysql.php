@@ -571,7 +571,7 @@
 
             $stmt = $this->pdo->prepare($sql);
 
-            $stmt->bindValue(":date", $joi->date->format("Y-m-d H:i:s"), PDO::PARAM_STR);
+            $stmt->bindValue(":date", $joi->date->format("Y-m-d 00:00:00"), PDO::PARAM_STR);
             $stmt->bindValue(":joinable", $joi->joinable);
             $stmt->bindValue(":maybe_joinable", $joi->maybe_joinable);
             $stmt->bindValue(":notjoinable", $joi->notjoinable);
@@ -648,17 +648,17 @@
             }
             if ($b_joinable) {
                 for ($i = 0; $i < $l_ja; $i++) {
-                    $stmt->bindValue(":joinable" . $i, $joinable_array[$i]);
+                    $stmt->bindValue(":joinable" . $i, "%" . $joinable_array[$i] . "%", PDO::PARAM_STR);
                 }
             }
             if ($b_maybe_joinable) {
                 for ($i = 0; $i < $l_mja; $i++) {
-                    $stmt->bindValue(":maybe_joinable" . $i, $maybe_joinable_array[$i]);
+                    $stmt->bindValue(":maybe_joinable" . $i, "%" . $maybe_joinable_array[$i] . "%", PDO::PARAM_STR);
                 }
             }
             if ($b_notjoinable) {
                 for ($i = 0; $i < $l_nja; $i++) {
-                    $stmt->bindValue(":notjoinable" . $i, $notjoinable_array[$i]);
+                    $stmt->bindValue(":notjoinable" . "%" . $i, $notjoinable_array[$i] . "%", PDO::PARAM_STR);
                 }
             }
 
