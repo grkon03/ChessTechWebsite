@@ -63,6 +63,10 @@ classes:
                     - Schedules テーブルのデータを全て取得する
                     - Schedule 型変数の配列としてデータを返す、存在しなければ null を返す
             - JoinableDays テーブル関連
+                - CreateJoinableDays
+                    - $joi の情報に基づいて JoinableDays テーブルにデータを追加
+                    - $joi->date のスケジュールが存在したら false を返す
+                    - 成功したら true, 失敗したら false を返す
                 - GetJoinableDays
                     - 条件が $bind と一致するようなデータを JoinableDays テーブルから探す
                     - JoinableDay 型変数の配列としてデータを返す、存在しなければ null を返す

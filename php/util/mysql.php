@@ -557,7 +557,31 @@
             return true;
         }
 
-        // 活動可能日を登録する TODO
+        // 活動可能日を新規登録
+        public function CreateJoinableDay(JoinableDay $joi) {
+            $day_joi = new JoinableDay();
+            $day_joi->date = $joi->date;
+            $exist = $this->GetJoinableDays($day_joi);
+            if ($exist != null) {
+                return false;
+            }
+
+            $sql = "INSERT INTO JoinableDays (date, joinable, maybe_joinable, notjoinable)";
+            $sql .= " VALUE (:date, :joinable, :maybe_joinable, notjoinable)";
+
+            $stmt = $this->pdo->prepare($sql);
+
+            $stmt->bindValue(":date", $joi->date->format("Y-m-d H:i:s"), PDO::PARAM_STR);
+            $stmt->bindValue(":joinable", $joi->joinable);
+            $stmt->bindValue(":maybe_joinable", $joi->maybe_joinable);
+            $stmt->bindValue(":notjoinable", $joi->notjoinable);
+
+            $stmt->execute();
+
+            return true;
+        }
+
+        // 活動可能日を登録 TODO
         public function RegistJoinableDay(DateTime $date, string $user_id, int $state) {
 
         }
