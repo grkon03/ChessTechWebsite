@@ -675,7 +675,61 @@
                     $joinableday->notjoinable = $e["notjoinble"];
                 }
                 array_push($joinabledays, $joinableday);
-                return $joinabledays;
+
+                $jois_comp = array();
+                foreach($joinabledays as $e) {
+                    $id_comp_match = true;
+                    
+                    $joinable_arr = explode(",", $e->joinable);
+                    $bind_joinable_arr = explode(",", $bind->joinable);
+
+                    echo "<pre>";
+                    var_dump($joinable_arr);
+                    var_dump($bind_joinable_arr);
+                    echo "</pre>";
+
+                    foreach ($bind_joinable_arr as $b) {
+                        if(!in_array($b, $joinable_arr)) {
+                            $id_comp_match = false;
+                        }
+                    }
+
+                    if (!$id_comp_match) {
+                        continue;
+                    }
+                    
+                    
+                    $maybe_joinable_arr = explode(",", $e->maybe_joinable);
+                    $bind_maybe_joinable_arr = explode(",", $bind->maybe_joinable);
+
+                    foreach ($bind_maybe_joinable_arr as $b) {
+                        if (!in_array($b, $maybe_joinable_arr)) {
+                            $id_comp_match = false;
+                        }
+                    }
+
+                    if (!$id_comp_match) {
+                        continue;
+                    }
+
+                    $notjoinable_arr = explode(",", $e->notjoinable);
+                    $bind_notjoinable_arr = explode(",", $bind->notjoinable);
+
+                    foreach ($bind_notjoinable_arr as $b) {
+                        if (!in_array($b, $notjoinable_arr)) {
+                            $id_comp_match = false;
+                        }
+                    }
+
+                    if (!$id_comp_match) {
+                        continue;
+                    }
+                    
+
+                    array_push($jois_comp, $e);
+                }
+
+                return $jois_comp;
             }
 
             return null;

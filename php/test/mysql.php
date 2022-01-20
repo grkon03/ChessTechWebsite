@@ -77,7 +77,7 @@
 
         $joi = new JoinableDay();
         //$joi->date = new DateTime("2022-02-23 00:00:00");
-        $joi->joinable = "grko";
+        $joi->joinable = "grkon";
 
         $jois = $sql_util->GetJoinableDays($joi);
 
