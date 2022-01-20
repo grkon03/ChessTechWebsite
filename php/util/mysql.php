@@ -420,8 +420,6 @@
             }
             $sql .= " WHERE id = :id_old";
 
-            echo $sql;
-
             $stmt = $this->pdo->prepare($sql);
             
             $id_old = $sch->id;
@@ -581,7 +579,65 @@
             return true;
         }
 
-        // 活動可能日を登録 TODO
+        // 活動可能日の情報修正
+        public function UpdateJoinableDay(JoinableDay $joi) {
+            $day_joi = new JoinableDay();
+            $day_joi->date = $joi->date;
+            $exist = $this->GetJoinableDays($day_joi);
+            if ($exist == null) {
+                return false;
+            }
+
+            $sql = "UPDATE JoinableDays SET ";
+
+            $comma = false;
+            $b_joinable = false;
+            $b_maybe_joinable = false;
+            $b_notjoinable = false;
+
+            if ($joi->joinable != null) {
+                $sql .= "joinable = :joinable";
+                $comma = true;
+                $b_joinable = true;
+            }
+            if ($joi->maybe_joinable != null) {
+                if ($comma) {
+                    $sql .= ", ";
+                }
+                $sql .= "maybe_joinable = :maybe_joinable";
+                $comma = true;
+                $b_maybe_joinable = true;
+            }
+            if ($joi->notjoinable != null) {
+                if ($comma) {
+                    $sql .= ", ";
+                }
+                $sql .= "notjoinable = :notjoinable";
+                $b_notjoinable = true;
+            }
+
+            $sql .= " WHERE date = :date";
+
+            $stmt = $this->pdo->prepare($sql);
+
+            $stmt->bindValue(":date", $joi->date->format("Y-m-d 00:00:00"));
+
+            if ($b_joinable) {
+                $stmt->bindValue(":joinable", $joi->joinable, PDO::PARAM_STR);
+            }
+            if ($b_maybe_joinable) {
+                $stmt->bindValue(":maybe_joinable", $joi->maybe_joinalbe, PDO::PARAM_STR);
+            }
+            if ($b_notjoinable) {
+                $stmt->bindValue(":notjoinable", $joi->notjoinable, PDO::PARAM_STR);
+            }
+
+            $stmt->execute();
+
+            return true;
+        }
+
+        // 活動可能日を登録またはuserのidを追加
         public function RegistJoinableDay(DateTime $date, string $user_id, int $state) {
 
         }
