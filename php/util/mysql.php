@@ -595,7 +595,7 @@
             $b_maybe_joinable = false;
             $b_notjoinable = false;
 
-            if ($joi->joinable != null) {
+            if ($joi->joinable !== null) {
                 $sql .= "joinable = :joinable";
                 $comma = true;
                 $b_joinable = true;
@@ -626,7 +626,7 @@
                 $stmt->bindValue(":joinable", $joi->joinable, PDO::PARAM_STR);
             }
             if ($b_maybe_joinable) {
-                $stmt->bindValue(":maybe_joinable", $joi->maybe_joinalbe, PDO::PARAM_STR);
+                $stmt->bindValue(":maybe_joinable", $joi->maybe_joinable, PDO::PARAM_STR);
             }
             if ($b_notjoinable) {
                 $stmt->bindValue(":notjoinable", $joi->notjoinable, PDO::PARAM_STR);
