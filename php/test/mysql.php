@@ -65,19 +65,20 @@
         var_dump($sch);
         echo "</pre>";
         */
-        /*
+        
+        
         $joi = new JoinableDay();
         $joi->date = new DateTime("2022-02-22 00:00:00");
-        $joi->joinable = "grkon";
-        $joi->maybe_joinable = "";
-        $joi->notjoinable = "";
+        $joi->joinable = "";
+        $joi->maybe_joinable = "grkon";
 
-        $sql_util->CreateJoinableDay($joi);
-        */
-
+        $sql_util->UpdateJoinableDay($joi);
+        
+        
+        
         $joi = new JoinableDay();
-        //$joi->date = new DateTime("2022-02-23 00:00:00");
-        $joi->joinable = "grkon";
+        $joi->date = new DateTime("2022-02-22 00:00:00");
+        //$joi->joinable = "grkon";
 
         $jois = $sql_util->GetJoinableDays($joi);
 
