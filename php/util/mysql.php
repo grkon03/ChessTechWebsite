@@ -1,4 +1,6 @@
 <?
+    require("util.php");
+
     /* MySQL用のAPI */
 
     /* 型としてのクラス */
@@ -804,6 +806,87 @@
             }
 
             return null;
+        }
+
+        // 活動可能日を消去
+        public function DeleteJoinableDay_AllOfDay(DateTime $date) {
+            $sql = "DELETE FROM JoinableDays WHERE date = :date";
+
+            $stmt = $this->pdo->prepare($sql);
+
+            $stmt->bindValue(":date", $date->format("Y-m-d 00:00:00"), PDO::PARAM_STR);
+
+            $stmt->execute();
+
+            return true;
+        }
+
+        // 活動可能日から人物を消去
+        public function DeleteJoinableDay_MemberOfDay(DateTime $date, string $user_id) {
+            $bind = new JoinableDay();
+            $bind->date = $date;
+            $bind->joinable = $user_id;
+
+            $joi_joinable = $this->GetJoinableDays($bind);
+
+            if ($joi_joinable !== null) {
+                $joinable_arr = explode(",", $joi_joinable[0]->joinable);
+                $new_joinable_arr = array();
+
+                foreach ($joinable_arr as $e) {
+                    if ($e != $user_id) {
+                        array_push($new_joinable_arr, $e);
+                    }
+                }
+
+                $joi_joinable[0]->joinable = ArrayToString($new_joinable_arr);
+                $this->UpdateJoinableDay($joi_joinable[0]);
+                return true;
+            }
+
+            $bind->joinable = null;
+            $bind->maybe_joinable = $user_id;
+
+            $joi_maybe_joinable =  $this->GetJoinableDays($bind);
+
+            if ($joi_maybe_joinable != null) {
+                $maybe_joinable_arr = explode(",", $joi_maybe_joinable[0]->maybe_joinable);
+                $new_maybe_joinable_arr = array();
+                
+                foreach ($maybe_joinable_arr as $e) {
+                    if ($e != $user_id) {
+                        array_push($new_maybe_joinable_arr, $e);
+                    }
+                }
+
+                $joi_maybe_joinable[0]->maybe_joinable = ArrayToString($new_maybe_joinable_arr);
+                $this->UpdateJoinableDay($joi_joinable[0]);
+
+                return true;
+            }
+
+            $bind->maybe_joinable = null;
+            $bind->notjoinable = $user_id;
+
+            $joi_notjoinable = $this->GetJoinableDays($bind);
+
+            if ($joi_notjoinable != null) {
+                $notjoinable_arr = explode(",", $joi_notjoinable[0]->notjoinable);
+                $new_notjoinable_arr = array();
+
+                foreach ($notjoinable_arr as $e) {
+                    if ($e != $user_id) {
+                        array_push($new_notjoinable_arr, $e);
+                    }
+                }
+                
+                $joi_notjoinable[0]->notjoinable = ArrayToString($new_notjoinable_arr);
+                $this->UpdateJoinableDay($joi_notjoinable[0]);
+
+                return true;
+            }
+
+            return false;
         }
     }
 ?>

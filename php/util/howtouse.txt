@@ -62,21 +62,31 @@ classes:
                 - GetAllScheducles()
                     - Schedules テーブルのデータを全て取得する
                     - Schedule 型変数の配列としてデータを返す、存在しなければ null を返す
+                - DeleteSchedule(int $id)
+                    - id が $id であるようなデータを Schedules テーブルから消去する
+                    - 成功したら  true, 失敗したら false を返す
             - JoinableDays テーブル関連
-                - CreateJoinableDays
+                - CreateJoinableDays(JoinableDay $joi)
                     - $joi の情報に基づいて JoinableDays テーブルにデータを追加
                     - $joi->date のスケジュールが存在したら false を返す
                     - 成功したら true, 失敗したら false を返す
-                - UpdateJoinableDays
-                    - $joi の情報に基づいて Joinable テーブルのデータを編集
+                - UpdateJoinableDays(JoinableDay $joi)
+                    - $joi の情報に基づいて JoinableDays テーブルのデータを編集
                     - 編集されるデータは date が $joi->date であるデータ
                     - 成功したら true, 失敗したら false を返す
-                - GetJoinableDays
+                - GetJoinableDays(JoinableDay $bind)
                     - 条件が $bind と一致するようなデータを JoinableDays テーブルから探す
                     - JoinableDay 型変数の配列としてデータを返す、存在しなければ null を返す
-                - GetAllJoinableDays
+                - GetAllJoinableDays()
                     - JoinableDays テーブルのデータをすべて取得する
                     - JoinableDays 型変数の配列としてデータを返す、存在しなければ null を返す
+                - DeleteJoinableDay_AllOfDay(DateTime $date)
+                    - date が $date であるようなデータを JoinableDays テーブルから消去する
+                    - 成功したら true, 失敗したら false を返す
+                - DeleteJoinableDay_MemberOfDay(DateTime $date, string $user_id)
+                    - date が $date であるようなデータからメンバーを消去する
+                    - id が $user_id であるようなメンバーが消去される
+                    - 成功したら true, 失敗したら false を返す
 
 ---------------
 sendmail.php
