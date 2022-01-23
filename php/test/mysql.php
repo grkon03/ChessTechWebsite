@@ -66,21 +66,31 @@
         echo "</pre>";
         */
         
+        /*
+        $joi_new = new JoinableDay();
+        $joi_new->date = new DateTime("2022-02-22");
+        $joi_new->joinable = "";
+        $joi_new->maybe_joinable = "grkon";
+        $joi_new->notjoinable = "";
+
+        $sql_util->CreateJoinableDay($joi_new);
+        */
+        
         
         $joi = new JoinableDay();
         $joi->date = new DateTime("2022-02-22 00:00:00");
-        $joi->joinable = "";
-        $joi->maybe_joinable = "grkon";
+        $joi->joinable = "grkon";
+        $joi->maybe_joinable = "";
 
         $sql_util->UpdateJoinableDay($joi);
         
         
         
-        $joi = new JoinableDay();
-        $joi->date = new DateTime("2022-02-22 00:00:00");
-        //$joi->joinable = "grkon";
+        $bind = new JoinableDay();
+        $bind->date = new DateTime("2022-02-22 00:00:00");
+        //$bind->joinable = "grkon";
 
-        $jois = $sql_util->GetJoinableDays($joi);
+        $jois = $sql_util->GetJoinableDays($bind);
 
         echo "<pre>";
         var_dump($jois);

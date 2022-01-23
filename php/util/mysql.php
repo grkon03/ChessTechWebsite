@@ -590,29 +590,21 @@
 
             $sql = "UPDATE JoinableDays SET ";
 
-            $comma = false;
             $b_joinable = false;
             $b_maybe_joinable = false;
             $b_notjoinable = false;
 
+            $sql .= "date = :date";
             if ($joi->joinable !== null) {
-                $sql .= "joinable = :joinable";
-                $comma = true;
+                $sql .= ", joinable = :joinable";
                 $b_joinable = true;
             }
-            if ($joi->maybe_joinable != null) {
-                if ($comma) {
-                    $sql .= ", ";
-                }
-                $sql .= "maybe_joinable = :maybe_joinable";
-                $comma = true;
+            if ($joi->maybe_joinable !== null) {
+                $sql .= ", maybe_joinable = :maybe_joinable";
                 $b_maybe_joinable = true;
             }
-            if ($joi->notjoinable != null) {
-                if ($comma) {
-                    $sql .= ", ";
-                }
-                $sql .= "notjoinable = :notjoinable";
+            if ($joi->notjoinable !== null) {
+                $sql .= ", notjoinable = :notjoinable";
                 $b_notjoinable = true;
             }
 
@@ -620,7 +612,7 @@
 
             $stmt = $this->pdo->prepare($sql);
 
-            $stmt->bindValue(":date", $joi->date->format("Y-m-d 00:00:00"));
+            $stmt->bindValue(":date", $joi->date->format("Y-m-d 00:00:00"), PDO::PARAM_STR);
 
             if ($b_joinable) {
                 $stmt->bindValue(":joinable", $joi->joinable, PDO::PARAM_STR);
