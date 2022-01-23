@@ -631,9 +631,34 @@
             return true;
         }
 
-        // 活動可能日を登録またはuserのidを追加
+        // 活動可能日を登録またはuserのidを追加 ($state = 0: 消去, 1: joinable, 2: maybe_joinable, 3: notjoinable)
         public function RegistJoinableDay(DateTime $date, string $user_id, int $state) {
+            switch ($state) {
+                case 0:
+                    // 消去
+                    $ret = $this->DeleteJoinableDay_MemberOfDay($date, $user_id);
 
+                    if (!$ret) {
+                        return false;
+                    }
+
+                    $bind = new JoinableDay();
+                    $bind->date = $date;
+
+                    $res = $this->GetJoinableDays($bind);
+                    
+                    if (
+                        ($res[0]->joinable === null || $res[0]->joinable === "") &&
+                        ($res[0]->maybe_joinable === null || $res[0]->maybe_joinable === "") &&
+                        ($res[0]->notjoinable === null || $res[0]->notjoinable === "")
+                    ) {
+                        $this->DeleteJoinableDay_AllOfDay($date);
+                    }
+
+                    return true;
+                case 1:
+                    
+            } 
         }
 
         // 活動可能日を日付・メンバーなどを指定して取得

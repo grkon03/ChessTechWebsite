@@ -76,19 +76,23 @@
         $sql_util->CreateJoinableDay($joi_new);
         */
         
-        
+        /*
         $joi = new JoinableDay();
         $joi->date = new DateTime("2022-02-22 00:00:00");
         $joi->joinable = "grkon";
         $joi->maybe_joinable = "";
 
         $sql_util->UpdateJoinableDay($joi);
+        */
+
         
-        
+        //$sql_util->DeleteJoinableDay_MemberOfDay(new DateTime("2022-02-22 00:00:00"), "grkon");
+        //$sql_util->DeleteJoinableDay_AllOfDay(new DateTime("2022-02-22 00:00:00"));
         
         $bind = new JoinableDay();
         $bind->date = new DateTime("2022-02-22 00:00:00");
         //$bind->joinable = "grkon";
+        
 
         $jois = $sql_util->GetJoinableDays($bind);
 
