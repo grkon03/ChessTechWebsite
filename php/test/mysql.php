@@ -88,8 +88,8 @@
         */
 
         
-        //$sql_util->DeleteJoinableDay_MemberOfDay(new DateTime("2022-02-22 00:00:00"), "grkon");
-        //$sql_util->DeleteJoinableDay_AllOfDay(new DateTime("2022-02-22 00:00:00"));
+        //$sql_util->DeleteMemberJoinableDay(new DateTime("2022-02-22 00:00:00"), "grkon");
+        //$sql_util->DeleteJoinableDay(new DateTime("2022-02-22 00:00:00"));
 
         $sql_util->RegistMemberJoinableDay(new DateTime("2022-02-22"), "taroimo", 1);
 

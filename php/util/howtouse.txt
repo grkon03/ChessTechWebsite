@@ -93,10 +93,10 @@ classes:
                 - GetAllJoinableDays()
                     - JoinableDays テーブルのデータをすべて取得する
                     - JoinableDays 型変数の配列としてデータを返す、存在しなければ null を返す
-                - DeleteJoinableDay_AllOfDay(DateTime $date)
+                - DeleteJoinableDay(DateTime $date)
                     - date が $date であるようなデータを JoinableDays テーブルから消去する
                     - 成功したら true, 失敗したら false を返す
-                - DeleteJoinableDay_MemberOfDay(DateTime $date, string $user_id)
+                - DeleteMemberJoinableDay(DateTime $date, string $user_id)
                     - date が $date であるようなデータからメンバーを消去する
                     - id が $user_id であるようなメンバーが消去される
                     - 成功したら true, 失敗したら false を返す

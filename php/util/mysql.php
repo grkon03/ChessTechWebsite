@@ -682,7 +682,7 @@
             switch ($state) {
                 case 0:
                     // 消去
-                    $ret = $this->DeleteJoinableDay_MemberOfDay($date, $user_id);
+                    $ret = $this->DeleteMemberJoinableDay($date, $user_id);
 
                     if (!$ret) {
                         return false;
@@ -695,7 +695,7 @@
                         ($res[0]->maybe_joinable === null || $res[0]->maybe_joinable === "") &&
                         ($res[0]->notjoinable === null || $res[0]->notjoinable === "")
                     ) {
-                        $this->DeleteJoinableDay_AllOfDay($date);
+                        $this->DeleteJoinableDay($date);
                     }
 
                     return $ret;
@@ -723,7 +723,7 @@
             }
 
             // 一旦データからメンバーを消去してから再追加
-            $this->DeleteJoinableDay_MemberOfDay($date, $user_id);
+            $this->DeleteMemberJoinableDay($date, $user_id);
 
             return $this->AddMemberJoinableDay($add_joi);
         }
@@ -901,7 +901,7 @@
         }
 
         // 活動可能日を消去
-        public function DeleteJoinableDay_AllOfDay(DateTime $date) {
+        public function DeleteJoinableDay(DateTime $date) {
             $sql = "DELETE FROM JoinableDays WHERE date = :date";
 
             $stmt = $this->pdo->prepare($sql);
@@ -914,7 +914,7 @@
         }
 
         // 活動可能日から人物を消去
-        public function DeleteJoinableDay_MemberOfDay(DateTime $date, string $user_id) {
+        public function DeleteMemberJoinableDay(DateTime $date, string $user_id) {
             $bind = new JoinableDay();
             $bind->date = $date;
             $bind->joinable = $user_id;
