@@ -22,17 +22,17 @@
         $data = $sql_util->GetAllSchedules();
         var_dump($data);
         */
-        /*
-        $m = new Member();
-        $m->id = "grkon";
-        $m->pass = "yasu0u327";
-        $m->name = "安田桜輔";
-        $m->handle_name = "grkon";
-        $m->grade = "21B";
-        $m->authority = 1;
-        $m->position = "部長,在籍中";
-        $sql_util->CreateMember($m);
-        */
+        
+        // $m = new Member();
+        // $m->id = "taroimo";
+        // $m->pass = "tarotaro123";
+        // $m->name = "山田太郎";
+        // $m->handle_name = "タロイモ";
+        // $m->grade = "21B";
+        // $m->authority = 2;
+        // $m->position = "在籍中";
+        // $sql_util->CreateMember($m);
+        
         /*
         $upd_m = new Member();
         $upd_m->id = "grkon";
@@ -55,10 +55,12 @@
         /*
         $sql_util->DeleteSchedule(2112301);
         */
-        /*
+        
         $data = $sql_util->GetAllMembers();
+        echo "<pre>";
         var_dump($data);
-        */
+        echo "</pre>";
+        
         /*
         $sch = $sql_util->GetSchedulesBetween(new DateTime("2022-01-01"), new DateTime("2022-01-31"));
         echo "<pre>";
@@ -88,7 +90,9 @@
         
         //$sql_util->DeleteJoinableDay_MemberOfDay(new DateTime("2022-02-22 00:00:00"), "grkon");
         //$sql_util->DeleteJoinableDay_AllOfDay(new DateTime("2022-02-22 00:00:00"));
-        
+
+        $sql_util->RegistMemberJoinableDay(new DateTime("2022-02-22"), "taroimo", 1);
+
         $bind = new JoinableDay();
         $bind->date = new DateTime("2022-02-22 00:00:00");
         //$bind->joinable = "grkon";

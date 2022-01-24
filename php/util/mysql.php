@@ -673,7 +673,12 @@
         }
 
         // 活動可能日を登録またはuserのidを追加 ($state = 0: 消去, 1: joinable, 2: maybe_joinable, 3: notjoinable)
-        public function RegistJoinableDay(DateTime $date, string $user_id, int $state) {
+        public function RegistMemberJoinableDay(DateTime $date, string $user_id, int $state) {
+            $add_joi = new JoinableDay();
+            $add_joi->date = $date;
+
+            $exist = $this->GetJoinableDays($add_joi);
+
             switch ($state) {
                 case 0:
                     // 消去
@@ -683,10 +688,7 @@
                         return false;
                     }
 
-                    $bind = new JoinableDay();
-                    $bind->date = $date;
-
-                    $res = $this->GetJoinableDays($bind);
+                    $res = $exist;
                     
                     if (
                         ($res[0]->joinable === null || $res[0]->joinable === "") &&
@@ -696,10 +698,34 @@
                         $this->DeleteJoinableDay_AllOfDay($date);
                     }
 
-                    return true;
+                    return $ret;
                 case 1:
+                    $add_joi->joinable = $user_id;
+                    break;
+                case 2:
+                    $add_joi->maybe_joinable = $user_id;
+                    break;
+                case 3:
+                    $add_joi->notjoinable = $user_id;
+                    break;
+                default:
+                    return false;
+            }
 
-            } 
+            // user id が存在するかの確認
+            $mem = $this->GetMember($user_id);
+            if ($mem == null) {
+                return false;
+            }
+
+            if ($exist === null) {
+                return $this->CreateJoinableDay($add_joi);
+            }
+
+            // 一旦データからメンバーを消去してから再追加
+            $this->DeleteJoinableDay_MemberOfDay($date, $user_id);
+
+            return $this->AddMemberJoinableDay($add_joi);
         }
 
         // 活動可能日を日付・メンバーなどを指定して取得

@@ -78,6 +78,15 @@ classes:
                     - date が $add_joi->date であるようなデータを JoinableDays データにメンバーを追加
                     - $add_joi の各項目のメンバーをデータに追加
                     - 成功したら true, 失敗したら false を返す
+                - RegistMemberJoinableDay(DateTime $date, string $user_id, int $state)
+                    - date が $date であるような JoinableDays のデータにメンバーは追加される
+                    - id が $user_id であるようなメンバーを $state に基づいて追加または消去する
+                        - $state
+                            - 0: メンバーを消去
+                            - 1: joinable に追加
+                            - 2: maybe_joinable に追加
+                            - 3: notjoinable に追加
+                    - 成功したら true, 失敗したら false を返す
                 - GetJoinableDays(JoinableDay $bind)
                     - 条件が $bind と一致するようなデータを JoinableDays テーブルから探す
                     - JoinableDay 型変数の配列としてデータを返す、存在しなければ null を返す
