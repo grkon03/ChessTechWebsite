@@ -631,6 +631,47 @@
             return true;
         }
 
+        // 活動可能日にメンバーを追加
+        public function AddMemberJoinableDay(JoinableDay $add_joi) {
+            $bind = new JoinableDay();
+            $bind->date = $add_joi->date;
+            $joi = $this->GetJoinableDays($bind);
+            if ($joi === null) {
+                return false;
+            }
+
+            if ($add_joi->joinable !== null) {
+                if ($joi[0]->joinable === null) {
+                    $joi[0]->joinable = "";
+                }
+                $new_joinable_arr = array_merge(explode(",", $joi[0]->joinable), explode(",", $add_joi->joinable));
+                $new_joinable_arr = array_unique($new_joinable_arr);
+                $joi[0]->joinable = ArrayToString($new_joinable_arr);
+            }
+
+            if ($add_joi->maybe_joinable !== null) {
+                if ($joi[0]->maybe_joinable === null) {
+                    $joi[0]->maybe_joinable = "";
+                }
+                $new_maybe_joinable_arr = array_merge(explode(",", $joi[0]->maybe_joinable), explode(",", $add_joi->maybe_joinable));
+                $new_maybe_joinable_arr = array_unique($new_maybe_joinable_arr);
+                $joi[0]->maybe_joinable = ArrayToString($new_maybe_joinable_arr);
+            }
+
+            if ($add_joi->notjoinable !== null) {
+                if ($joi[0]->notjoinable === null) {
+                    $joi[0]->notjoinable = "";
+                }
+                $new_notjoinable_arr = array_merge(explode(",", $joi[0]->notjoinable), explode(",", $add_joi->notjoinable));
+                $new_notjoinable_arr = array_unique($new_notjoinable_arr);
+                $joi[0]->notjoinable = ArrayToString($new_notjoinable_arr);
+            }
+
+            $this->UpdateJoinableDay($joi[0]);
+
+            return true;
+        }
+
         // 活動可能日を登録またはuserのidを追加 ($state = 0: 消去, 1: joinable, 2: maybe_joinable, 3: notjoinable)
         public function RegistJoinableDay(DateTime $date, string $user_id, int $state) {
             switch ($state) {
@@ -657,7 +698,7 @@
 
                     return true;
                 case 1:
-                    
+
             } 
         }
 

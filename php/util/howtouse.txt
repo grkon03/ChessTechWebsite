@@ -74,6 +74,10 @@ classes:
                     - $joi の情報に基づいて JoinableDays テーブルのデータを編集
                     - 編集されるデータは date が $joi->date であるデータ
                     - 成功したら true, 失敗したら false を返す
+                - AddMemberJoinableDay(JoinableDay $add_joi)
+                    - date が $add_joi->date であるようなデータを JoinableDays データにメンバーを追加
+                    - $add_joi の各項目のメンバーをデータに追加
+                    - 成功したら true, 失敗したら false を返す
                 - GetJoinableDays(JoinableDay $bind)
                     - 条件が $bind と一致するようなデータを JoinableDays テーブルから探す
                     - JoinableDay 型変数の配列としてデータを返す、存在しなければ null を返す
