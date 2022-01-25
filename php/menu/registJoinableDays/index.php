@@ -88,19 +88,19 @@
 
                             $jd_week = $member->joinable_dayofweek;
 
-                            if ($jd_week & 1 != 0)
+                            if (($jd_week & 1) != 0)
                                 $jd_sun = true;
-                            if ($jd_week & 2 != 0) 
+                            if (($jd_week & 2) != 0) 
                                 $jd_mon = true;
-                            if ($jd_week & 4 != 0)
+                            if (($jd_week & 4) != 0)
                                 $jd_tue = true;
-                            if ($jd_week & 8 != 0)
+                            if (($jd_week & 8) != 0)
                                 $jd_wed = true;
-                            if ($jd_week & 16 != 0)
+                            if (($jd_week & 16) != 0)
                                 $jd_thi = true;
-                            if ($jd_week & 32 != 0)
+                            if (($jd_week & 32) != 0)
                                 $jd_fri = true;
-                            if ($jd_week & 64 != 0)
+                            if (($jd_week & 64) != 0)
                                 $jd_sat = true;
                         }
                     ?>
