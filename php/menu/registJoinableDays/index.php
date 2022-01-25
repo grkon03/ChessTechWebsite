@@ -21,7 +21,7 @@
         <link href="./../../css/header.css" rel="stylesheet">
         <link href="./../../css/footer.css" rel="stylesheet">
         <link href="./../../css/menu.css" rel="stylesheet">
-        <link href="./../../css/main/menu/registAvailableDays/index.css" rel="stylesheet">
+        <link href="./../../css/main/menu/registJoinableDays/index.css" rel="stylesheet">
         <script>console.log("prevent Google Chrome css Transition");</script>
         <title>活動可能日を登録する | 東工大チェスサークル ChessTech</title>
     </head>
