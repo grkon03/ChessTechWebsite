@@ -21,6 +21,26 @@
 @media screen and (min-width: 701px) {
     /* for pc */
 
+    #menu_page_footer {
+        width: 690px;
+        margin: 30px auto;
+    }
+
+    #menu_page_footer #back_to_menu {
+        font-size: 20px;
+        text-decoration: none;
+        background: #333;
+        color: #eee;
+        padding: 15px;
+        border-radius: 10px;
+        transition: 0.3s;
+    }
+
+    #menu_page_footer #back_to_menu:hover {
+        background: #eee;
+        color: #333;
+    }
+
     #menu_page_main {
         width: 690px;
         margin: 50px auto;
