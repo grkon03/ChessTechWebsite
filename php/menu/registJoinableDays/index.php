@@ -40,42 +40,42 @@
                     <p>
                         活動可能な曜日を決定してください。
                     </p>
-                    <div id="registAD_weekform">
+                    <div id="registJD_weekform">
                         <form action="./" method="POST">
                             <table>
                                 <tbody>
                                     <tr>
-                                        <td><input type="checkbox" class="registAD_checkbox" value="参加する" name="ad_sun"></td>
+                                        <td><input type="checkbox" class="registJD_checkbox" value="参加する" name="ad_sun"></td>
                                         <th>日曜日</th>
                                     </tr>
                                     <tr>
-                                        <td><input type="checkbox" class="registAD_checkbox" value="参加する" name="ad_mon"></td>
+                                        <td><input type="checkbox" class="registJD_checkbox" value="参加する" name="ad_mon"></td>
                                         <th>月曜日</th>
                                     </tr>
                                     <tr>
-                                        <td><input type="checkbox" class="registAD_checkbox" value="参加する" name="ad_tue"></td>
+                                        <td><input type="checkbox" class="registJD_checkbox" value="参加する" name="ad_tue"></td>
                                         <th>火曜日</th>
                                     </tr>
                                     <tr>
-                                        <td><input type="checkbox" class="registAD_checkbox" value="参加する" name="ad_wed"></td>
+                                        <td><input type="checkbox" class="registJD_checkbox" value="参加する" name="ad_wed"></td>
                                         <th>水曜日</th>
                                     </tr>
                                     <tr>
-                                        <td><input type="checkbox" class="registAD_checkbox" value="参加する" name="ad_thi"></td>
+                                        <td><input type="checkbox" class="registJD_checkbox" value="参加する" name="ad_thi"></td>
                                         <th>木曜日</th>
                                     </tr>
                                     <tr>
-                                        <td><input type="checkbox" class="registAD_checkbox" value="参加する" name="ad_fri"></td>
+                                        <td><input type="checkbox" class="registJD_checkbox" value="参加する" name="ad_fri"></td>
                                         <th>金曜日</th>
                                     </tr>
                                     <tr>
-                                        <td><input type="checkbox" class="registAD_checkbox" value="参加する" name="ad_sat"></td>
+                                        <td><input type="checkbox" class="registJD_checkbox" value="参加する" name="ad_sat"></td>
                                         <th>土曜日</th>
                                     </tr>
                                 </tbody>
                             </table>
                             <input type="hidden" value="weekform" value="true">
-                            <input type="submit" value="登録" id="registAD_weekform_submit">
+                            <input type="submit" value="登録" id="registJD_weekform_submit">
                         </form>
                     </div>
                 </div>
