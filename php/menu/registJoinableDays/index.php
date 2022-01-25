@@ -45,31 +45,31 @@
                             <table>
                                 <tbody>
                                     <tr>
-                                        <td><input type="checkbox" class="registJD_checkbox" value="参加する" name="ad_sun"></td>
+                                        <td><input type="checkbox" class="registJD_checkbox" value="参加する" name="jd_sun"></td>
                                         <th>日曜日</th>
                                     </tr>
                                     <tr>
-                                        <td><input type="checkbox" class="registJD_checkbox" value="参加する" name="ad_mon"></td>
+                                        <td><input type="checkbox" class="registJD_checkbox" value="参加する" name="jd_mon"></td>
                                         <th>月曜日</th>
                                     </tr>
                                     <tr>
-                                        <td><input type="checkbox" class="registJD_checkbox" value="参加する" name="ad_tue"></td>
+                                        <td><input type="checkbox" class="registJD_checkbox" value="参加する" name="jd_tue"></td>
                                         <th>火曜日</th>
                                     </tr>
                                     <tr>
-                                        <td><input type="checkbox" class="registJD_checkbox" value="参加する" name="ad_wed"></td>
+                                        <td><input type="checkbox" class="registJD_checkbox" value="参加する" name="jd_wed"></td>
                                         <th>水曜日</th>
                                     </tr>
                                     <tr>
-                                        <td><input type="checkbox" class="registJD_checkbox" value="参加する" name="ad_thi"></td>
+                                        <td><input type="checkbox" class="registJD_checkbox" value="参加する" name="jd_thi"></td>
                                         <th>木曜日</th>
                                     </tr>
                                     <tr>
-                                        <td><input type="checkbox" class="registJD_checkbox" value="参加する" name="ad_fri"></td>
+                                        <td><input type="checkbox" class="registJD_checkbox" value="参加する" name="jd_fri"></td>
                                         <th>金曜日</th>
                                     </tr>
                                     <tr>
-                                        <td><input type="checkbox" class="registJD_checkbox" value="参加する" name="ad_sat"></td>
+                                        <td><input type="checkbox" class="registJD_checkbox" value="参加する" name="jd_sat"></td>
                                         <th>土曜日</th>
                                     </tr>
                                 </tbody>
