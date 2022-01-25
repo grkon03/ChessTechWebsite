@@ -74,6 +74,7 @@
                                     </tr>
                                 </tbody>
                             </table>
+                            <input type="hidden" value="weekform" value="true">
                             <input type="submit" value="登録" id="registAD_weekform_submit">
                         </form>
                     </div>
