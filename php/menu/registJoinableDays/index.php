@@ -106,7 +106,7 @@
                     ?>
                     <h3>曜日ごとに決める</h3>
                     <p>
-                        活動可能な曜日を決定してください。
+                        活動可能な曜日を決定してください。こちらの入力を優先してください。
                     </p>
                     <div id="registJD_weekform">
                         <form action="./" method="POST">
@@ -177,6 +177,9 @@
                 </div>
                 <div class="menu_page_mini">
                     <h3>日にちごとに決める</h3>
+                    <p>
+                        活動可能な曜日として決めたものに対し、例外的に参加可能/参加不可となる日にちを登録してください。
+                    </p>
                 </div>
             </div>
             <div id="menu_page_footer">
