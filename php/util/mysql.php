@@ -63,6 +63,7 @@
             $grade = $mem->grade;
             $authority = $mem->authority;
             $position = $mem->position;
+            $joinable_dayofweek = $mem->joinable_dayofweek;
 
             $sql = "SELECT * FROM Members WHERE id = :id";
             
@@ -76,8 +77,8 @@
                 }
             }
 
-            $sql = "INSERT INTO Members (id, pass, name, handle_name, grade, authority, position)";
-            $sql .= " VALUES (:id, :pass, :name, :handle_name, :grade, :authority, :position);";
+            $sql = "INSERT INTO Members (id, pass, name, handle_name, grade, authority, position, joinable_dayofweek)";
+            $sql .= " VALUES (:id, :pass, :name, :handle_name, :grade, :authority, :position, :joinable_dayofweek);";
 
             $this->pdo->beginTransaction();
 
@@ -90,6 +91,7 @@
             $stmt->bindValue(":grade", $grade, PDO::PARAM_STR);
             $stmt->bindValue(":authority", $authority, PDO::PARAM_INT);
             $stmt->bindValue(":position", $position, PDO::PARAM_STR);
+            $stmt->bindValue(":joinable_dayofweek", $joinable_dayofweek, PDO::PARAM_STR);
 
             $stmt->execute();
 
@@ -114,13 +116,14 @@
             $b_grade = false;
             $b_authority = false;
             $b_position = false;
+            $b_joinable_dayofweek = false;
 
-            if ($mem->pass != null) {
+            if ($mem->pass !== null) {
                 $sql .= "pass = :pass";
                 $b_pass = true;
                 $comma = true;
             }
-            if ($mem->name != null) {
+            if ($mem->name !== null) {
                 if ($comma) {
                     $sql .= ", ";
                 }
@@ -128,7 +131,7 @@
                 $b_name = true;
                 $comma = true;
             }
-            if ($mem->handle_name != null) {
+            if ($mem->handle_name !== null) {
                 if ($comma) {
                     $sql .= ", ";
                 }
@@ -136,7 +139,7 @@
                 $b_handle_name = true;
                 $comma = true;
             }
-            if ($mem->grade != null) {
+            if ($mem->grade !== null) {
                 if ($comma) {
                     $sql .= ", ";
                 }
@@ -144,7 +147,7 @@
                 $b_grade = true;
                 $comma = true;
             }
-            if ($mem->authority != null) {
+            if ($mem->authority !== null) {
                 if ($comma) {
                     $sql .= ", ";
                 }
@@ -152,12 +155,19 @@
                 $b_authority = true;
                 $comma = true;
             }
-            if ($mem->position != null) {
+            if ($mem->position !== null) {
                 if ($comma) {
                     $sql .= ", ";
                 }
                 $sql .= "position = :position";
                 $b_position = true;
+            }
+            if($mem->joinable_dayofweek !== null) {
+                if ($comma) {
+                    $sql .= ", ";
+                }
+                $sql .= "joinable_dayofweek = :joinable_dayofweek";
+                $b_joinable_dayofweek = true;
             }
             $sql .= " WHERE id = :id";
 
@@ -182,6 +192,9 @@
             }
             if ($b_position) {
                 $stmt->bindValue(":position", $mem->position, PDO::PARAM_STR);
+            }
+            if ($b_joinable_dayofweek) {
+                $stmt->bindValue(":joinable_dayofweek", $mem->joinable_dayofweek, PDO::PARAM_STR);
             }
             
             $stmt->execute();
@@ -233,6 +246,7 @@
                 $mem->grade = $data["grade"];
                 $mem->authority = $data["authority"];
                 $mem->position = $data["position"];
+                $mem->joinable_dayofweek = $data["joinable_dayofweek"];
 
                 return $mem;
             }
@@ -259,6 +273,7 @@
                     $mem->grade = $e["grade"];
                     $mem->authority = $e["authority"];
                     $mem->position = $e["position"];
+                    $mem->joinable_dayofweek = $e["joinable_dayofweek"];
                     array_push($members, $mem);
                 }
 
