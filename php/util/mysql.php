@@ -646,7 +646,7 @@
                 }
                 $new_joinable_arr = array_merge(explode(",", $joi[0]->joinable), explode(",", $add_joi->joinable));
                 $new_joinable_arr = array_unique($new_joinable_arr);
-                $joi[0]->joinable = ArrayToString($new_joinable_arr);
+                $joi[0]->joinable = arrayToString($new_joinable_arr);
             }
 
             if ($add_joi->maybe_joinable !== null) {
@@ -655,7 +655,7 @@
                 }
                 $new_maybe_joinable_arr = array_merge(explode(",", $joi[0]->maybe_joinable), explode(",", $add_joi->maybe_joinable));
                 $new_maybe_joinable_arr = array_unique($new_maybe_joinable_arr);
-                $joi[0]->maybe_joinable = ArrayToString($new_maybe_joinable_arr);
+                $joi[0]->maybe_joinable = arrayToString($new_maybe_joinable_arr);
             }
 
             if ($add_joi->notjoinable !== null) {
@@ -664,7 +664,7 @@
                 }
                 $new_notjoinable_arr = array_merge(explode(",", $joi[0]->notjoinable), explode(",", $add_joi->notjoinable));
                 $new_notjoinable_arr = array_unique($new_notjoinable_arr);
-                $joi[0]->notjoinable = ArrayToString($new_notjoinable_arr);
+                $joi[0]->notjoinable = arrayToString($new_notjoinable_arr);
             }
 
             $this->UpdateJoinableDay($joi[0]);
@@ -931,7 +931,7 @@
                     }
                 }
 
-                $joi_joinable[0]->joinable = ArrayToString($new_joinable_arr);
+                $joi_joinable[0]->joinable = arrayToString($new_joinable_arr);
                 $this->UpdateJoinableDay($joi_joinable[0]);
                 return true;
             }
@@ -951,7 +951,7 @@
                     }
                 }
 
-                $joi_maybe_joinable[0]->maybe_joinable = ArrayToString($new_maybe_joinable_arr);
+                $joi_maybe_joinable[0]->maybe_joinable = arrayToString($new_maybe_joinable_arr);
                 $this->UpdateJoinableDay($joi_joinable[0]);
 
                 return true;
@@ -972,7 +972,7 @@
                     }
                 }
                 
-                $joi_notjoinable[0]->notjoinable = ArrayToString($new_notjoinable_arr);
+                $joi_notjoinable[0]->notjoinable = arrayToString($new_notjoinable_arr);
                 $this->UpdateJoinableDay($joi_notjoinable[0]);
 
                 return true;
