@@ -17,7 +17,7 @@
     <body>
         <header>
             <?php
-                require("../template/header_template.php");
+                require_once("../template/header_template.php");
                 write_header(1);
             ?>
         </header>
@@ -31,11 +31,11 @@
                                 <!-- ブラウザのサジェストが邪魔にならないように ct_ をつける -->
                                 <tr>
                                     <th>User ID</th>
-                                    <td><input type="text" name="ct_id" class="login_form_textinput" value="<?php echo $_POST["ct_id"]; ?>" required></td>
+                                    <td><input type="text" name="ct_id" class="login_form_textinput" value="<?php echo $_POST["ct_id"]; ?>" require_onced></td>
                                 </tr>
                                 <tr>
                                     <th>Password</th>
-                                    <td><input type="password" name="ct_pass" class="login_form_textinput" value="<?php echo $_POST["ct_pass"]; ?>" required></td>
+                                    <td><input type="password" name="ct_pass" class="login_form_textinput" value="<?php echo $_POST["ct_pass"]; ?>" require_onced></td>
                                 </tr>
                                 <tr>
                                     <th></th>
@@ -55,7 +55,7 @@
                         if ($id == "" | $pass == "") {
                             $err_novalue = true;
                         } else {
-                            require("../util/mysql.php");
+                            require_once("../util/mysql.php");
                             $sql_util = new MYSQL_UTIL();
 
                             $exist = $sql_util->AuthenticateMember($id, $pass);
@@ -107,7 +107,7 @@
         </div>
         <footer>
             <?php
-                require("../template/footer_template.php");
+                require_once("../template/footer_template.php");
                 write_footer(1);
             ?>
         </footer>

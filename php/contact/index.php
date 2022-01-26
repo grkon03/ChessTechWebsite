@@ -14,7 +14,7 @@
     <body>
         <header>
             <?php
-                require("../template/header_template.php");
+                require_once("../template/header_template.php");
                 write_header(1);
             ?>
         </header>
@@ -25,13 +25,13 @@
                     <form action="send.php" method="POST">
                         <dl>
                             <dt>お名前/団体名</dt>
-                            <dd><input type="text" name="name" value="<?php echo $_POST["name"]; ?>" required></dd>
+                            <dd><input type="text" name="name" value="<?php echo $_POST["name"]; ?>" require_onced></dd>
                             <dt>メールアドレス</dt>
-                            <dd><input type="email" name="mail" value="<?php echo $_POST["mail"]; ?>" required></dd>
+                            <dd><input type="email" name="mail" value="<?php echo $_POST["mail"]; ?>" require_onced></dd>
                             <dt>件名</dt>
-                            <dd><input type="text" name="title" value="<?php echo $_POST["title"]; ?>" required></dd>
+                            <dd><input type="text" name="title" value="<?php echo $_POST["title"]; ?>" require_onced></dd>
                             <dt>お問い合わせ内容</dt>
-                            <dd><textarea name="content" required><?php echo $_POST["content"]; ?></textarea></dd>
+                            <dd><textarea name="content" require_onced><?php echo $_POST["content"]; ?></textarea></dd>
                         </dl>
                         <input type="submit" id="form_submit">
                     </form>
@@ -40,7 +40,7 @@
         </div>
         <footer>
             <?php
-                require("../template/footer_template.php");
+                require_once("../template/footer_template.php");
                 write_footer(1);
             ?>
         </footer>

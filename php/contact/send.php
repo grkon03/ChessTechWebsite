@@ -14,7 +14,7 @@
     <body>
         <header>
             <?php
-                require("../template/header_template.php");
+                require_once("../template/header_template.php");
                 write_header(1);
             ?>
         </header>
@@ -44,7 +44,7 @@
                         echo "</form>";
                         echo "</p>";
                     } else {
-                        require("../util/sendmail.php");
+                        require_once("../util/sendmail.php");
 
                         $subject .= " - " . $name . "さんより";
 
@@ -78,7 +78,7 @@
         </div>
         <footer>
             <?php
-                require("../template/footer_template.php");
+                require_once("../template/footer_template.php");
                 write_footer(1);
             ?>
         </footer>

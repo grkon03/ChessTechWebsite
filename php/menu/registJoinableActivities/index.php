@@ -15,7 +15,7 @@
     <body>
         <header>
             <?php
-                require("../../template/header_template.php");
+                require_once("../../template/header_template.php");
                 write_header(2);
             ?>
         </header>
@@ -26,7 +26,7 @@
         </div>
         <footer>
             <?php
-                require("../../template/footer_template.php");
+                require_once("../../template/footer_template.php");
                 write_footer(2);
             ?>
         </footer>
