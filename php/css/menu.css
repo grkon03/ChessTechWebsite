@@ -14,8 +14,27 @@
     border-radius: 5px;
 }
 
+#menu_page_footer #back_to_menu {
+    display: inline-block;
+    font-size: 20px;
+    text-decoration: none;
+    background: #333;
+    color: #eee;
+    padding: 15px;
+    border-radius: 10px;
+}
+
 @media screen and (max-width: 700px) {
     /* for smartphone */
+
+    #main {
+        margin: 3px;
+    }
+
+    #menu_page_footer #back_to_menu:active {
+        background: #eee;
+        color: #333;
+    }
 }
 
 @media screen and (min-width: 701px) {
@@ -27,12 +46,6 @@
     }
 
     #menu_page_footer #back_to_menu {
-        font-size: 20px;
-        text-decoration: none;
-        background: #333;
-        color: #eee;
-        padding: 15px;
-        border-radius: 10px;
         transition: 0.3s;
     }
 

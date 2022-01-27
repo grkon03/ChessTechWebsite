@@ -171,15 +171,35 @@
                                 </tbody>
                             </table>
                             <input type="hidden" name="weekform" value="">
-                            <input type="submit" value="登録" id="registJD_weekform_submit">
+                            <input type="submit" value="登録" class="registJD_submit">
                         </form>
                     </div>
                 </div>
                 <div class="menu_page_mini">
+                    <?php
+                        if (isset($_POST["eachday"])) {
+                            $date = new DateTime($_POST["jd_date"]);
+                            $state = intval($_POST["jd_state"]);
+                            $sql_util->RegistMemberJoinableDay($date, $id, $state);
+                        }
+                    ?>
                     <h3>日にちごとに決める</h3>
                     <p>
                         活動可能な曜日として決めたものに対し、例外的に参加可能/参加不可となる日にちを登録してください。
                     </p>
+                    <div id="registJD_eachday">
+                        <form action="./" method="POST">
+                            <input name="jd_date" class="registJD_eachday_input" type="date" required>
+                            <select name="jd_state" class="registJD_eachday_input" required>
+                                <option value="0">取り消し</option>
+                                <option value="1" selected>参加可能</option>
+                                <option value="2">未定</option>
+                                <option value="3">参加不可</option>
+                            </select><br />
+                            <input name="eachday" value="" type="hidden">
+                            <input type="submit" value="送信" class="registJD_submit">
+                        </form>
+                    </div>
                 </div>
             </div>
             <div id="menu_page_footer">
