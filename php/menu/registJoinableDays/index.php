@@ -200,6 +200,13 @@
                             <input type="submit" value="送信" class="registJD_submit">
                         </form>
                     </div>
+                    <div id="displayJD_eachday">
+                        <h4>
+                            現在登録している日にち
+                        </h4>
+                        <div id="displayJD_eachday_lists">
+                        </div>
+                    </div>
                 </div>
             </div>
             <div id="menu_page_footer">
