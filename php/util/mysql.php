@@ -815,7 +815,7 @@
             }
             if ($b_notjoinable) {
                 for ($i = 0; $i < $l_nja; $i++) {
-                    $stmt->bindValue(":notjoinable" . "%" . $i, $notjoinable_array[$i] . "%", PDO::PARAM_STR);
+                    $stmt->bindValue(":notjoinable" . $i, "%" . $notjoinable_array[$i] . "%", PDO::PARAM_STR);
                 }
             }
 
