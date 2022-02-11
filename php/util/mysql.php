@@ -891,6 +891,39 @@
             return null;
         }
 
+        // 特定のメンバーの活動可能日の情報を取得
+        public function GetJoinableDays_byID(string $user_id) {
+            $bind = new JoinableDay();
+            $jois = array();
+
+            $bind->joinable = $user_id;
+            $jois_temp = $this->GetJoinableDays($bind);
+            if ($jois_temp != null) {
+                array_merge($jois, $jois_temp);
+            }
+            $jois = $this->GetJoinableDays($bind);
+
+            $bind->joinable = null;
+            $bind->maybe_joinable = $user_id;
+            $jois_temp = $this->GetJoinableDays($bind);
+            if ($jois_temp != null) {
+                array_merge($jois, $jois_temp);
+            }
+
+            $bind->maybe_joinable = null;
+            $bind->notjoinable = $user_id;
+            $jois_temp = $this->GetJoinableDays($bind);
+            if ($jois_temp != null) {
+                array_merge($jois, $jois_temp);
+            }
+
+            if (count($jois) == 0) {
+                return null;
+            }
+
+            return $jois;
+        }
+
         // 活動可能日の全情報取得(何もなければnullを返す)
         public function GetAllJoinableDays() {
             $sql = "SELECT * FROM JoinableDays";

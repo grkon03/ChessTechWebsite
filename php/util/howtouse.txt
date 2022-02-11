@@ -90,6 +90,9 @@ classes:
                 - GetJoinableDays(JoinableDay $bind)
                     - 条件が $bind と一致するようなデータを JoinableDays テーブルから探す
                     - JoinableDay 型変数の配列としてデータを返す、存在しなければ null を返す
+                - GetJoinableDays_byID(string $user_id)
+                    - joinable, maybe_joinable, not_joinable に $user_id が含まれるようなデータを JoinableDays テーブルから探す
+                    - JoinableDay 型変数の配列としてデータを返す、存在しなければ null を返す
                 - GetAllJoinableDays()
                     - JoinableDays テーブルのデータをすべて取得する
                     - JoinableDays 型変数の配列としてデータを返す、存在しなければ null を返す
