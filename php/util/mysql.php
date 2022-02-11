@@ -733,7 +733,7 @@
                 return false;
             }
 
-            if ($exist === null) {
+            if ($exist == null) {
                 return $this->CreateJoinableDay($add_joi);
             }
 
