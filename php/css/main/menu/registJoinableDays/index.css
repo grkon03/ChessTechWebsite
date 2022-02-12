@@ -12,12 +12,48 @@
     border-radius: 10px;
 }
 
+#displayJD_eachday_lists .displayJD_eachday_item {
+    border: 3px solid #333;
+    border-radius: 10px;
+    display: inline-block;
+}
+
+#displayJD_eachday_lists .displayJD_eachday_item button {
+    background: #fff;
+    color: #44c;
+    border: 2px solid #44c;
+    border-radius: 10px;
+}
+
+#registJD_eachday .registJD_eachday_input {
+    font-size: 18px;
+    font-weight: 400;
+    line-height: 25px;
+    height: 25px;
+}
+
 @media screen and (max-width: 700px) {
     /* for smartphone */
 
     .registJD_submit:active {
         background: #eee;
         color: #333;
+    }
+
+    #displayJD_eachday_lists .displayJD_eachday_item {
+        padding: 5px;
+        font-size: 16px;
+        margin: 5px 0;
+    }
+
+    #displayJD_eachday_lists .displayJD_eachday_item button {
+        font-size: 18px;
+    }
+
+    #displayJD_eachday_lists .displayJD_eachday_item button:active {
+        background: #44c;
+        color: #fff;
+        border: 2px solid #fff;
     }
 }
 
@@ -43,10 +79,35 @@
         color: #333;
     }
 
-    #registJD_eachday .registJD_eachday_input {
-        font-size: 18px;
-        font-weight: 400;
-        line-height: 25px;
-        height: 25px;
+    #displayJD_eachday h4 {
+        font-size: 20px;
+    }
+
+    #displayJD_eachday_lists .displayJD_eachday_item {
+        margin: 5px;
+        padding: 10px;
+        font-size: 20px;
+    }
+
+    #displayJD_eachday_lists .displayJD_eachday_item_date {
+        display: inline-block;
+    }
+
+    #displayJD_eachday_lists .displayJD_eachday_item_state {
+        display: inline-block;
+        margin-left: 20px;
+    }
+
+    #displayJD_eachday_lists .displayJD_eachday_item button {
+        height: 44px;
+        font-size: 20px;
+        margin-left: 20px;
+    }
+
+    #displayJD_eachday_lists .displayJD_eachday_item button:hover {
+        background: #44c;
+        color: #fff;
+        border: 2px solid #fff;
+        cursor: pointer;
     }
 }

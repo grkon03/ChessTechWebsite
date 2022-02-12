@@ -193,7 +193,7 @@
                             <select name="jd_state" class="registJD_eachday_input" required>
                                 <option value="0">取り消し</option>
                                 <option value="1" selected>参加可能</option>
-                                <option value="2">未定</option>
+                                <option value="2">予定未定</option>
                                 <option value="3">参加不可</option>
                             </select><br />
                             <input name="eachday" value="" type="hidden">
@@ -205,6 +205,33 @@
                             現在登録している日にち
                         </h4>
                         <div id="displayJD_eachday_lists">
+                            <script>
+                                function registJD_eachday(date, state) {
+                                    let jd_date = document.getElementsByName("jd_date")[0];
+                                    jd_date.value = date;
+                                    
+                                    let jd_state = document.getElementsByName("jd_state")[0];
+                                    jd_state.value = state;
+
+                                    location.href = "#registJD_eachday";
+                                }
+                            </script>
+                            <div class="displayJD_eachday_item">
+                                <span class="displayJD_eachday_item_date">2022/02/24</span>
+                                <span class="displayJD_eachday_item_state">参加可能</span>
+                                <button onclick="registJD_eachday('2022-02-24', 2)" class="displayJD_eachday_item_state">変更する</button>
+                            </div>
+                            <div class="displayJD_eachday_item">
+                                <span class="displayJD_eachday_item_date">2022/02/24</span>
+                                <span class="displayJD_eachday_item_state">参加可能</span>
+                                <button onclick="registJD_eachday('2022-02-24', 2)" class="displayJD_eachday_item_state">変更する</button>
+                            </div>
+                            <?php
+                                $jois = $sql_util->GetJoinableDays_byID($id);
+                                foreach ($jois as $e) {
+                                    
+                                }
+                            ?>
                         </div>
                     </div>
                 </div>
