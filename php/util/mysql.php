@@ -587,9 +587,9 @@
             $stmt = $this->pdo->prepare($sql);
 
             $stmt->bindValue(":date", $joi->date->format("Y-m-d 00:00:00"), PDO::PARAM_STR);
-            $stmt->bindValue(":joinable", $joi->joinable);
-            $stmt->bindValue(":maybe_joinable", $joi->maybe_joinable);
-            $stmt->bindValue(":notjoinable", $joi->notjoinable);
+            $stmt->bindValue(":joinable", $joi->joinable, PDO::PARAM_STR);
+            $stmt->bindValue(":maybe_joinable", $joi->maybe_joinable, PDO::PARAM_STR);
+            $stmt->bindValue(":notjoinable", $joi->notjoinable, PDO::PARAM_STR);
 
             $stmt->execute();
 
@@ -691,6 +691,9 @@
         public function RegistMemberJoinableDay(DateTime $date, string $user_id, int $state) {
             $add_joi = new JoinableDay();
             $add_joi->date = $date;
+            $add_joi->joinable = "";
+            $add_joi->maybe_joinable = "";
+            $add_joi->notjoinable = "";
 
             $exist = $this->GetJoinableDays($add_joi);
 
@@ -739,6 +742,14 @@
 
             // 一旦データからメンバーを消去してから再追加
             $this->DeleteMemberJoinableDay($date, $user_id);
+
+            $bind = new JoinableDay();
+            $bind->date = $date;
+
+            $exist = $this->GetJoinableDays($bind);
+            if ($exist == null) {
+                return $this->CreateJoinableDay($add_joi);
+            }
 
             return $this->AddMemberJoinableDay($add_joi);
         }
@@ -829,15 +840,15 @@
                     $joinableday->date = new DateTime($e["date"]);
                     $joinableday->joinable = $e["joinable"];
                     $joinableday->maybe_joinable = $e["maybe_joinable"];
-                    $joinableday->notjoinable = $e["notjoinble"];
+                    $joinableday->notjoinable = $e["notjoinable"];
+                    array_push($joinabledays, $joinableday);
                 }
-                array_push($joinabledays, $joinableday);
 
                 $jois_comp = array();
                 foreach($joinabledays as $e) {
                     $id_comp_match = true;
                     
-                    if ($bind->joinalbe != null) {
+                    if ($bind->joinable != null) {
                         $joinable_arr = explode(",", $e->joinable);
                         $bind_joinable_arr = explode(",", $bind->joinable);
 
@@ -899,22 +910,21 @@
             $bind->joinable = $user_id;
             $jois_temp = $this->GetJoinableDays($bind);
             if ($jois_temp != null) {
-                array_merge($jois, $jois_temp);
+                $jois = array_merge($jois, $jois_temp);
             }
-            $jois = $this->GetJoinableDays($bind);
 
             $bind->joinable = null;
             $bind->maybe_joinable = $user_id;
             $jois_temp = $this->GetJoinableDays($bind);
             if ($jois_temp != null) {
-                array_merge($jois, $jois_temp);
+                $jois = array_merge($jois, $jois_temp);
             }
 
             $bind->maybe_joinable = null;
             $bind->notjoinable = $user_id;
             $jois_temp = $this->GetJoinableDays($bind);
             if ($jois_temp != null) {
-                array_merge($jois, $jois_temp);
+                $jois = array_merge($jois, $jois_temp);
             }
 
             if (empty($jois)) {
@@ -1000,7 +1010,7 @@
                 }
 
                 $joi_maybe_joinable[0]->maybe_joinable = arrayToString($new_maybe_joinable_arr);
-                $this->UpdateJoinableDay($joi_joinable[0]);
+                $this->UpdateJoinableDay($joi_maybe_joinable[0]);
 
                 return true;
             }

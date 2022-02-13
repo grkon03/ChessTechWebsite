@@ -56,10 +56,13 @@
         $sql_util->DeleteSchedule(2112301);
         */
         
+        /*
         $data = $sql_util->GetAllMembers();
         echo "<pre>";
         var_dump($data);
         echo "</pre>";
+
+        */
         
         /*
         $sch = $sql_util->GetSchedulesBetween(new DateTime("2022-01-01"), new DateTime("2022-01-31"));
@@ -68,15 +71,15 @@
         echo "</pre>";
         */
         
-        /*
+        
         $joi_new = new JoinableDay();
-        $joi_new->date = new DateTime("2022-02-22");
-        $joi_new->joinable = "";
-        $joi_new->maybe_joinable = "grkon";
+        $joi_new->date = new DateTime("2022-02-24");
+        $joi_new->joinable = "grkon";
+        $joi_new->maybe_joinable = "";
         $joi_new->notjoinable = "";
 
         $sql_util->CreateJoinableDay($joi_new);
-        */
+        
         
         /*
         $joi = new JoinableDay();
@@ -91,6 +94,7 @@
         //$sql_util->DeleteMemberJoinableDay(new DateTime("2022-02-22 00:00:00"), "grkon");
         //$sql_util->DeleteJoinableDay(new DateTime("2022-02-22 00:00:00"));
 
+        /*
         $sql_util->RegistMemberJoinableDay(new DateTime("2022-02-22"), "taroimo", 1);
 
         $bind = new JoinableDay();
@@ -103,6 +107,7 @@
         echo "<pre>";
         var_dump($jois);
         echo "</pre>";
+        */
     } catch (PDOException $e) {
         echo "接続失敗: " . $e->getMessage() . "\n";
         exit();
