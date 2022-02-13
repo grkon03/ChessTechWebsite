@@ -216,20 +216,28 @@
                                     location.href = "#registJD_eachday";
                                 }
                             </script>
-                            <div class="displayJD_eachday_item">
-                                <span class="displayJD_eachday_item_date">2022/02/24</span>
-                                <span class="displayJD_eachday_item_state">参加可能</span>
-                                <button onclick="registJD_eachday('2022-02-24', 2)" class="displayJD_eachday_item_state">変更する</button>
-                            </div>
-                            <div class="displayJD_eachday_item">
-                                <span class="displayJD_eachday_item_date">2022/02/24</span>
-                                <span class="displayJD_eachday_item_state">参加可能</span>
-                                <button onclick="registJD_eachday('2022-02-24', 2)" class="displayJD_eachday_item_state">変更する</button>
-                            </div>
                             <?php
                                 $jois = $sql_util->GetJoinableDays_byID($id);
-                                foreach ($jois as $e) {
-                                    
+                                if ($jois != null) {
+                                    foreach ($jois as $e) {
+                                        $state_str = "";
+                                        if (in_array($id, explode(",", $e->joinable))) {
+                                            $state_str = "参加可能";
+                                        } else if (in_array($id, explode(",", $e->maybe_joinable))) {
+                                            $state_str = "予定未定";
+                                        } else if (in_array($id, explode(",", $e->notjoinable))) {
+                                            $state_str = "参加不可";
+                                        } else {
+                                            $state_str = "エラー";
+                                        }
+                                        echo <<<EOF
+                                <div class="displayJD_eachday_item">
+                                    <span class="displayJD_eachday_item_date">{$e->date->format("Y/m/d")}</span>
+                                    <span class="displayJD_eachday_item_state">{$state_str}</span>
+                                    <button onclick="registJD_eachday('{$e->date->format("Y-m-d")}', {$e->state})" class="displayJD_eachday_item_state">変更する</button>
+                                </div>
+EOF;
+                                    }
                                 }
                             ?>
                         </div>

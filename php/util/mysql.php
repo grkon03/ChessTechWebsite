@@ -917,7 +917,7 @@
                 array_merge($jois, $jois_temp);
             }
 
-            if (count($jois) == 0) {
+            if (empty($jois)) {
                 return null;
             }
 
