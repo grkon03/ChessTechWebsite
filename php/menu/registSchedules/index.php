@@ -23,6 +23,9 @@
             <div id="menu_page_main">
                 <h2>予定を作成する</h2>
             </div>
+            <div id="menu_page_footer">
+                <a href="../" id="back_to_menu">Menu に戻る</a>
+            </div>
         </div>
         <footer>
             <?php
