@@ -211,7 +211,8 @@
                                     jd_date.value = date;
                                     
                                     let jd_state = document.getElementsByName("jd_state")[0];
-                                    jd_state.value = state;
+                                    jd_state.selectedIndex = state;
+                                    console.log(state);
 
                                     location.href = "#registJD_eachday";
                                 }
@@ -221,20 +222,26 @@
                                 if ($jois != null) {
                                     foreach ($jois as $e) {
                                         $state_str = "";
+                                        $state = 0;
                                         if (in_array($id, explode(",", $e->joinable))) {
                                             $state_str = "参加可能";
+                                            $state = 1;
                                         } else if (in_array($id, explode(",", $e->maybe_joinable))) {
                                             $state_str = "予定未定";
+                                            $state = 2;
                                         } else if (in_array($id, explode(",", $e->notjoinable))) {
                                             $state_str = "参加不可";
+                                            $state = 3;
                                         } else {
                                             $state_str = "エラー";
+                                            $state = 0;
                                         }
+                                        
                                         echo <<<EOF
                                 <div class="displayJD_eachday_item">
                                     <span class="displayJD_eachday_item_date">{$e->date->format("Y/m/d")}</span>
                                     <span class="displayJD_eachday_item_state">{$state_str}</span>
-                                    <button onclick="registJD_eachday('{$e->date->format("Y-m-d")}', {$e->state})" class="displayJD_eachday_item_state">変更する</button>
+                                    <button onclick="registJD_eachday('{$e->date->format("Y-m-d")}', {$state})" class="displayJD_eachday_item_state">変更する</button>
                                 </div>
 EOF;
                                     }
