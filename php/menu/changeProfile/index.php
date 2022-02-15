@@ -1,3 +1,16 @@
+<?php
+    session_start();
+    $id = $_SESSION["id"];
+
+    if ($id == "") {
+        header("Location: ./login.php");
+    }
+
+    require_once("../../util/mysql.php");
+    $sql_util = new MYSQL_UTIL();
+    
+    $member = $sql_util->GetMember($id);
+?>
 <!DOCTYPE html>
 <html lang="ja">
     <head>
@@ -21,6 +34,17 @@
         </header>
         <div id="main">
             <div id="menu_page_main">
+                <?php
+                    if (isset($_POST["editPF"])) {
+                        $member->pass = $_POST["pass"];
+                        $member->name = $_POST["name"];
+                        $member->handle_name = $_POST["handle_name"];
+                        $member->grade = $_POST["grade"];
+                        $member->authority = $_POST["authority"];
+                        $member->position = $_POST["position"];
+                        $sql_util->UpdateMember($member);
+                    }
+                ?>
                 <h2>プロフィールを変更する</h2>
                 <div id="editPF">
                     <div id="editPF_formarea">
@@ -30,39 +54,46 @@
                                     <tr>
                                         <th>ID</th>
                                         <td>
-                                            <input name="ID" value="grkon" class="readonly input_text" readonly>
+                                            <input name="ID" value="<?php echo $member->id; ?>" class="readonly input_text" readonly>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <th>PassWord</th>
+                                        <td>
+                                            <input name="pass" value="<?php echo $member->pass; ?>" class="input_text" required>
                                         </td>
                                     </tr>
                                     <tr>
                                         <th>名前</th>
                                         <td>
-                                            <input name="name" value="安田桜輔" class="input_text" required>
+                                            <input name="name" value="<?php echo $member->name; ?>" class="input_text" required>
                                         </td>
                                     </tr>
                                     <tr>
                                         <th>ハンドルネーム</th>
                                         <td>
-                                            <input name="handle_name" value="grkon" class="input_text" required>
+                                            <input name="handle_name" value="<?php echo $member->handle_name; ?>" class="input_text" required>
                                         </td>
                                     </tr>
                                     <tr>
                                         <th>学年</th>
                                         <td>
-                                            <input name="grade" value="21B" class="input_text" required>
+                                            <input name="grade" value="<?php echo $member->grade; ?>" class="input_text" required>
                                         </td>
                                     </tr>
                                     <tr>
                                         <th>権限ランク</th>
                                         <td>
-                                            <input name="authority" value="1" class="input_text readonly" readonly>
+                                            <input name="authority" value="<?php echo $member->authority; ?>" class="input_text readonly" readonly>
                                         </td>
                                     </tr>
                                     <tr>
                                         <th>役職</th>
                                         <td>
-                                            <input name="position" value="部長, 在籍中" class="input_text readonly" readonly>
+                                            <input name="position" value="<?php echo $member->position; ?>" class="input_text readonly" readonly>
                                         </td>
                                     </tr>
+                                    <input type="hidden" name="editPF" value="">
                                     <tr>
                                         <th id="submit_th"></th>
                                         <td>
@@ -72,6 +103,14 @@
                                 </tbody>
                             </table>
                         </form>
+                    </div>
+                    <div id="editPF_caution">
+                        <h4>注意事項</h4>
+                        <ul>
+                            <li>
+                                灰色のフォームは変更不可能な内容です。入力できません。
+                            </li>
+                        </ul>
                     </div>
                 </div>
             </div>

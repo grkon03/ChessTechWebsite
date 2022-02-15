@@ -1,7 +1,46 @@
 /* for all */
 
+.readonly {
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    background: #eee;
+}
+
+#editPF #editPF_formarea table th {
+    text-align: left;
+    background: #eee;
+}
+
+#editPF #editPF_formarea table th#submit_th {
+    background: #fff !important;
+}
+
+#editPF #editPF_formarea form .input_text {
+    font-size: 20px;
+    height: 40px;
+    display: inline-block;
+    width: 98%;
+}
+
+#editPF #editPF_formarea form #editPF_submit {
+    display: inline-block;
+    font-size: 20px;
+    text-decoration: none;
+    background: #333;
+    color: #eee;
+    padding: 15px;
+    border-radius: 10px;
+    border: 0;
+    cursor: pointer;
+}
+
 @media screen and (max-width: 700px) {
     /* for smartphone */
+    
+    #editPF #editPF_formarea table th {
+        font-size: 15px;
+        padding: 10px;
+    }
 }
 
 @media screen and (min-width: 701px) {
@@ -9,36 +48,18 @@
 
     #editPF #editPF_formarea table th {
         font-size: 20px;
-        text-align: left;
-        background: #eee;
         padding: 20px;
     }
 
     #editPF #editPF_formarea table td {
         padding-left: 20px;
     }
-
-    #editPF #editPF_formarea table th#submit_th {
-        background: #fff !important;
-    }
-
+    
     #editPF #editPF_formarea form .input_text {
-        font-size: 20px;
-        height: 40px;
-        display: inline-block;
         width: 300px;
     }
 
     #editPF #editPF_formarea form #editPF_submit {
-        display: inline-block;
-        font-size: 20px;
-        text-decoration: none;
-        background: #333;
-        color: #eee;
-        padding: 15px;
-        border-radius: 10px;
-        border: 0;
-        cursor: pointer;
         transition: 0.3s;
     }
 
