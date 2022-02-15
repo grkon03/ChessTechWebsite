@@ -52,7 +52,9 @@
 
                         $id = $_POST["ct_id"];
                         $pass = $_POST["ct_pass"];
-                        if ($id == "" | $pass == "") {
+                        if (isset($_POST["ct_id"])) {
+                            // 何もなし
+                        } else if ($id == "" | $pass == "") {
                             $err_novalue = true;
                         } else {
                             require_once("../util/mysql.php");
@@ -65,8 +67,8 @@
                             } else {
                                 $_SESSION["id"] = $id;
 
-                                //GETでアクセス元のリンクを得る、なければindexとする
-                                //このときのリンクは /menu からの相対パスとする
+                                // GETでアクセス元のリンクを得る、なければindexとする
+                                // このときのリンクは /menu からの相対パスとする
                                 $link = $_GET["link"];
                                 if ($link == "") {
                                     $link = "./";
