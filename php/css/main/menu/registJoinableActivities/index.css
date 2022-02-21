@@ -1,0 +1,52 @@
+/* for all */
+
+.registJA_bySelect_item h4 a {
+    color: #333;
+}
+
+@media screen and (max-width: 700px) {
+    /* for smartphone */
+}
+
+@media screen and (min-width: 701px) {
+    /* for pc */
+
+    .registJA_bySelect_item {
+        width: 500px;
+        padding: 20px;
+        border: 3px solid #333;
+        border-radius: 15px;
+    }
+
+    .registJA_bySelect_item h4 {
+        margin: 0;
+        margin-bottom: 10px;
+        font-size: 20px;
+    }
+
+    .registJA_bySelect_item .registJA_bySelect_item_form {
+        margin-left: 20px;
+        font-size: 18px;
+        color: #333;
+    }
+
+    .registJA_bySelect_item .registJA_bySelect_item_form_radio {
+        display: inline-block;
+        margin: 10px;
+    }
+
+    .registJA_bySelect_item .registJA_bySelect_item_form_submit {
+        font-size: 18px;
+        margin: 10px;
+        padding: 5px 10px;
+        background: #fff;
+        border: 3px solid #333;
+        border-radius: 10px;
+        cursor: pointer;
+    }
+
+    .registJA_bySelect_item .registJA_bySelect_item_form_submit:hover {
+        background: #333;
+        color: #fff;
+    }
+}
