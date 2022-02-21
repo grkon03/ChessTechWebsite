@@ -36,7 +36,7 @@ classes:
                     - 存在したら true, 存在しなければ false を返す
                 - GetMember($id)
                     - id が $id であるようなデータを Members テーブルから探す
-                    - 存在すれば Members 型変数としてデータを返す、存在しなければ null を返す
+                    - 存在すれば Members 型変数としてデータを返す、存在しなければnull を返す
                 - GetAllMembers()
                     - Members テーブルのデータを全て取得する
                     - Member 型変数の配列としてデータを返す、存在しなければ null を返す
@@ -52,6 +52,11 @@ classes:
                     - $sch の情報に基づいて Schedules テーブルのデータを編集
                     - 編集されるデータは id が $sch->id であるデータ
                     - 成功したらこのデータの id を返す, 失敗したら false を返す
+                - AddMemberSchdule(int $id, string $user_id, bool $joinable)
+                    - id が $id であるような Schedules テーブルのデータにメンバーを追加する
+                    - 追加されるメンバーは、id が $user_id であるようなメンバーを追加する
+                    - $joinable が true であれば members_join に、false であれば members_notjoin に追加する
+                    - 成功したら true, 失敗したら false を返す
                 - GetSchedule(int $id)
                     - id が $id であるようなデータを Schedules テーブルから探す
                     - 存在すれば Schedule 型変数としてデータを返す、存在しなければ null を返す

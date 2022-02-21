@@ -469,6 +469,35 @@
             return $id;
         }
 
+        // スケジュールにメンバーを登録(成功したらtrue, そうでなければfalseを返す)
+        public function RegistMemberSchedule(int $id, string $user_id, bool $joinable) {
+            $sch = $this->GetSchedule($id);
+            
+            if ($sch == null) {
+                return false;
+            }
+
+            if ($this->GetMember($user_id) == null) {
+                return false;
+            }
+
+            $arr_join = explode(",", $sch->members_join);
+            $arr_notjoin = explode(",", $sch->members_notjoin);
+            $arr_notjoin = array_diff($arr_notjoin, $user_id);
+            $arr_join = array_diff($arr_join, $user_id);
+
+            if ($joinable) {
+                $arr_join = array_push($arr_join, $user_id);
+            } else {
+                $arr_notjoin = array_push($arr_join, $user_id);
+            }
+
+            $sch->members_join = arrayToString($arr_join);
+            $sch->members_notjoin = arrayToString($arr_notjoin);
+
+            return $this->UpdateSchedule($sch);
+        }
+
         // スケジュールの情報取得(idが存在しなければnullを返す)
         public function GetSchedule(int $id) {
             $sql = "SELECT * FROM Schedules WHERE id = :id";
