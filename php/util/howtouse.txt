@@ -52,7 +52,7 @@ classes:
                     - $sch の情報に基づいて Schedules テーブルのデータを編集
                     - 編集されるデータは id が $sch->id であるデータ
                     - 成功したらこのデータの id を返す, 失敗したら false を返す
-                - AddMemberSchdule(int $id, string $user_id, bool $joinable)
+                - RegistMemberSchdule(int $id, string $user_id, bool $joinable)
                     - id が $id であるような Schedules テーブルのデータにメンバーを追加する
                     - 追加されるメンバーは、id が $user_id であるようなメンバーを追加する
                     - $joinable が true であれば members_join に、false であれば members_notjoin に追加する
