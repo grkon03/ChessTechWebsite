@@ -371,12 +371,12 @@
 
             $id_num = 1;
 
-            if ($sch->name != null) {
+            if ($sch->name !== null) {
                 $sql .= "name = :name";
                 $b_name = true;
                 $comma = true;
             }
-            if ($sch->date_start != null) {
+            if ($sch->date_start !== null && $sch->date_start != $exist->id) {
                 if ($comma) {
                     $sql .= ", ";
                 }
@@ -404,7 +404,7 @@
                     }
                 }
             }
-            if ($sch->date_end != null) {
+            if ($sch->date_end !== null) {
                 if ($comma) {
                     $sql .= ", ";
                 }
@@ -412,7 +412,7 @@
                 $b_date_end = true;
                 $comma = true;
             }
-            if ($sch->detail != null) {
+            if ($sch->detail !== null) {
                 if ($comma) {
                     $sql .= ", ";
                 }
@@ -420,7 +420,7 @@
                 $b_detail = true;
                 $comma = true;
             }
-            if ($sch->members_join != null) {
+            if ($sch->members_join !== null) {
                 if ($comma) {
                     $sql .= ", ";
                 }
@@ -428,7 +428,7 @@
                 $b_members_join = true;
                 $comma = true;
             }
-            if ($sch->members_notjoin != null) {
+            if ($sch->members_notjoin !== null) {
                 if ($comma) {
                     $sql .= ", ";
                 }
@@ -483,19 +483,23 @@
 
             $arr_join = explode(",", $sch->members_join);
             $arr_notjoin = explode(",", $sch->members_notjoin);
-            $arr_notjoin = array_diff($arr_notjoin, $user_id);
-            $arr_join = array_diff($arr_join, $user_id);
+            $arr_join = array_diff($arr_join, [$user_id]);
+            $arr_notjoin = array_diff($arr_notjoin, [$user_id]);
 
             if ($joinable) {
-                $arr_join = array_push($arr_join, $user_id);
+                array_push($arr_join, $user_id);
             } else {
-                $arr_notjoin = array_push($arr_join, $user_id);
+                array_push($arr_notjoin, $user_id);
             }
 
             $sch->members_join = arrayToString($arr_join);
             $sch->members_notjoin = arrayToString($arr_notjoin);
 
-            return $this->UpdateSchedule($sch);
+            if ($this->UpdateSchedule($sch) !== false) {
+                return true;
+            }
+
+            return false;
         }
 
         // スケジュールの情報取得(idが存在しなければnullを返す)
