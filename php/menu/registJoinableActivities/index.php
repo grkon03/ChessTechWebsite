@@ -47,7 +47,7 @@
                     </div>
                 </div>
                 <div class="menu_page_mini">
-                    <h3>イベントを選択して登録する</h3>
+                    <h3>イベント一覧から登録する</h3>
                     <div id="registJA_bySelect">
                         <?php
                             if (isset($_POST["id"])) {
