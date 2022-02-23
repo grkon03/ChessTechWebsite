@@ -1,3 +1,16 @@
+<?php
+    session_start();
+    $id = $_SESSION["id"];
+
+    if ($id == "") {
+        header("Location: ./login.php");
+    }
+
+    require_once("../../util/mysql.php");
+    $sql_util = new MYSQL_UTIL();
+    
+    $member = $sql_util->GetMember($id);
+?>
 <!DOCTYPE html>
 <html lang="ja">
     <head>
@@ -36,27 +49,66 @@
                 <div class="menu_page_mini">
                     <h3>イベントを選択して登録する</h3>
                     <div id="registJA_bySelect">
+                        <?php
+                            if (isset($_POST["id"])) {
+                                $sch_id = intval($_POST["id"]);
+                                $joinable = $_POST["joinable"] == "T" ? true : false;
+                                $sql_util->RegistMemberSchedule($sch_id, $member->id, $joinable);
+                            }
+
+                            $schs = $sql_util->GetAllSchedules();
+                            
+                            foreach ($schs as $e) {
+                                $joinable = false;
+                                $notjoinable = false;
+                                $decided = true;
+
+                                if (in_array($member->id, explode(",", $e->members_join))) {
+                                    $joinable = true;
+                                } else if (in_array($member->id, explode(",", $e->members_notjoin))) {
+                                    $notjoinable = true;
+                                } else {
+                                    $decided = false;
+                                }
+
+                                $joinable_checked = "";
+                                $notjoinable_checked = "";
+                                $submit_value = "";
+
+                                if ($joinable) {
+                                    $joinable_checked = " checked";
+                                }
+
+                                if ($notjoinable) {
+                                    $notjoinable_checked = " checked";
+                                }
+
+                                if ($decided) {
+                                    $submit_value = "変更";
+                                } else {
+                                    $submit_value = "登録";
+                                }
+
+                                echo <<<EOF
                         <div class="registJA_bySelect_item">
-                            <h4><a href="./../../calender/">イベントタイトル</a></h4>
+                            <h4><a href="./../../calender/">{$e->name}</a></h4>
                             <div class="registJA_bySelect_item_form">
                                 <form action="./" method="POST">
-                                    <input type="hidden" name="id" value="02020202">
+                                    <input type="hidden" name="id" value="{$e->id}">
                                     <div class="registJA_bySelect_item_form_radio">
                                         <span class="registJA_bySelect_item_form_radio_item">
-                                            <input type="radio" name="joinable" value="T" checked>参加する
+                                            <input type="radio" name="joinable" value="T"{$joinable_checked}>参加する
                                         </span>
                                         <span class="registJA_bySelect_item_form_radio_item">
-                                            <input type="radio" name="joinable" value="F">参加しない
+                                            <input type="radio" name="joinable" value="F"{$notjoinable_checked}>参加しない
                                         </span>
                                     </div>
-                                    <input class="registJA_bySelect_item_form_submit" type="submit" value="変更">
+                                    <input class="registJA_bySelect_item_form_submit" type="submit" value="{$submit_value}">
                                 </form>
                             </div>
                         </div>
-                        <?php
-                            if (isset($_POST["id"])) {
-                                $id = $_POST["id"];
-                                $joinable = $_POST["id"] == "T" ? true : false;
+EOF;
+                                
                             }
                         ?>
                     </div>
