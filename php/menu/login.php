@@ -52,9 +52,9 @@
 
                         $id = $_POST["ct_id"];
                         $pass = $_POST["ct_pass"];
-                        if (isset($_POST["ct_id"])) {
+                        if (!isset($_POST["ct_id"])) {
                             // 何もなし
-                        } else if ($id == "" | $pass == "") {
+                        } else if ($id == "" || $pass == "") {
                             $err_novalue = true;
                         } else {
                             require_once("../util/mysql.php");
