@@ -6,7 +6,7 @@
     if ($logined) {
         $id = $_SESSION["id"];
 
-        require_once("../../util/mysql.php");
+        require_once("../util/mysql.php");
 
         $sql_util = new MYSQL_UTIL();
 

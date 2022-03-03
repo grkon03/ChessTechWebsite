@@ -112,7 +112,8 @@
                                             echo "<div class='calender_date'>" . $day->format("d") . "</div>";
                                             if ($schedules != null) {
                                                 foreach ($schedules as $sch) {
-                                                    echo "<a class='calender_activity_item'>";
+                                                    echo "<a class='calender_activity_item' href='detail.php?id="
+                                                        . $sch->id . "'>";
                                                     echo $sch->name;
                                                     echo "</a>";
                                                 }

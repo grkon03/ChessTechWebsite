@@ -8,6 +8,11 @@
     vertical-align: top;
 }
 
+#main #calender_wrap #calender_table td a.calender_activity_item {
+    color: #222;
+    text-decoration: none;
+}
+
 @media screen and (max-width: 700px) {
     /* for smartphone */
     #main #calender_wrap {
