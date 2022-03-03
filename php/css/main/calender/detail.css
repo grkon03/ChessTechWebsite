@@ -1,9 +1,67 @@
 /* for all */
 
+#detail h1 {
+    border-bottom: 1px solid #333;
+}
+
+#detail #detail_table th {
+    width: 30%;
+    background: #eee;
+}
+
+#detail #detail_table td {
+    width: 70%;
+    background: white;
+}
+
+#detail #detail_table {
+    border: 1px solid #ddd;
+    background: #ddd;
+    color: #555;
+}
+
 @media screen and (max-width: 700px) {
     /* for smartphone */
+
+    #main {
+        padding: 0 1px;
+        margin-bottom: 30px;
+    }
+
+    #detail h1 {
+        font-size: 25px;
+        margin: 10px;
+        text-align: center;
+    }
+
+    #detail #detail_table th {
+        padding: 3px;
+    }
+    
+    #detail #detail_table td {
+        padding: 3px;
+    }
 }
 
 @media screen and (min-width: 701px) {
     /* for pc */
+
+    #detail {
+        width: 670px;
+        margin: 70px auto;
+    }
+
+    #detail #detail_table {
+        width: 600px;
+        margin: 10px 0;
+        font-size: 20px;
+    }
+
+    #detail #detail_table th {
+        padding: 10px;
+    }
+    
+    #detail #detail_table td {
+        padding: 10px;
+    }
 }

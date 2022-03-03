@@ -36,7 +36,7 @@
         <div id="main">
             <div id="detail">
                 <h1>イベント1の詳細</h1>
-                <table>
+                <table id="detail_table">
                     <tbody>
                         <tr>
                             <th>イベント名</th>
@@ -61,7 +61,7 @@
                             <td>grkon</td>
                         </tr>
                         <tr>
-                            <th>非参加者</th>
+                            <th>不参加者</th>
                             <td></td>
                         </tr>
                     </tbody>
