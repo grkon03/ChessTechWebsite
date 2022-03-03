@@ -1,0 +1,9 @@
+/* for all */
+
+@media screen and (max-width: 700px) {
+    /* for smartphone */
+}
+
+@media screen and (min-width: 701px) {
+    /* for pc */
+}
