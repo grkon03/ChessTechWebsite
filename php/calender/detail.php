@@ -66,6 +66,7 @@ EOF;
                         $b_joinable = $_POST["joinable"] == "T" ? true : false;
                         $sql_util->RegistMemberSchedule($sch->id, $member->id, $b_joinable);
                     }
+                    $sch = $sql_util->GetSchedule($_GET["id"]);
 
                     $start = $sch->date_start->format("Y/m/d H:i:s");
                     $end = $sch->date_end->format("Y/m/d H:i:s");
