@@ -22,7 +22,7 @@
                     <a href="">Activity</a>
                 </div>
                 <div class="header_menu_item">
-                    <a href="">About</a>
+                    <a href="{$pl}about.php">About</a>
                 </div>
                 <div class="header_menu_item">
                     <a href="{$pl}menu/">Member's Menu</a>
