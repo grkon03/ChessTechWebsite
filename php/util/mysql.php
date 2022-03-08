@@ -362,6 +362,7 @@
             $sql = "UPDATE Schedules SET  ";
 
             $comma = false;
+            $b_id = false;
             $b_name = false;
             $b_date_start = false;
             $b_date_end = false;
@@ -376,31 +377,35 @@
                 $b_name = true;
                 $comma = true;
             }
-            if ($sch->date_start !== null && $sch->date_start != $exist->id) {
+            if ($sch->date_start !== null) {
                 if ($comma) {
                     $sql .= ", ";
                 }
-                $sql .= "date_start = :date_start, id = :id";
+                $sql .= "date_start = :date_start";
                 $b_date_start = true;
                 $comma = true;
 
                 // idの発行をする
-                $date_start = $sch->date_start;
-                $sql_t = "SELECT * FROM Schedules WHERE id = :id";
-    
-                for ($i = 1;; $i++) {
-                    $id_t = intval($date_start->format("ymd")) * 100 + $i;
-                    $stmt_t = $this->pdo->prepare($sql_t);
-                    $stmt_t->bindValue(":id", $id_t, PDO::PARAM_INT);
-                    $res = $stmt_t->execute();
-                    if ($res) {
-                        $data = $stmt_t->fetch();
-                        if ($data == false) {
-                            $id_num = $i;
+                if ($sch->date_start->format("Ymd") !== $exist->date_start->format("Ymd")) {
+                    $sql .= ", id = :id";
+                    $b_id = true;
+                    $date_start = $sch->date_start;
+                    $sql_t = "SELECT * FROM Schedules WHERE id = :id";
+        
+                    for ($i = 1;; $i++) {
+                        $id_t = intval($date_start->format("ymd")) * 100 + $i;
+                        $stmt_t = $this->pdo->prepare($sql_t);
+                        $stmt_t->bindValue(":id", $id_t, PDO::PARAM_INT);
+                        $res = $stmt_t->execute();
+                        if ($res) {
+                            $data = $stmt_t->fetch();
+                            if ($data == false) {
+                                $id_num = $i;
+                                break;
+                            }
+                        } else {
                             break;
                         }
-                    } else {
-                        break;
                     }
                 }
             }
@@ -448,8 +453,10 @@
             if ($b_date_start) {
                 $stmt->bindValue(":date_start", $sch->date_start->format("Y-m-d H:i:s"), PDO::PARAM_STR);
                 // id を改める
-                $id = intval($sch->date_start->format("ymd")) * 100 + $id_num;
-                $stmt->bindParam(":id", $id, PDO::PARAM_INT);
+                if ($b_id) {
+                    $id = intval($sch->date_start->format("ymd")) * 100 + $id_num;
+                    $stmt->bindParam(":id", $id, PDO::PARAM_INT);
+                }
             }
             if ($b_date_end) {
                 $stmt->bindValue(":date_end", $sch->date_end->format("Y-m-d H:i:s"), PDO::PARAM_STR);
