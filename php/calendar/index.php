@@ -2,7 +2,7 @@
 <html>
     <head>
         <meta charset="utf-8">
-        <meta name="description" content="東工大チェスサークルChessTechの活動予定カレンダーのページです。">
+        <meta name="description" content="東工大チェスサークルChessTechの活動予定カレンダーのページです。イベントの詳細ページへアクセスできます。">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link href="./../css/setting.css" rel="stylesheet">
         <link href="./../css/header.css" rel="stylesheet">
