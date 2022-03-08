@@ -160,7 +160,11 @@ EOF;
                             }
                         } else {
                             $detail_joinable_message = <<<EOF
-                                あなたはログインしていません。参加/非参加の登録をする場合は、ログインしてください。
+                                あなたはログインしていません。参加/非参加の登録をする場合は、ログインしてください。<br />
+                                <a id="detail_decide_joinable_login"
+                                    href="../menu/login.php?link=../calender/detail.php?id=<?php echo $sch->id ?>">
+                                    Login
+                                </a>
 EOF;
                         }
                         echo <<<EOF
