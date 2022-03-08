@@ -15,7 +15,7 @@
 <html lang="ja">
     <head>
         <meta charset="utf-8">
-        <meta name="description" content="東工大チェスサークルChessTechのホームページです。活動の記録や予定、お問い合わせはこちらからできます。">
+        <meta name="description" content="東工大チェスサークルChessTechの部内メニューです。参加可能日、活動の参加の是非、プロフィールの編集などができます。">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link href="./../css/setting.css" rel="stylesheet">
         <link href="./../css/header.css" rel="stylesheet">
