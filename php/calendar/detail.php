@@ -41,9 +41,9 @@
         <link href="./../css/setting.css" rel="stylesheet">
         <link href="./../css/header.css" rel="stylesheet">
         <link href="./../css/footer.css" rel="stylesheet">
-        <link href="./../css/main/calender/detail.css" rel="stylesheet">
+        <link href="./../css/main/calendar/detail.css" rel="stylesheet">
         <script>console.log("prevent Google Chrome css Transition");</script>
-        <title>Calender | 東工大チェスサークル ChessTech</title>
+        <title>Calendar | 東工大チェスサークル ChessTech</title>
     </head>
     <body>
         <header>
@@ -173,7 +173,7 @@ EOF;
                             $detail_joinable_message = <<<EOF
                                 あなたはログインしていません。参加/非参加の登録をする場合は、ログインしてください。<br />
                                 <a id="detail_decide_joinable_login"
-                                    href="../menu/login.php?link=../calender/detail.php?id=<?php echo $sch->id ?>">
+                                    href="../menu/login.php?link=../calendar/detail.php?id=<?php echo $sch->id ?>">
                                     Login
                                 </a>
 EOF;

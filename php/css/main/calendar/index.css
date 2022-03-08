@@ -1,29 +1,29 @@
 /* for all */
 
-#main #calender_wrap h1 {
+#main #calendar_wrap h1 {
     border-bottom: 1px solid #333;
 }
 
-#main #calender_wrap #calender_table td {
+#main #calendar_wrap #calendar_table td {
     vertical-align: top;
 }
 
-#main #calender_wrap #calender_table td a.calender_activity_item {
+#main #calendar_wrap #calendar_table td a.calendar_activity_item {
     color: #222;
     text-decoration: none;
 }
 
 @media screen and (max-width: 700px) {
     /* for smartphone */
-    #main #calender_wrap {
+    #main #calendar_wrap {
         width: 100%;
     }
 
-    #main #calender_application {
+    #main #calendar_application {
         overflow-x: scroll;
     }
 
-    #main #calender_wrap #calender_month a {
+    #main #calendar_wrap #calendar_month a {
         background: #77aa55;
         display: inline-block;
         padding: 5px;
@@ -32,40 +32,40 @@
         text-decoration: none;
     }
 
-    #main #calender_wrap #calender_month_back {
+    #main #calendar_wrap #calendar_month_back {
         border-top-left-radius: 7px;
     }
 
-    #main #calender_wrap #calender_month_next {
+    #main #calendar_wrap #calendar_month_next {
         border-top-right-radius: 7px;
     }
 
-    #main #calender_wrap #calender_month_now {
+    #main #calendar_wrap #calendar_month_now {
         font-size: 15px;
         font-weight: 600;
     }
 
-    #main #calender_wrap #calender_table {
+    #main #calendar_wrap #calendar_table {
         width: 600px;
     }
     
-    #main #calender_wrap #calender_table th {
+    #main #calendar_wrap #calendar_table th {
         width: calc(100% / 7);
         height: 20px;
     }
 
-    #main #calender_wrap #calender_table td {
+    #main #calendar_wrap #calendar_table td {
         width: calc(100% / 7);
         height: 80px;
     }
 
-    #main #calender_wrap #calender_table td .calender_date {
+    #main #calendar_wrap #calendar_table td .calendar_date {
         color: #665444;
         font-size: 20px;
         font-weight: 600;
     }
 
-    #main #calender_wrap #calender_table td a.calender_activity_item {
+    #main #calendar_wrap #calendar_table td a.calendar_activity_item {
         display: block;
         font-size: 15px;
         background: #eee;
@@ -75,7 +75,7 @@
         text-align: center;
     }
 
-    #main #calender_wrap #calender_table td a.calender_activity_item:active {
+    #main #calendar_wrap #calendar_table td a.calendar_activity_item:active {
         cursor: pointer;
         border-color: #eee;
         background: #3434aa;
@@ -86,12 +86,12 @@
 @media screen and (min-width: 701px) {
     /* for pc */
 
-    #main #calender_wrap {
+    #main #calendar_wrap {
         width: 660px;
         margin: 10px auto;
     }
 
-    #main #calender_wrap #calender_month a {
+    #main #calendar_wrap #calendar_month a {
         background: #77aa55;
         display: inline-block;
         padding: 10px;
@@ -100,20 +100,20 @@
         text-decoration: none;
     }
 
-    #main #calender_wrap #calender_month a:hover {
+    #main #calendar_wrap #calendar_month a:hover {
         background: #689b46;
         cursor: pointer;
     }
 
-    #main #calender_wrap #calender_month_back {
+    #main #calendar_wrap #calendar_month_back {
         border-top-left-radius: 15px;
     }
 
-    #main #calender_wrap #calender_month_next {
+    #main #calendar_wrap #calendar_month_next {
         border-top-right-radius: 15px;
     }
     
-    #main #calender_wrap #calender_month_now {
+    #main #calendar_wrap #calendar_month_now {
         display: inline-block;
         padding: 10px;
         font-size: 20px;
@@ -121,29 +121,29 @@
         color: #333;
     }
 
-    #main #calender_wrap #calender_table {
+    #main #calendar_wrap #calendar_table {
         width: 630px;
     }
 
-    #main #calender_wrap #calender_table tr {
+    #main #calendar_wrap #calendar_table tr {
         width: 90px;
         height: 40px;
         font-size: 20px;
     }
 
-    #main #calender_wrap #calender_table td {
+    #main #calendar_wrap #calendar_table td {
         width: 90px;
         height: 90px;
         font-size: 10px;
     }
 
-    #main #calender_wrap #calender_table td .calender_date {
+    #main #calendar_wrap #calendar_table td .calendar_date {
         color: #665444;
         font-size: 20px;
         font-weight: 600;
     }
 
-    #main #calender_wrap #calender_table td a.calender_activity_item {
+    #main #calendar_wrap #calendar_table td a.calendar_activity_item {
         display: block;
         font-size: 15px;
         background: #eee;
@@ -154,7 +154,7 @@
         transition: 0.3s;
     }
 
-    #main #calender_wrap #calender_table td a.calender_activity_item:hover {
+    #main #calendar_wrap #calendar_table td a.calendar_activity_item:hover {
         cursor: pointer;
         border-color: #eee;
         background: #3434aa;

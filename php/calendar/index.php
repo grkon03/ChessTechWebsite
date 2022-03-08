@@ -7,9 +7,9 @@
         <link href="./../css/setting.css" rel="stylesheet">
         <link href="./../css/header.css" rel="stylesheet">
         <link href="./../css/footer.css" rel="stylesheet">
-        <link href="./../css/main/calender/index.css" rel="stylesheet">
+        <link href="./../css/main/calendar/index.css" rel="stylesheet">
         <script>console.log("prevent Google Chrome css Transition");</script>
-        <title>Calender | 東工大チェスサークル ChessTech</title>
+        <title>Calendar | 東工大チェスサークル ChessTech</title>
     </head>
     <body>
         <header>
@@ -19,7 +19,7 @@
             ?>
         </header>
         <div id="main">
-            <div id="calender_wrap">
+            <div id="calendar_wrap">
                 <?php
                     $now = new DateTime("now");
 
@@ -49,17 +49,17 @@
                     }
                 ?>
                 <h1>活動予定カレンダー</h1>
-                <div id="calender_month">
-                    <a id="calender_month_back" href="./?<?php echo "month=" . $former_month . "&year=" . $former_month_year; ?>">前の月</a>
-                    <span id="calender_month_now">
+                <div id="calendar_month">
+                    <a id="calendar_month_back" href="./?<?php echo "month=" . $former_month . "&year=" . $former_month_year; ?>">前の月</a>
+                    <span id="calendar_month_now">
                         <?php
                             echo $year . "年" . $month . "月";
                         ?>
                     </span>
-                    <a id="calender_month_next" href="./?<?php echo "month=" . $latter_month . "&year=" . $latter_month_year; ?>">次の月</a>
+                    <a id="calendar_month_next" href="./?<?php echo "month=" . $latter_month . "&year=" . $latter_month_year; ?>">次の月</a>
                 </div>
-                <div id="calender_application">
-                    <table border="7" id="calender_table">
+                <div id="calendar_application">
+                    <table border="7" id="calendar_table">
                         <thead>
                             <tr>
                                 <th bgcolor="#abacbc">月</th>
@@ -75,14 +75,14 @@
                             例：
                                 <td>
                                     <div>
-                                        <div class="calender_date">1</div>
-                                        <a class="calender_activity_item">テストテストテスト</a>
+                                        <div class="calendar_date">1</div>
+                                        <a class="calendar_activity_item">テストテストテスト</a>
                                     </div>
                                 </td>
                                 <td>
                                     <div>
-                                        <div class="calender_date">1</div>
-                                        <a class="calender_activity_item">テストテストテスト</a>
+                                        <div class="calendar_date">1</div>
+                                        <a class="calendar_activity_item">テストテストテスト</a>
                                     </div>
                                 </td>
                         -->
@@ -109,10 +109,10 @@
 
                                             echo "<td>";
                                             echo "<div>";
-                                            echo "<div class='calender_date'>" . $day->format("d") . "</div>";
+                                            echo "<div class='calendar_date'>" . $day->format("d") . "</div>";
                                             if ($schedules != null) {
                                                 foreach ($schedules as $sch) {
-                                                    echo "<a class='calender_activity_item' href='detail.php?id="
+                                                    echo "<a class='calendar_activity_item' href='detail.php?id="
                                                         . $sch->id . "'>";
                                                     echo $sch->name;
                                                     echo "</a>";
@@ -140,17 +140,17 @@
                         </tbody>
                     </table>
                 </div>
-                <div id="calender_movemonth">
+                <div id="calendar_movemonth">
                     <h4>月を指定して移動</h4>
-                    <div id="calender_movemonth_form">
+                    <div id="calendar_movemonth_form">
                         <form action="./" method="GET">
-                            <input min="2000" max="3000" type="number" name="year" id="calender_movemonth_form_year"> 年
-                            <input min="1" max="12" type="number" name="month" id="calender_movemonth_form_month"> 月
-                            <input type="submit" id="calender_movemonth_form_submit" value="移動">
+                            <input min="2000" max="3000" type="number" name="year" id="calendar_movemonth_form_year"> 年
+                            <input min="1" max="12" type="number" name="month" id="calendar_movemonth_form_month"> 月
+                            <input type="submit" id="calendar_movemonth_form_submit" value="移動">
                         </form>
                     </div>
                 </div>
-                <div id="calender_supplement">
+                <div id="calendar_supplement">
                     <h4>補足</h4>
                     <ul>
                         <li>

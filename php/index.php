@@ -40,10 +40,10 @@
                 </a>
             </div>
             <p>
-                活動予定, 記録などはこちらです。上のメニューの<strong>Calender</strong>, <strong>Activity</strong>からも閲覧できます。
+                活動予定, 記録などはこちらです。上のメニューの<strong>Calendar</strong>, <strong>Activity</strong>からも閲覧できます。
             </p>
             <div class="main_link_set">
-                <a class="main_link_item" href="./calender/">
+                <a class="main_link_item" href="./calendar/">
                     活動予定(カレンダー)
                 </a>
                 <a class="main_link_item">

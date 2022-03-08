@@ -37,11 +37,11 @@
                 <h2>参加/非参加を登録する</h2>
                 <div class="menu_page_mini">
                     <h3>カレンダーから登録する</h3>
-                    <div id="registJA_byCalender">
+                    <div id="registJA_byCalendar">
                         <p>
                             カレンダーのイベントをクリックして、イベントの詳細ページで参加/不参加を入力してください。
                         </p>
-                        <a href="./../../calender/">
+                        <a href="./../../calendar/">
                             カレンダーへ移動
                         </a>
                     </div>
@@ -91,7 +91,7 @@
 
                                 echo <<<EOF
                         <div class="registJA_bySelect_item">
-                            <h4><a href="./../../calender/">{$e->name}</a></h4>
+                            <h4><a href="./../../calendar/">{$e->name}</a></h4>
                             <div class="registJA_bySelect_item_form">
                                 <form action="./" method="POST">
                                     <input type="hidden" name="id" value="{$e->id}">
