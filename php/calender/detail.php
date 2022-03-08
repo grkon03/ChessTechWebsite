@@ -62,6 +62,11 @@ EOF;
                 </p>
 EOF;
                 } else {
+                    if (isset($_POST["joinable"])) {
+                        $b_joinable = $_POST["joinable"] == "T" ? true : false;
+                        $sql_util->RegistMemberSchedule($sch->id, $member->id, $b_joinable);
+                    }
+
                     $start = $sch->date_start->format("Y/m/d H:i:s");
                     $end = $sch->date_end->format("Y/m/d H:i:s");
                     echo <<<EOF
@@ -100,20 +105,70 @@ EOF;
                 }
             ?>
                 <div id="detail_decide_joinable">
-                    <p id="detail_joinable_message">
-                        あなたは現在「
-                        <span id="detail_joinable_state_T">参加</span>
-                        <span id="detail_joinable_state_F">不参加</span>
-                        」に登録されています。
-                    </p>
-                    <form action="./detail.php?id=<?php echo $sch->id; ?>" method="POST" id="detail_decide_joinable_form_true">
-                        <input type="hidden" name="joinable" value="T">
-                        <input type="submit" value="参加">
-                    </form>
-                    <form action="./detail.php?id=<?php echo $sch->id; ?>" method="POST" id="detail_decide_joinable_form_false">
-                        <input type="hidden" name="joinable" value="F">
-                        <input type="submit" value="不参加">
-                    </form>
+                    <?php
+                        $detail_joinable_message = "";
+                        $detail_decide_joinable_form = "";
+                        if ($logined) {
+                            $joinable = false;
+                            $not_decided = false;
+
+                            if (in_array($member->id, explode(",", $sch->members_join))) {
+                                $joinable = true;
+                            } else if (!in_array($member->id, explode(",", $sch->members_notjoin))) {
+                                $decided = true;
+                            }
+
+                            if ($notjoinable) {
+                                $detail_joinable_message = <<<EOF
+                                あなたは現在、参加/非参加を登録していません。
+EOF;
+                                $detail_decided_joinable_form = <<<EOF
+                                <form action="./detail.php?id={$sch->id}" method="POST" id="detail_decide_joinable_form_true">
+                                    <input type="hidden" name="joinable" value="T">
+                                    <input type="submit" value="参加">
+                                </form>
+                                <form action="./detail.php?id={$sch->id}" method="POST" id="detail_decide_joinable_form_false">
+                                    <input type="hidden" name="joinable" value="F">
+                                    <input type="submit" value="不参加">
+                                </form>
+EOF;
+                            } else if ($joinable) {
+                                $detail_joinable_message = <<<EOF
+                                あなたは現在「
+                                <span id="detail_joinable_state_T">参加</span>
+                                」に登録されています。下のボタンから不参加に変更できます。
+EOF;
+                                $detail_decided_joinable_form = <<<EOF
+                                <form action="./detail.php?id={$sch->id}" method="POST" id="detail_decide_joinable_form_false">
+                                    <input type="hidden" name="joinable" value="F">
+                                    <input type="submit" value="不参加">
+                                </form>
+EOF;
+                            } else {
+                                $detail_joinable_message = <<<EOF
+                                あなたは現在「
+                                <span id="detail_joinable_state_F">不参加</span>
+                                」に登録されています。下のボタンから参加に変更できます。
+EOF;
+                                $detail_decided_joinable_form = <<<EOF
+                                <form action="./detail.php?id={$sch->id}" method="POST" id="detail_decide_joinable_form_true">
+                                    <input type="hidden" name="joinable" value="T">
+                                    <input type="submit" value="参加">
+                                </form>
+EOF;
+                            }
+                        } else {
+                            $detail_joinable_message = <<<EOF
+                                あなたはログインしていません。参加/非参加の登録をする場合は、ログインしてください。
+EOF;
+                        }
+                        echo <<<EOF
+                        <p id="detail_joinable_message">
+                            {$detail_joinable_message}
+                        </p>
+                        {$detail_decided_joinable_form}
+EOF;
+                    ?>
                 </div>
             </div>
         </div>
