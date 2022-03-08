@@ -12,12 +12,31 @@
 
         $member = $sql_util->GetMember($id);
     }
+
+    $NotSeletedId = false;
+    $NotExistId = false;
+    $sch = new Schedule();
+    if (!isset($_GET["id"])) {
+        $NotSelectedId = true;
+    } else if (($sch = $sql_util->GetSchedule($_GET["id"])) === null) {
+        $NotExistId = true;
+    }
 ?>
 <!DOCTYPE html>
 <html>
     <head>
         <meta charset="utf-8">
-        <meta name="description" content="東工大チェスサークルChessTechの活動予定カレンダーのページです。">
+        <meta name="description" content="東工大チェスサークルChessTechのイベント詳細ページです。
+            <?php
+                if ($NotSelectedId) {
+                    echo "イベントが指定されていません。";
+                } else if ($NotExistId) {
+                    echo "存在しないイベントIDです。";
+                } else {
+                    echo $sch->name . "の詳細についての情報はこのページから取得できます。";
+                }
+            ?>
+        ">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link href="./../css/setting.css" rel="stylesheet">
         <link href="./../css/header.css" rel="stylesheet">
@@ -36,14 +55,6 @@
         <div id="main">
             <div id="detail">
             <?php
-                $NotSeletedId = false;
-                $NotExistId = false;
-                $sch = new Schedule();
-                if (!isset($_GET["id"])) {
-                    $NotSelectedId = true;
-                } else if (($sch = $sql_util->GetSchedule($_GET["id"])) === null) {
-                    $NotExistId = true;
-                }
 
                 if ($NotSelectedId) {
                     echo <<<EOF
