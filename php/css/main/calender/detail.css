@@ -20,6 +20,41 @@
     color: #555;
 }
 
+#detail #detail_joinable_state_T {
+    font-size: 20px;
+    font-weight: 600;
+    color: #33aacc;
+}
+
+#detail #detail_joinable_state_F {
+    font-size: 20px;
+    font-weight: 600;
+    color: #cc4444;
+}
+
+#detail #detail_decide_joinable form {
+    display: inline-block;
+}
+
+#detail #detail_decide_joinable form input {
+    font-size: 20px;
+    width: 100px;
+    height: 50px;
+    border-radius: 10px;
+    padding: auto;
+    background: white;
+}
+
+#detail #detail_decide_joinable_form_true input {
+    border: 3px solid #33aacc;
+    color: #33aacc;
+}
+
+#detail #detail_decide_joinable_form_false input {
+    border: 3px solid #cc4444;
+    color: #cc4444;
+}
+
 @media screen and (max-width: 700px) {
     /* for smartphone */
 
@@ -34,12 +69,28 @@
         text-align: center;
     }
 
+    #detail #detail_table {
+        margin: auto;
+    }
+
     #detail #detail_table th {
         padding: 3px;
     }
     
     #detail #detail_table td {
         padding: 3px;
+    }
+
+    #detail #detail_decide_joinable form input:active {
+        color: white;
+    }
+
+    #detail #detail_decide_joinable_form_true input:active {
+        background: #33aacc;
+    }
+
+    #detail #detail_decide_joinable_form_false input:active {
+        background: #cc4444;
     }
 }
 
@@ -63,5 +114,22 @@
     
     #detail #detail_table td {
         padding: 10px;
+    }
+
+    #detail #detail_decide_joinable form input {
+        cursor: pointer;
+        margin-right: 20px;
+    }
+
+    #detail #detail_decide_joinable form input:hover {
+        color: white;
+    }
+
+    #detail #detail_decide_joinable_form_true input:hover {
+        background: #33aacc;
+    }
+
+    #detail #detail_decide_joinable_form_false input:hover {
+        background: #cc4444;
     }
 }
