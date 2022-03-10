@@ -127,10 +127,10 @@ EOF;
                             if (in_array($member->id, explode(",", $sch->members_join))) {
                                 $joinable = true;
                             } else if (!in_array($member->id, explode(",", $sch->members_notjoin))) {
-                                $decided = true;
+                                $not_decided = true;
                             }
 
-                            if ($notjoinable) {
+                            if ($not_decided) {
                                 $detail_joinable_message = <<<EOF
                                 あなたは現在、参加/非参加を登録していません。
 EOF;
