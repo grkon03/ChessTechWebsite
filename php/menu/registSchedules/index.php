@@ -22,6 +22,54 @@
         <div id="main">
             <div id="menu_page_main">
                 <h2>予定を作成する</h2>
+                <div id="regist_schedule">
+                    <form id="regist_schedule_form" action="./" method="POST">
+                        <table>
+                            <tbody>
+                                <tr>
+                                    <th>
+                                        イベント名
+                                    </th>
+                                    <td>
+                                        <input type="text" name="name" required>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th>
+                                        開始時刻
+                                    </th>
+                                    <td>
+                                        <input type="date" name="date_start_date" required>
+                                        <input type="time" name="date_start_time" required>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th>
+                                        終了時刻
+                                    </th>
+                                    <td>
+                                        <input type="date" name="date_end_date" required>
+                                        <input type="time" name="date_end_time" required>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th>
+                                        詳細
+                                    </th>
+                                    <td>
+                                        <textarea name="detail" required></textarea>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th id="regist_schedule_form_th_submit"></th>
+                                    <td>
+                                        <input type="submit" id="regist_schedule_form_submit">
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </form>
+                </div>
             </div>
             <div id="menu_page_footer">
                 <a href="../" id="back_to_menu">Menu に戻る</a>
