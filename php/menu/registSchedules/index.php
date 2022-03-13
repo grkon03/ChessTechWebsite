@@ -22,7 +22,7 @@
         <div id="main">
             <div id="menu_page_main">
                 <h2>予定を作成する</h2>
-                <div id="regist_schedule">
+                <div id="regist_schedule" class="menu_page_mini">
                     <form id="regist_schedule_form" action="./" method="POST">
                         <table>
                             <tbody>

@@ -1,35 +1,87 @@
 /* for all */
+#regist_schedule #regist_schedule_form table {
+    background: #eee;
+    font-size: 20px;
+    padding: 10px;
+    margin: 10px 0;
+}
+
+#regist_schedule #regist_schedule_form td {
+    background: #eee;
+}
+
+#regist_schedule #regist_schedule_form input  {
+    display: block;
+    border: none;
+    border-bottom: 3px solid #eee;
+}
+
+#regist_schedule #regist_schedule_form textarea {
+    border: none;
+    resize: none;
+}
+
+#regist_schedule input#regist_schedule_form_submit {
+    width: 100px;
+    height: 50px;
+    font-size: 20px;
+    background: #333;
+    color: #eee;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+}
 
 @media screen and (max-width: 700px) {
     /* for smartphone */
 
+    #regist_schedule_form table {
+        width: 100%;
+    }
+
+    #regist_schedule_form table tr {
+        width: 100%;
+    }
+
+    #regist_schedule_form table tr th {
+        width: 40%;
+    }
+
+    #regist_schedule_form table tr td  {
+        width: 55%;
+    }
+
+    #regist_schedule_form input {
+        padding: 5px;
+        width: 90%;
+        font-size: 18px;
+    }
+    
+    #regist_schedule_form textarea {
+        padding: 5px;
+        width: 90%;
+        height: 200px;
+        font-size: 18px;
+    }
+
+    #regist_schedule input#regist_schedule_form_submit:active {
+        background: #f6f6f6;
+        color: #333;
+    }
 }
 
 @media screen and (min-width: 701px) {
     /* for pc */
-
-    #regist_schedule #regist_schedule_form table {
-        background: #eee;
-        font-size: 20px;
-        padding: 10px;
-    }
 
     #regist_schedule #regist_schedule_form th {
         width: 150px;
         padding: 10px
     }
 
-    #regist_schedule #regist_schedule_form td {
-        background: #eee;
-    }
-
     #regist_schedule #regist_schedule_form input {
         width: 400px;
         font-size: 20px;
         padding: 10px;
-        display: block;
-        border: none;
-        border-bottom: 3px solid #eee;
     }
     
     #regist_schedule #regist_schedule_form textarea {
@@ -37,17 +89,9 @@
         height: 200px;
         font-size: 20px;
         padding: 10px;
-        border: none;
     }
     
     #regist_schedule input#regist_schedule_form_submit {
-        width: 100px;
-        height: 50px;
-        background: #333;
-        color: #eee;
-        border: none;
-        border-radius: 10px;
-        cursor: pointer;
         transition: 0.3s;
     }
 
