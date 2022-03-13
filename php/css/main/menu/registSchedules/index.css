@@ -1,12 +1,12 @@
 /* for all */
 
 @media screen and (max-width: 700px) {
-    /* for pc */
+    /* for smartphone */
 
 }
 
 @media screen and (min-width: 701px) {
-    /* for smartphone */
+    /* for pc */
 
     #regist_schedule #regist_schedule_form table {
         background: #eee;
