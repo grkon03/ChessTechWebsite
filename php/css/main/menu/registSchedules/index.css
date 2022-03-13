@@ -1,4 +1,10 @@
 /* for all */
+
+#regist_schedule #regist_schedule_suc_mes {
+    font-weight: 600;
+    color: #d55;
+}
+
 #regist_schedule #regist_schedule_form table {
     background: #eee;
     font-size: 20px;
