@@ -41,29 +41,29 @@
 @media screen and (max-width: 700px) {
     /* for smartphone */
 
-    #regist_schedule_form table {
+    #regist_schedule #regist_schedule_form table {
         width: 100%;
     }
 
-    #regist_schedule_form table tr {
+    #regist_schedule #regist_schedule_form table tr {
         width: 100%;
     }
 
-    #regist_schedule_form table tr th {
+    #regist_schedule #regist_schedule_form table tr th {
         width: 40%;
     }
 
-    #regist_schedule_form table tr td  {
+    #regist_schedule #regist_schedule_form table tr td  {
         width: 55%;
     }
 
-    #regist_schedule_form input {
+    #regist_schedule #regist_schedule_form input {
         padding: 5px;
         width: 90%;
         font-size: 18px;
     }
     
-    #regist_schedule_form textarea {
+    #regist_schedule #regist_schedule_form textarea {
         padding: 5px;
         width: 90%;
         height: 200px;
