@@ -35,7 +35,75 @@
         <div id="main">
             <div id="menu_page_main">
                 <h2>予定を作成する</h2>
+                <div id="view_convinience" class="menu_page_mini">
+                    <h3>都合の合う日付を探す</h3>
+                    <div id="view_convinience_table">
+                        <table border="1">
+                            <thead>
+                                <tr>
+                                    <th>日付</th>
+                                    <th>活動可能</th>
+                                    <th>おそらく<br />活動可能</th>
+                                    <th>活動不可</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <?php
+                                    $members = $sql_util->GetAllMembers();
+                                    $date_display = new DateTime("now");
+                                    for ($i = 0; $i < 30; $i++) {
+                                        $week = 1;
+                                        for ($j = 0; $j < intval($date_display->format("w")); $j++) {
+                                            $week *= 2;
+                                        }
+                                        $no_joinable = 0;
+                                        $no_maybe_joinable = 0;
+                                        $no_notjoinable = 0;
+                                        $bind = new JoinableDay();
+                                        $bind->date = $date_display;
+                                        $jois = $sql_util->GetJoinableDays($bind);
+                                        $joinables = array();
+                                        $maybe_joinables = array();
+                                        $notjoinables = array();
+                                        if ($jois != null) {
+                                            $joinables = explode(",", $jois[0]->joinable);
+                                            $maybe_joinables = explode(",", $jois[0]->maybe_joinable);
+                                            $notjoinables = explode(",", $jois[0]->notjoinable);
+                                        }
+
+                                        foreach ($members as $m) {
+                                            $I = $m->id;
+                                            if (in_array($I, $joinables)) {
+                                                $no_joinable++;
+                                            } else if (in_array($I, $maybe_joinables)) {
+                                                $no_maybe_joinable++;
+                                            } else if (in_array($I, $notjoinables)) {
+                                                $no_notjoinable++;
+                                            } else if (($m->joinable_dayofweek & $week) != 0) {
+                                                $no_joinable++;
+                                            } else {
+                                                $no_notjoinable++;
+                                            }
+                                        }
+
+                                        $day = $date_display->format("Y/m/d");
+                                        echo <<<EOF
+                                        <tr>
+                                            <td><a href="./who.php">{$day}</a></td>
+                                            <td>{$no_joinable}人</td>
+                                            <td>{$no_maybe_joinable}人</td>
+                                            <td>{$no_notjoinable}人</td>
+                                        </tr>
+EOF;
+                                        $date_display->add(new DateInterval("P1D"));
+                                    }
+                                ?>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
                 <div id="regist_schedule" class="menu_page_mini">
+                    <h3>予定を作成する</h3>
                     <div id="regist_schedule_suc_mes">
                         <?php
                             if (isset($_POST["name"])) {
