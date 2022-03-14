@@ -17,8 +17,31 @@ body {
     border-bottom: 1px solid #333;
 }
 
+#about th, #about td {
+    padding: 15px;
+    text-align: left;
+}
+
+#about th {
+    background: #ddd;
+}
+
+#about td {
+    background: #f4f4f4;
+}
+
+#about table {
+    margin: 10px auto;
+}
+
 @media screen and (max-width: 700px) {
     /* for smartphone */
+
+    #about {
+        padding: 5px;
+        margin: 30px 5px;
+        background: #fafafaee;
+    }
 
 }
 
@@ -28,24 +51,7 @@ body {
     #about {
         margin: 50px auto;
         padding: 20px;
-        width: 680px;
-    }
-
-    #about th, #about td {
-        padding: 15px;
-        text-align: left;
-    }
-
-    #about th {
-        background: #ddd;
-    }
-
-    #about td {
-        background: #f4f4f4;
-    }
-
-    #about table {
-        margin: 10px auto;
+        width: 660px;
     }
 
 }
