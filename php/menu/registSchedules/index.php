@@ -35,9 +35,9 @@
         <div id="main">
             <div id="menu_page_main">
                 <h2>予定を作成する</h2>
-                <div id="view_convinience" class="menu_page_mini">
+                <div id="view_convenience" class="menu_page_mini">
                     <h3>都合の合う日付を探す</h3>
-                    <div id="view_convinience_table">
+                    <div id="view_convenience_table">
                         <table border="1">
                             <thead>
                                 <tr>
@@ -87,9 +87,10 @@
                                         }
 
                                         $day = $date_display->format("Y/m/d");
+                                        $day_forurl = $date_display->format("Y-m-d");
                                         echo <<<EOF
                                         <tr>
-                                            <td><a href="./who.php">{$day}</a></td>
+                                            <td><a href="./convenience.php?date={$day_forurl}">{$day}</a></td>
                                             <td>{$no_joinable}人</td>
                                             <td>{$no_maybe_joinable}人</td>
                                             <td>{$no_notjoinable}人</td>
