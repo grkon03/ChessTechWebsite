@@ -7,6 +7,7 @@
     }
 
     require_once("../../util/mysql.php");
+    require_once("../../util/util.php");
     $sql_util = new MYSQL_UTIL();
     
     $member = $sql_util->GetMember($id);
@@ -48,27 +49,67 @@
             <div id="menu_page_main">
                 <h2><?php echo $title; ?></h2>
                 <div id="view_member_convenience" class="menu_page_mini">
-                    <table>
-                        <tbody>
-                            <tr>
-                                <th>参加可能</th>
-                                <td>grkon</td>
-                            </tr>
-                            <tr>
-                                <th>予定未定</th>
-                                <td>taroimo</td>
-                            </tr>
-                            <tr>
-                                <th>参加不可</th>
-                                <td></td>
-                            </tr>
-                        </tbody>
-                    </table>
                     <?php
                         if (!$specified_correctly) {
                             echo "日付を指定してください。";
                         } else {
-                            
+                            $members = $sql_util->GetAllMembers();
+                            $week = 1;
+                            for ($j = 0; $j < intval($date->format("w")); $j++) {
+                                $week *= 2;
+                            }
+                            $bind = new JoinableDay();
+                            $bind->date = $date;
+                            $jois = $sql_util->GetJoinableDays($bind);
+                            $joinables = array();
+                            $maybe_joinables = array();
+                            $notjoinables = array();
+                            if ($jois != null) {
+                                $joinables = explode(",", $jois[0]->joinable);
+                                $maybe_joinables = explode(",", $jois[0]->maybe_joinable);
+                                $notjoinables = explode(",", $jois[0]->notjoinable);
+                            }
+
+                            $joinables_merged = array();
+                            $maybe_joinables_merged = array();
+                            $notjoinables_merged = array();
+                            foreach ($members as $m) {
+                                $I = $m->id;
+                                if (in_array($I, $joinables)) {
+                                    array_push($joinables_merged, $m->id);
+                                } else if (in_array($I, $maybe_joinables)) {
+                                    array_push($maybe_joinables_merged, $m->id);
+                                } else if (in_array($I, $notjoinables)) {
+                                    array_push($notjoinables_merged, $m->id);
+                                } else if (($m->joinable_dayofweek & $week) != 0) {
+                                    array_push($joinables_merged, $m->id);
+                                } else {
+                                    array_push($notjoinables_merged, $m->id);
+                                }
+                            }
+
+                            $jm_str = arrayToString($joinables_merged);
+                            $mjm_str = arrayToString($maybe_joinables_merged);
+                            $njm_str = arrayToString($notjoinables_merged);
+
+                            echo <<<EOF
+                            <table>
+                                <tbody>
+                                    <tr>
+                                        <th>参加可能</th>
+                                        <td>{$jm_str}</td>
+                                    </tr>
+                                    <tr>
+                                        <th>予定未定</th>
+                                        <td>{$mjm_str}</td>
+                                    </tr>
+                                    <tr>
+                                        <th>参加不可</th>
+                                        <td>{$njm_str}</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+EOF;
                         }
                     ?>
                     <a id="back_to_index" href="./?dstart=<?php
