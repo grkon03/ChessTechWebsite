@@ -80,6 +80,16 @@
 @media screen and (max-width: 700px) {
     /* for smartphone */
 
+    #view_convenience #view_convenience_prev_30days:active {
+        background: #d55;
+        color: white;
+    }
+
+    #view_convenience #view_convenience_next_30days:active {
+        background: #55d;
+        color: white;
+    }
+
     #regist_schedule #regist_schedule_form table {
         width: 100%;
     }
@@ -117,6 +127,16 @@
 
 @media screen and (min-width: 701px) {
     /* for pc */
+
+    #view_convenience #view_convenience_prev_30days:hover {
+        background: #d55;
+        color: white;
+    }
+
+    #view_convenience #view_convenience_next_30days:hover {
+        background: #55d;
+        color: white;
+    }
 
     #regist_schedule #regist_schedule_form th {
         width: 150px;
