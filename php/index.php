@@ -46,7 +46,7 @@
                 <a class="main_link_item" href="./calendar/">
                     活動予定(カレンダー)
                 </a>
-                <a class="main_link_item">
+                <a class="main_link_item" href="./activity/">
                     活動記録
                 </a>
             </div>

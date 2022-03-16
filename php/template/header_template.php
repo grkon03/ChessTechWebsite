@@ -19,7 +19,7 @@
                     <a href="{$pl}calendar/">Calendar</a>
                 </div>
                 <div class="header_menu_item">
-                    <a href="">Activity</a>
+                    <a href="{$pl}activity/">Activity</a>
                 </div>
                 <div class="header_menu_item">
                     <a href="{$pl}about.php">About</a>
