@@ -1,0 +1,81 @@
+/* for all */
+
+#view_member_convenience table th {
+    background: #eee;
+}
+
+#view_member_convenience table td {
+    background: #f7f7f7;
+}
+
+#view_member_convenience #back_to_index {
+    font-size: 20px;
+    margin: 10px 0;
+    padding: 15px;
+    background: #333;
+    color: #eee;
+    border: none;
+    border-radius: 10px;
+    text-decoration: none;
+    display: inline-block;
+    cursor: pointer;
+}
+
+@media screen and (max-width: 700px) {
+    /* for smartphone */
+
+    #view_member_convenience {
+        font-size: 18px;
+    }
+    
+    #view_member_convenience table {
+        width: 100%;
+        margin: 10px 0;
+    }
+
+    #view_member_convenience table th, #view_member_convenience table td {
+        padding: 10px;
+    }
+
+    #view_member_convenience table th {
+        width: 30%;
+    }
+
+    #view_member_convenience table td {
+        width: 70%;
+    }
+
+    #view_member_convenience #back_to_index:active {
+        background: #eee;
+        color: #333;
+    }
+}
+
+@media screen and (min-width: 701px) {
+    /* for pc */
+
+    #view_member_convenience {
+        font-size: 20px;
+    }
+
+    #view_member_convenience table th, #view_member_convenience table td {
+        padding: 15px;
+    }
+
+    #view_member_convenience table th {
+        width: 200px;
+    }
+
+    #view_member_convenience table td {
+        width: 400px;
+    }
+
+    #view_member_convenience #back_to_index {
+        transition: 0.3s;
+    }
+
+    #view_member_convenience #back_to_index:hover {
+        background: #eee;
+        color: #333;
+    }
+}
