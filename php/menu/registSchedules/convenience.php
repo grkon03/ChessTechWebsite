@@ -71,7 +71,23 @@
                             
                         }
                     ?>
-                    <a id="back_to_index" href="./">
+                    <a id="back_to_index" href="./?dstart=<?php
+                        $dstart = new DateTime("now");
+                        if ($specified_correctly) {
+                            while (true) {
+                                $dstart_next30 = clone $dstart;
+                                $dstart_next30->add(new DateInterval("P30D"));
+                                if ($date < $dstart) {
+                                    $dstart->sub(new DateInterval("P30D"));
+                                } else if ($date >= $dstart_next30) {
+                                    $dstart->add(new DateInterval("P30D"));
+                                } else {
+                                    break;
+                                }
+                            }
+                        }
+                        echo $dstart->format("Y-m-d");
+                    ?>">
                         予定作成に戻る
                     </a>
                 </div>
