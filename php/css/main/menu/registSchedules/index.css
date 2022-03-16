@@ -19,6 +19,26 @@
     text-align: center;
 }
 
+#view_convenience .view_convenience_move {
+    padding: 15px;
+    font-size: 20px;
+    text-decoration: none;
+    display: inline-block;
+    border-radius: 10px;
+    margin-top: 10px;
+    margin-right: 10px;
+}
+
+#view_convenience #view_convenience_prev_30days {
+    border: 3px solid #d55;
+    color: #d55;
+}
+
+#view_convenience #view_convenience_next_30days {
+    border: 3px solid #55d;
+    color: #55d;
+}
+
 #regist_schedule #regist_schedule_suc_mes {
     font-weight: 600;
     color: #d55;

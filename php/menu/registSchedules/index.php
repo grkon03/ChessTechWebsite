@@ -43,14 +43,16 @@
                                 <tr>
                                     <th>日付</th>
                                     <th>活動可能</th>
-                                    <th>おそらく<br />活動可能</th>
+                                    <th>予定未定</th>
                                     <th>活動不可</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 <?php
                                     $members = $sql_util->GetAllMembers();
-                                    $date_display = new DateTime("now");
+                                    $specified_correctly = isset($_GET["dstart"]) && preg_match('/\A[0-9]{4}-[0-9]{1,2}-[0-9]{1,2}\z/', $_GET["dstart"]);
+                                    $date_store = new DateTime($specified_correctly ? $_GET["dstart"] : "now");
+                                    $date_display = clone $date_store;
                                     for ($i = 0; $i < 30; $i++) {
                                         $week = 1;
                                         for ($j = 0; $j < intval($date_display->format("w")); $j++) {
@@ -102,6 +104,20 @@ EOF;
                             </tbody>
                         </table>
                     </div>
+                    <a class="view_convenience_move" id="view_convenience_prev_30days" href="./?dstart=<?php
+                        $ds = clone $date_store;
+                        $ds->sub(new DateInterval("P30D"));
+                        echo $ds->format("Y-m-d");
+                    ?>">
+                        前の30日
+                    </a>
+                    <a class="view_convenience_move" id="view_convenience_next_30days" href="./?dstart=<?php
+                        $ds = clone $date_store;
+                        $ds->add(new DateInterval("P30D"));
+                        echo $ds->format("Y-m-d");
+                    ?>">
+                        次の30日
+                    </a>
                 </div>
                 <div id="regist_schedule" class="menu_page_mini">
                     <h3>予定を作成する</h3>
