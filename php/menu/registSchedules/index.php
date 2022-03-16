@@ -3,13 +3,17 @@
     $id = $_SESSION["id"];
 
     if ($id == "") {
-        header("Location: ./login.php");
+        header("Location: ./../login.php");
     }
 
     require_once("../../util/mysql.php");
     $sql_util = new MYSQL_UTIL();
     
     $member = $sql_util->GetMember($id);
+
+    if ($member->authority > 1) {
+        header("Location: ./../index.php");
+    }
 ?>
 <!DOCTYPE html>
 <html lang="ja">

@@ -40,20 +40,21 @@
                             ようこそ<span id="menu_welcome_name"><?php echo $member->handle_name; ?></span>さん
                         </p>
                         <div id="menu_list">
-                            <a class="menu_list_item" href="./registJoinableDays/">
-                                活動可能日を登録する
-                            </a>
-                            <a class="menu_list_item" href="./registJoinableActivities/">
-                                参加/非参加予定を登録する
-                            </a>
-                            <a class="menu_list_item" href="./changeProfile/">
-                                プロフィールを変更する
-                            </a>
                             <?php
                                 $auth = $member->authority;
 
                                 if ($auth <= 2) {
-
+                                    echo <<<EOF
+                                    <a class="menu_list_item" href="./registJoinableDays/">
+                                        活動可能日を登録する
+                                    </a>
+                                    <a class="menu_list_item" href="./registJoinableActivities/">
+                                        参加/非参加予定を登録する
+                                    </a>
+                                    <a class="menu_list_item" href="./changeProfile/">
+                                        プロフィールを変更する
+                                    </a>
+EOF;
                                 }
 
                                 if ($auth <= 1) {
