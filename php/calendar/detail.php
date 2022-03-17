@@ -81,6 +81,23 @@ EOF;
 
                     $start = $sch->date_start->format("Y/m/d H:i:s");
                     $end = $sch->date_end->format("Y/m/d H:i:s");
+
+                    $members_join_arr = explode(",", $sch->members_join);
+                    $members_notjoin_arr = explode(",", $sch->members_notjoin);
+                    $members_join_hn_arr = array(); 
+                    $members_notjoin_hn_arr = array();
+                    foreach ($members_join_arr as $mid) {
+                        $mem = $sql_util->GetMember($mid);
+                        array_push($members_join_hn_arr, $mem->handle_name);
+                    }
+                    foreach ($members_notjoin_arr as $mid) {
+                        $mem = $sql_util->GetMember($mid);
+                        array_push($members_notjoin_hn_arr, $mem->handle_name);
+                    }
+                    
+                    $members_join_hn_str = arrayToString($members_join_hn_arr);
+                    $members_notjoin_hn_str = arrayToString($members_notjoin_hn_arr);
+
                     echo <<<EOF
                     <h1>{$sch->name}の詳細</h1>
                     <table id="detail_table">
@@ -105,11 +122,11 @@ EOF;
                             </tr>
                             <tr>
                                 <th>参加者</th>
-                                <td>{$sch->members_join}</td>
+                                <td>{$members_join_hn_str}</td>
                             </tr>
                             <tr>
                                 <th>不参加者</th>
-                                <td>{$sch->members_notjoin}</td>
+                                <td>{$members_notjoin_hn_str}</td>
                             </tr>
                         </tbody>
                     </table>

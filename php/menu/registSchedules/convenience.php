@@ -80,15 +80,15 @@
                             foreach ($members as $m) {
                                 $I = $m->id;
                                 if (in_array($I, $joinables)) {
-                                    array_push($joinables_merged, $m->id);
+                                    array_push($joinables_merged, $m->handle_name);
                                 } else if (in_array($I, $maybe_joinables)) {
-                                    array_push($maybe_joinables_merged, $m->id);
+                                    array_push($maybe_joinables_merged, $m->handle_name);
                                 } else if (in_array($I, $notjoinables)) {
-                                    array_push($notjoinables_merged, $m->id);
+                                    array_push($notjoinables_merged, $m->handle_name);
                                 } else if (($m->joinable_dayofweek & $week) != 0) {
-                                    array_push($joinables_merged, $m->id);
+                                    array_push($joinables_merged, $m->handle_name);
                                 } else {
-                                    array_push($notjoinables_merged, $m->id);
+                                    array_push($notjoinables_merged, $m->handle_name);
                                 }
                             }
 
