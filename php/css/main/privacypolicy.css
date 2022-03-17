@@ -1,0 +1,51 @@
+/* for all */
+
+#main {
+    background-image: url("../../images/background1.png");
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-attachment: fixed;
+    background-size: cover;
+}
+
+#privacypolicy {
+    padding: 10px;
+    background: #333333aa;
+    color: #f3f3f3;
+    border: 2px solid #fff;
+    border-radius: 10px;
+}
+
+#privacypolicy h1 {
+    font-size: 25px;
+    border-bottom: 1px solid #fff;
+}
+
+#privacypolicy h2 {
+    font-size: 20px;
+}
+
+#privacypolicy section p {
+    display: block;
+    margin-left: 15px;
+    border-left: 1px solid #fff;
+    padding-left: 15px;
+}
+
+@media screen and (max-width: 700px) {
+    /* for smartphone */
+
+    #privacypolicy {
+        margin: 10px;
+    }
+
+}
+
+@media screen and (min-width: 701px) {
+    /* for pc */
+    
+    #privacypolicy {
+        width: 670px;
+        margin: 30px auto;
+    }
+}

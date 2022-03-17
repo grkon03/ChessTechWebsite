@@ -17,7 +17,7 @@
                     <a href="{$pl}calendar/">Calendar</a>
                 </div>
                 <div class="footer_link_item">
-                    <a href="">Privacy Policy</a>
+                    <a href="{$pl}privacypolicy.php">Privacy Policy</a>
                 </div>
                 <div class="footer_link_item">
                     <a href="{$pl}contact">Contact</a>
