@@ -1,0 +1,96 @@
+/* for all */
+
+#regist_member h1 {
+    border-bottom: 1px solid #333;
+    color: #333;
+    font-size: 30px;
+}
+
+#regist_member form input#regist_member_submit {
+    width: 100px;
+    padding: 15px;
+    font-size: 20px;
+    background: white;
+    border: 3px solid #333;
+    border-radius: 10px;
+    color: #333;
+    cursor: pointer;
+}
+
+#regist_member table th {
+    background: #eee;
+}
+
+#regist_member table th#regist_member_submit_th {
+    background: white;
+}
+
+@media screen and (max-width: 700px) {
+    /* for smartphone */
+
+    #regist_member {
+        margin: 3px;
+    }
+
+    #regist_member table {
+        width: 100%;
+    }
+
+    #regist_member table th, #regist_member table td  {
+        padding: 10px;
+    }
+
+    #regist_member table th {
+        width: 30%;
+    }
+
+    #regist_member table td {
+        width: 60%;
+    }
+
+    #regist_member form input {
+        width: 90%;
+        font-size: 18px;
+        padding: 5px;
+    }
+
+    #regist_member table input#regist_member_submit:active {
+        background: #333;
+        color: white;
+    }
+
+}
+
+@media screen and (min-width: 701px) {
+    /* for pc */
+    
+    #regist_member {
+        width: 700px;
+        margin: auto;
+        color: #333;
+    }
+
+    #regist_member table th, #regist_member table td {
+        padding: 20px;
+    }    
+
+    #regist_member table th {
+        width: 180px;
+        font-size: 20px;
+    }
+
+    #regist_member form input {
+        width: 400px;
+        padding: 5px;
+        font-size: 22px;
+    }
+
+    #regist_member table input#regist_member_submit {
+        transition: 0.3s;
+    }
+
+    #regist_member table input#regist_member_submit:hover {
+        background: #333;
+        color: white;
+    }
+}
