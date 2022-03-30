@@ -1,4 +1,4 @@
-<?
+<?php
     require_once("util.php");
 
     /* MySQL用のAPI */
