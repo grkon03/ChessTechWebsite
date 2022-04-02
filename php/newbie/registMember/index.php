@@ -22,7 +22,7 @@
             <div id="regist_member">
                 <h1>サークルメンバー新規登録</h1>
                 <div id="regist_member_form">
-                    <form action="./" method="POST">
+                    <form action="./query.php" method="POST">
                         <table>
                             <tbody>
                                 <tr>
@@ -34,7 +34,7 @@
                                 <tr>
                                     <th>PassWord</th>
                                     <td>
-                                        <input name="ct_password" required>
+                                        <input name="ct_password" type="password" required>
                                     </td>
                                 </tr>
                                 <tr>

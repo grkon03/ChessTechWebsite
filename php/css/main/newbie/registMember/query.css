@@ -1,0 +1,34 @@
+/* for all */
+
+#regist_member_query {
+    color: #333;
+}
+
+#regist_member_query #regist_member_query_verify table th {
+    text-align: left;
+    background: #eee;
+}
+
+@media screen and (max-width: 700px) {
+    /* for smartphone */
+
+}
+
+@media screen and (min-width: 701px) {
+    /* for pc */
+
+    #regist_member_query {
+        width: 650px;
+        margin: 30px auto;
+        font-size: 18px;
+    }
+
+    #regist_member_query #regist_member_query_verify table {
+        border-collapse: collapse;
+    }
+
+    #regist_member_query #regist_member_query_verify table th, #regist_member_query #regist_member_query_verify table td {
+        padding: 20px;
+        border: 1px solid #333;
+    }
+}
