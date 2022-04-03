@@ -33,16 +33,10 @@
     }
     
     // MySQLにPDOでアクセス
-    
-    $mysql_json = file_get_contents("../../setting/mysql.json");
 
-    $mysql_json = mb_convert_encoding($mysql_json, 'UTF8', 'ASCII,JIS,UTF-8,EUC-JP,SJIS-WIN');
-
-    $mysql_setting =  json_decode($mysql_json, true);
-
-    $l__dsn = $mysql_setting["dns"];
-    $l__user = $mysql_setting["user"]["user"];
-    $l__password = $mysql_setting["user"]["password"];
+    $l__dsn = 'mysql:dbname=db_chesstech;host=mysql;port=3306;charset=utf8';
+    $l__user = 'user';
+    $l__password = 'password';
 
     $MYPDO = new PDO($l__dsn, $l__user, $l__password);
 
