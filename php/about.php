@@ -14,7 +14,7 @@
     <body>
         <header>
             <?php
-                require_once("./template/header_template.php");
+                require_once(dirname(__FILE__) . "/./template/header_template.php");
                 write_header(0);
             ?>
         </header>
@@ -101,7 +101,7 @@
                                 <th>部員数</th>
                                 <td>
                                     <?php
-                                        require_once("./util/mysql.php");
+                                        require_once(dirname(__FILE__) . "/./util/mysql.php");
                                         $sql_util = new MYSQL_UTIL();
                                         echo count($sql_util->GetAllMembers()) . "人";
                                     ?>
@@ -131,7 +131,7 @@
         </div>
         <footer>
             <?php
-                require_once("./template/footer_template.php");
+                require_once(dirname(__FILE__) . "/./template/footer_template.php");
                 write_footer(0);
             ?>
         </footer>

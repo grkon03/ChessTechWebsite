@@ -14,7 +14,7 @@
     <body>
         <header>
             <?php
-                require_once("./template/header_template.php");
+                require_once(dirname(__FILE__) . "/./template/header_template.php");
                 write_header(0);
             ?>
         </header>
@@ -71,7 +71,7 @@
         </div>
         <footer>
             <?php
-                require_once("./template/footer_template.php");
+                require_once(dirname(__FILE__) . "/./template/footer_template.php");
                 write_footer(0);
             ?>
         </footer>

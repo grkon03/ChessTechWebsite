@@ -2,7 +2,7 @@
     $dsn = 'mysql:dbname=db_chesstech;host=mysql;port=3306;charset=utf8';
     $user = 'user';
     $password = 'password';
-    require_once("./../util/mysql.php");
+    require_once(dirname(__FILE__) . "/./../util/mysql.php");
 
     try {
         

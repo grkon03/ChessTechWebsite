@@ -3,7 +3,7 @@
 
     $logined = isset($_SESSION["id"]);
 
-    require_once("../util/mysql.php");
+    require_once(dirname(__FILE__) . "/../util/mysql.php");
 
     $sql_util = new MYSQL_UTIL();
 
@@ -48,7 +48,7 @@
     <body>
         <header>
             <?php
-                require_once("../template/header_template.php");
+                require_once(dirname(__FILE__) . "/../template/header_template.php");
                 write_header(1);
             ?>
         </header>
@@ -207,7 +207,7 @@ EOF;
         </div>
         <footer>
             <?php
-                require_once("../template/footer_template.php");
+                require_once(dirname(__FILE__) . "/../template/footer_template.php");
                 write_footer(1);
             ?>
         </footer>

@@ -6,8 +6,8 @@
         header("Location: ./../login.php");
     }
 
-    require_once("../../util/mysql.php");
-    require_once("../../util/util.php");
+    require_once(dirname(__FILE__) . "/../../util/mysql.php");
+    require_once(dirname(__FILE__) . "/../../util/util.php");
     $sql_util = new MYSQL_UTIL();
     
     $member = $sql_util->GetMember($id);
@@ -45,7 +45,7 @@
     <body>
         <header>
             <?php
-                require_once("../../template/header_template.php");
+                require_once(dirname(__FILE__) . "/../../template/header_template.php");
                 write_header(2);
             ?>
         </header>
@@ -143,7 +143,7 @@ EOF;
         </div>
         <footer>
             <?php
-                require_once("../../template/footer_template.php");
+                require_once(dirname(__FILE__) . "/../../template/footer_template.php");
                 write_footer(2);
             ?>
         </footer>

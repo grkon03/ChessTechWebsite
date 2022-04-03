@@ -14,7 +14,7 @@
     <body>
         <header>
             <?php
-                require_once("../template/header_template.php");
+                require_once(dirname(__FILE__) . "/../template/header_template.php");
                 write_header(1);
             ?>
         </header>
@@ -91,7 +91,7 @@
                                 $first_day = new DateTime($year . "-" . sprintf("%02d", $month) . "-" . "01");
                                 $last_day = new DateTime("last day of " . $year . "-" . sprintf("%02d", $month));
 
-                                require_once("../util/mysql.php");
+                                require_once(dirname(__FILE__) . "/../util/mysql.php");
                                 $sql_util = new MYSQL_UTIL();
 
                                 $week_day = intval($first_day->format("w"));
@@ -168,7 +168,7 @@
         </div>
         <footer>
             <?php
-                require_once("../template/footer_template.php");
+                require_once(dirname(__FILE__) . "/../template/footer_template.php");
                 write_footer(1);
             ?>
         </footer>
