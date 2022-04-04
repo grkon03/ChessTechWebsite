@@ -38,6 +38,14 @@
     $l__user = 'user';
     $l__password = 'password';
 
+    if (file_exists(dirname(__FILE__) . "/../../setting/mysql.php")) {
+        require_once(dirname(__FILE__) . "/../../setting/mysql.php");
+
+        $l__dsn = mysql_dsn();
+        $l__user = mysql_user();
+        $l__password = mysql_password();
+    }
+
     $MYPDO = new PDO($l__dsn, $l__user, $l__password);
 
     /* API集のクラス */
