@@ -9,9 +9,70 @@
     background: #eee;
 }
 
+#regist_member_query #regist_member_query_verify table {
+    border-collapse: collapse;
+}
+
+#regist_member_query #regist_member_query_verify table th, #regist_member_query #regist_member_query_verify table td {
+    border: 1px solid #333;
+}
+
+#regist_member_query #regist_member_query_submit_form {
+    display: inline;
+}
+
+#regist_member_query .regist_member_query_button {
+    background: white;
+    font-size: 20px;
+    padding: 10px 0;
+    border-radius: 10px;
+    width: 100px;
+    margin: 20px 0;
+    margin-right: 10px;
+    cursor: pointer;
+    display: inline-block;
+    text-align: center;
+}
+
+#regist_member_query #regist_member_query_submit {
+    border: 3px solid #33aacc;
+    color: #33aacc;
+}
+
+#regist_member_query #regist_member_query_fix {
+    border: 3px solid #cc4444;
+    color: #cc4444;
+    text-decoration: none;
+}
+
 @media screen and (max-width: 700px) {
     /* for smartphone */
 
+    #regist_member_query {
+        width: 90%;
+        font-size: 18px;
+        margin: 10px auto;
+    }
+
+    #regist_member_query #regist_member_query_verify table {
+        width: 100%;
+    }
+
+    #regist_member_query #regist_member_query_verify table th, #regist_member_query #regist_member_query_verify table td {
+        padding: 5px;
+    }
+
+    #regist_member_query #regist_member_query_submit:active {
+        border: 3px solid #33aacc;
+        color: white;
+        background: #33aacc;
+    }
+    
+    #regist_member_query #regist_member_query_fix:active {
+        border: 3px solid #cc4444;
+        color: white;
+        background: #cc4444;
+    } 
 }
 
 @media screen and (min-width: 701px) {
@@ -23,12 +84,23 @@
         font-size: 18px;
     }
 
-    #regist_member_query #regist_member_query_verify table {
-        border-collapse: collapse;
-    }
-
     #regist_member_query #regist_member_query_verify table th, #regist_member_query #regist_member_query_verify table td {
         padding: 20px;
-        border: 1px solid #333;
     }
+
+    #regist_member_query .regist_member_query_button {
+        transition: 0.3s;
+    }
+
+    #regist_member_query #regist_member_query_submit:hover {
+        border: 3px solid #33aacc;
+        color: white;
+        background: #33aacc;
+    }
+    
+    #regist_member_query #regist_member_query_fix:hover {
+        border: 3px solid #cc4444;
+        color: white;
+        background: #cc4444;
+    } 
 }

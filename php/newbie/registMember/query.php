@@ -56,6 +56,12 @@ EOF;
                             </tr>
                         </tbody>
                     </table>
+                    <form id="regist_member_query_submit_form" method="POST">
+                        <input type="submit" id="regist_member_query_submit" class="regist_member_query_button" value="登録">
+                    </form>
+                    <a id="regist_member_query_fix" class="regist_member_query_button" href="./">
+                        修正
+                    </a>
                 </div>
             </div>
         </div>
