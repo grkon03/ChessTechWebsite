@@ -105,6 +105,8 @@
                                         $sql_util = new MYSQL_UTIL();
                                         echo count($sql_util->GetAllMembers()) . "人";
                                     ?>
+                                    <br />
+                                    (現在の人数は正確ではありません。)
                                 </td>
                             </tr>
                         </tbody>
@@ -122,7 +124,7 @@
                                 現代表(安田)のお財布が限界に達する
                             </li>
                         </ul>
-                        <small>(裏話ですが、現在は入部しやすいように部費を回収せず設立者である安田が負担しています。)</small><br />
+                        <small>(現在は入部しやすいように部費を回収せず設立者である安田が負担しています。)</small><br />
                         入部方法ついてですが、トップページやTwitterにも載せてある通り<a href="https://lichess.org/team/0hFIsUIf">lichessのチーム</a>
                         に参加してください。
                     </p>
