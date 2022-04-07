@@ -119,7 +119,6 @@ EOF;
                         $mem->authority = $_POST["ct_authority"];
                         $mem->position = "";
                         $mem->joinable_dayofweek = 0;
-                        var_dump($mem);
                         $sql_util->CreateMember($mem);
                         $_SESSION["id"] = $mem->id;
                         echo "登録が完了しました。";
