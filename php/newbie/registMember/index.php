@@ -28,37 +28,37 @@
                                 <tr>
                                     <th>ID</th>
                                     <td>
-                                        <input name="ct_id" required>
+                                        <input name="ct_id" maxlength="20" value="<?php echo $_POST["ct_id"]; ?>" required>
                                     </td>
                                 </tr>
                                 <tr>
                                     <th>PassWord</th>
                                     <td>
-                                        <input name="ct_password" type="password" required>
+                                        <input name="ct_password" maxlength="20" type="password" value="<?php echo $_POST["ct_password"]; ?>" required>
                                     </td>
                                 </tr>
                                 <tr>
                                     <th>名前</th>
                                     <td>
-                                        <input name="ct_name" required>
+                                        <input name="ct_name" maxlength="20" value="<?php echo $_POST["ct_name"]; ?>" required>
                                     </td>
                                 </tr>
                                 <tr>
                                     <th>ハンドルネーム</th>
                                     <td>
-                                        <input name="ct_handle_name" required>
+                                        <input name="ct_handle_name" maxlength="20" value="<?php echo $_POST["ct_handle_name"]; ?>" required>
                                     </td>
                                 </tr>
                                 <tr>
                                     <th>学年</th>
                                     <td>
-                                        <input name="ct_grade" required>
+                                        <input name="ct_grade" maxlength="3" value="<?php echo $_POST["ct_grade"]; ?>" required>
                                     </td>
                                 </tr>
                                 <tr>
                                     <th>招待コード</th>
                                     <td>
-                                        <input name="ct_code" required>
+                                        <input name="ct_code" maxlength="8" value="<?php echo $_POST["ct_code"]; ?>" required>
                                     </td>
                                 </tr>
                                 <tr>
@@ -81,7 +81,10 @@
                             招待コードを入手した方は、外部に情報を漏らさないようお願いします。
                         </li>
                         <li>
-                            学年は、東工大生であれば、〇〇B, 〇〇M, 〇〇D のような形式が好ましいです。
+                            学年は、表記は自由ですが、のちに変更する必要のない〇〇Bのような形が好ましいです。
+                        </li>
+                        <li>
+                            id, password, 名前, ハンドルネームは20文字以内、学年は3文字以内となっています。
                         </li>
                     </ul>
                 </div>

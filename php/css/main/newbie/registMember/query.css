@@ -17,7 +17,7 @@
     border: 1px solid #333;
 }
 
-#regist_member_query #regist_member_query_submit_form {
+#regist_member_query .regist_member_query_button_form {
     display: inline;
 }
 
