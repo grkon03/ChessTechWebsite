@@ -46,21 +46,13 @@
                             }
                         }
 
-                        if ($authority == 0) {
-                            echo <<<EOF
-                            招待コードが間違っています。<br />
-                            <form action="./index.php" class="regist_member_query_button_form" method="POST">
-                                <input type="hidden" name="ct_id" value="{$id}">
-                                <input type="hidden" name="ct_password" value="{$password}">
-                                <input type="hidden" name="ct_name" value="{$name}">
-                                <input type="hidden" name="ct_handle_name" value="{$handle_name}">
-                                <input type="hidden" name="ct_grade" value="{$grade}">
-                                <input type="hidden" name="ct_code" value="{$code}">
-                                <input type="submit" id="regist_member_query_fix" class="regist_member_query_button" value="修正">
-                            </form>
+                        $err_mes = null;
 
-EOF;
+                        if ($authority == 0) {
+                            $err_mes = "招待コードが間違っています。";
                             file_put_contents("./data/wrongcode.log", $_SERVER["REMOTE_ADDR"] . "\n",  FILE_APPEND);
+                        } else if ($sql_util->GetMember($id) == null) {
+                            $err_mes = "すでに使用されているidです。";
                         } else {
                             echo <<<EOF
                         <div id="regist_member_query_verify">
@@ -125,6 +117,21 @@ EOF;
                     } else {
                         echo <<<EOF
                             不正アクセスです。
+EOF;
+                    }
+
+                    if ($err_mes != null) {
+                        echo <<<EOF
+                        {$err_mes}<br />
+                        <form action="./index.php" class="regist_member_query_button_form" method="POST">
+                            <input type="hidden" name="ct_id" value="{$id}">
+                            <input type="hidden" name="ct_password" value="{$password}">
+                            <input type="hidden" name="ct_name" value="{$name}">
+                            <input type="hidden" name="ct_handle_name" value="{$handle_name}">
+                            <input type="hidden" name="ct_grade" value="{$grade}">
+                            <input type="hidden" name="ct_code" value="{$code}">
+                            <input type="submit" id="regist_member_query_fix" class="regist_member_query_button" value="修正">
+                        </form>
 EOF;
                     }
                 ?>
