@@ -51,7 +51,7 @@
                         if ($authority == 0) {
                             $err_mes = "招待コードが間違っています。";
                             file_put_contents("./data/wrongcode.log", $_SERVER["REMOTE_ADDR"] . "\n",  FILE_APPEND);
-                        } else if ($sql_util->GetMember($id) == null) {
+                        } else if ($sql_util->GetMember($id) != null) {
                             $err_mes = "すでに使用されているidです。";
                         } else {
                             echo <<<EOF
