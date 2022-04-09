@@ -53,7 +53,7 @@
                             </thead>
                             <tbody>
                                 <?php
-                                    $members = $sql_util->GetAllMembers();
+                                    $members = $sql_util->GetAllMembersExceptAdmin();
                                     $specified_correctly = isset($_GET["dstart"]) && preg_match('/\A[0-9]{4}-[0-9]{1,2}-[0-9]{1,2}\z/', $_GET["dstart"]);
                                     $date_store = new DateTime($specified_correctly ? $_GET["dstart"] : "now");
                                     $date_display = clone $date_store;

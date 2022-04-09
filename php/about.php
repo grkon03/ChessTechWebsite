@@ -103,7 +103,7 @@
                                     <?php
                                         require_once(dirname(__FILE__) . "/./util/mysql.php");
                                         $sql_util = new MYSQL_UTIL();
-                                        echo (count($sql_util->GetAllMembers()) - 1) . "人";
+                                        echo (count($sql_util->GetAllMembersExceptAdmin())) . "人";
                                     ?>
                                     <br />
                                     (現在の人数は正確ではありません。)

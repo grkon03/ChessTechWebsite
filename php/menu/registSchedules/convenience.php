@@ -57,7 +57,7 @@
                         if (!$specified_correctly) {
                             echo "日付を指定してください。";
                         } else {
-                            $members = $sql_util->GetAllMembers();
+                            $members = $sql_util->GetAllMembersExceptAdmin();
                             $week = 1;
                             for ($j = 0; $j < intval($date->format("w")); $j++) {
                                 $week *= 2;
