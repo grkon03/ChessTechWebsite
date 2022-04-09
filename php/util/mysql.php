@@ -294,12 +294,14 @@
         // admin以外のメンバーの全情報取得(何もなければ null を返す)
         public function GetAllMembersExceptAdmin() {
             $mems = $this->GetAllMembers();
-            $admin = $this->GetMember("admin");
-            if ($admin == null) {
-                return $mems;
+            $ret = array();
+            for ($i = 0; $i < count($mems); $i++) {
+                if ($mems[$i]->id != "admin") {
+                    array_push($ret, $mems[$i]);
+                }
             }
-            $difmems = array_diff($mems, array($admin));
-            return $difmems;
+
+            return $ret;
         }
 
         // メンバーの消去(成功したらtrue, 失敗したらfalseを返す)
