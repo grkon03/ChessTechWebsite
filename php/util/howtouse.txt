@@ -40,6 +40,9 @@ classes:
                 - GetAllMembers()
                     - Members テーブルのデータを全て取得する
                     - Member 型変数の配列としてデータを返す、存在しなければ null を返す
+                - GetAllMembersExceptAdmin()
+                    - Members テーブルの id が 'admin' でない全てのデータを取得する
+                    - Member 型変数の配列としてデータを返す、存在しなければ null を返す
                 - DeleteMember($id)
                     - id が $id であるようなデータを Members テーブルから消去する
                     - 成功したら true, 失敗したら false を返す

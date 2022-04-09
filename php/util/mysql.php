@@ -291,6 +291,17 @@
             return null;
         }
 
+        // admin以外のメンバーの全情報取得(何もなければ null を返す)
+        public function GetAllMembersExceptAdmin() {
+            $mems = $this->GetAllMembers();
+            $admin = $this->GetMember("admin");
+            if ($admin == null) {
+                return $mems;
+            }
+            $difmems = array_diff($mems, array($admin));
+            return $difmems;
+        }
+
         // メンバーの消去(成功したらtrue, 失敗したらfalseを返す)
         public function DeleteMember(string $id) {
             $exist = $this->GetMember($id);
