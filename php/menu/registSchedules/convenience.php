@@ -117,7 +117,7 @@ EOF;
                         }
                     ?>
                     <a id="back_to_index" href="./?dstart=<?php
-                        $dstart = new DateTime("now");
+                        $dstart = new DateTime((new DateTime("now"))->format("Y-m-d"));
                         if ($specified_correctly) {
                             while (true) {
                                 $dstart_next30 = clone $dstart;
