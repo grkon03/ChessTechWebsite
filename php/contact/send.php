@@ -46,7 +46,7 @@
                     } else {
                         require_once(dirname(__FILE__) . "/../util/sendmail.php");
 
-                        $subject .= " - " . $name . "さんより";
+                        $subject = $title . " - " . $name . "さんより";
 
                         $res = sendmail_toChesstech($mail, $subject, $content);
                         
