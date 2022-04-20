@@ -62,13 +62,13 @@
                     <table border="7" id="calendar_table">
                         <thead>
                             <tr>
+                                <th bgcolor="#d76342">日</th>
                                 <th bgcolor="#abacbc">月</th>
                                 <th bgcolor="#ef6445">火</th>
                                 <th bgcolor="#5478ef">水</th>
                                 <th bgcolor="#aaca78">木</th>
                                 <th bgcolor="#e1ca33">金</th>
                                 <th bgcolor="#e1ac63">土</th>
-                                <th bgcolor="#d76342">日</th>
                             </tr>
                         </thead>
                         <!--
