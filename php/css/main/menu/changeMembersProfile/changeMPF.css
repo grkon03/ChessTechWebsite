@@ -1,0 +1,70 @@
+/* for all */
+
+.readonly {
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    background: #eee;
+}
+
+#editMPF #editMPF_formarea table th {
+    text-align: left;
+    background: #eee;
+}
+
+#editMPF #editMPF_formarea table th#submit_th {
+    background: #fff !important;
+}
+
+#editMPF #editMPF_formarea form .input_text {
+    font-size: 20px;
+    height: 40px;
+    display: inline-block;
+    width: 98%;
+}
+
+#editMPF #editMPF_formarea form #editMPF_submit {
+    display: inline-block;
+    font-size: 20px;
+    text-decoration: none;
+    background: #333;
+    color: #eee;
+    padding: 15px;
+    border-radius: 10px;
+    border: 0;
+    cursor: pointer;
+}
+
+@media screen and (max-width: 700px) {
+    /* for smartphone */
+    
+    #editMPF #editMPF_formarea table th {
+        font-size: 15px;
+        padding: 10px;
+    }
+}
+
+@media screen and (min-width: 701px) {
+    /* for pc */
+
+    #editMPF #editMPF_formarea table th {
+        font-size: 20px;
+        padding: 20px;
+    }
+
+    #editMPF #editMPF_formarea table td {
+        padding-left: 20px;
+    }
+    
+    #editMPF #editMPF_formarea form .input_text {
+        width: 300px;
+    }
+
+    #editMPF #editMPF_formarea form #editMPF_submit {
+        transition: 0.3s;
+    }
+
+    #editMPF #editMPF_formarea form #editMPF_submit:hover {
+        background: #eee;
+        color: #333;
+    }
+}
