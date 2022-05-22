@@ -1,10 +1,11 @@
 <?php
     session_start();
-    $id = $_SESSION["id"];
 
     if ($id == "") {
-        header("Location: ./../login.php");
+        header("Location: ./../login.php?link=../menu/registJoinableActivities/");
     }
+
+    $id = $_SESSION["id"];
 
     require_once(dirname(__FILE__) . "/../../util/mysql.php");
     $sql_util = new MYSQL_UTIL();

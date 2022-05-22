@@ -12,7 +12,7 @@
     $member = $sql_util->GetMember($id);
 
     if ($member->authority > 1) {
-        header("Location: ./../index.php");
+        header("Location: ./../index.php?link=../menu/changeMembersProfile/");
     }
 ?>
 <!DOCTYPE html>

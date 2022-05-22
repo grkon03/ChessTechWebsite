@@ -3,7 +3,7 @@
     $id = $_SESSION["id"];
 
     if ($id == "") {
-        header("Location: ./../login.php");
+        header("Location: ./../login.php?link=../menu/registSchedules/convenience.php?date=" . $_GET["date"]);
     }
 
     require_once(dirname(__FILE__) . "/../../util/mysql.php");
