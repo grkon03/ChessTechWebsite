@@ -1,0 +1,61 @@
+/* for all */
+
+#changeMPF_selectMember .changeMPF_selectMember_item {
+    color: #333;
+    text-decoration: none;
+    display: block;
+    margin: 10px;
+    padding: 10px;
+    border: 3px solid #333;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+#changeMPF_selectMember .changeMPF_selectMember_item .changeMPF_selectMember_item_id {
+    display: block;
+    font-size: 1.1em;
+    font-weight: 600;
+}
+
+.changeMPF_selectMember_item .changeMPF_selectMember_item_name {
+    display: inline-block;
+    margin-right: 10px;
+}
+
+.changeMPF_selectMember_item .changeMPF_selectMember_item_handle_name {
+    display: inline-block;
+    margin-left: 10px;
+}
+
+@media screen and (max-width: 700px) {
+    /* for smartphone */
+
+    #changeMPF #changeMPF_selectMember {
+        height: 300px;
+        overflow-y: scroll;
+    }
+
+    #changeMPF_selectMember .changeMPF_selectMember_item:active {
+        color: #ddd;
+        background: #333;
+    }
+}
+
+@media screen and (min-width: 701px) {
+    /* for pc */
+
+    #changeMPF #changeMPF_selectMember {
+        width: 500px;
+        height: 300px;
+        overflow-y: scroll;
+    }
+
+    #changeMPF_selectMember .changeMPF_selectMember_item {
+        transition: 0.1s;
+    }
+
+    #changeMPF_selectMember .changeMPF_selectMember_item:hover {
+        color: #ddd;
+        background: #333;
+    }
+}
