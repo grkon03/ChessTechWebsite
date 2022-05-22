@@ -24,6 +24,16 @@
     border-radius: 10px;
 }
 
+#menu_page_footer #back_to_beforepage {
+    display: inline-block;
+    font-size: 20px;
+    text-decoration: none;
+    background: #333;
+    color: #eee;
+    padding: 15px;
+    border-radius: 10px;
+}
+
 @media screen and (max-width: 700px) {
     /* for smartphone */
 
@@ -32,6 +42,11 @@
     }
 
     #menu_page_footer #back_to_menu:active {
+        background: #eee;
+        color: #333;
+    }
+
+    #menu_page_footer #back_to_beforepage:active {
         background: #eee;
         color: #333;
     }
@@ -49,7 +64,16 @@
         transition: 0.3s;
     }
 
+    #menu_page_footer #back_to_beforepage {
+        transition: 0.3s;
+    }
+
     #menu_page_footer #back_to_menu:hover {
+        background: #eee;
+        color: #333;
+    }
+
+    #menu_page_footer #back_to_beforepage:hover {
         background: #eee;
         color: #333;
     }
