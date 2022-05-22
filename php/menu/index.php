@@ -61,7 +61,7 @@ EOF;
                                     echo "<a class='menu_list_item' href='./registSchedules/'>";
                                     echo "予定を作成する";
                                     echo "</a>";
-                                    echo "<a class='menu_list_item' href='./changeMembersProfile>";
+                                    echo "<a class='menu_list_item' href='./changeMembersProfile/'>";
                                     echo "各メンバーのプロフィールを変更する。";
                                     echo "</a>";
                                 }
