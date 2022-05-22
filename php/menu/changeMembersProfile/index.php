@@ -66,6 +66,26 @@ EOF;
                 </div>
                 <div class="menu_page_mini" id="changeAuthority">
                     <h3>メンバーの権限ランクを変更する</h3>
+                    <p>
+                        権限ランクkがm以上のメンバーの権限ランクをk+1に変更します。
+                    </p>
+                    <?php
+                        if (isset($_POST["lessthan"])) {
+                            $m = intval($_POST["lessthan"]);
+                            $members = $sql_util->GetAllMembers();
+                            foreach ($members as $mem) {
+                                if (intval($mem->authority) >= $m) {
+                                    $mem->authority += 1;
+                                    $sql_util->UpdateMember($mem);
+                                }
+                            }
+                            echo "<p style='color: red'>正常に完了しました。</p>";
+                        }
+                    ?>
+                    <form action="./" method="POST" id="changeAuthority_lessthan">
+                        m = <input name="lessthan" type="number" min="1" step="1" class="changeAuthority_lessthan_text">
+                        <input type="submit" id="changeAuthority_lessthan_submit" value="変更">
+                    </form>
                 </div>
             </div>
             <div id="menu_page_footer">

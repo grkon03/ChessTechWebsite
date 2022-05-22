@@ -27,6 +27,21 @@
     margin-left: 10px;
 }
 
+#changeAuthority .changeAuthority_lessthan_text {
+    font-size:20px;
+}
+
+
+#changeAuthority #changeAuthority_lessthan_submit {
+    padding: 5px;
+    border: 3px solid #333;
+    border-radius: 10px;
+    font-size: 15px;
+    background: #333;
+    color: white;
+    cursor: pointer;
+}
+
 @media screen and (max-width: 700px) {
     /* for smartphone */
 
@@ -57,5 +72,14 @@
     #changeMPF_selectMember .changeMPF_selectMember_item:hover {
         color: #ddd;
         background: #333;
+    }
+    
+    #changeAuthority #changeAuthority_lessthan_submit {
+        transition: 0.1s;
+    }
+
+    #changeAuthority #changeAuthority_lessthan_submit:hover {
+        background: #fcfcfc;
+        color: #333;
     }
 }
