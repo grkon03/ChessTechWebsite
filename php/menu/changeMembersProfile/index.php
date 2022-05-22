@@ -45,26 +45,23 @@
                         プロフィールを変更するメンバーを指定してください。
                     </p>
                     <div id="changeMPF_selectMember">
-                        <a class="changeMPF_selectMember_item" href="./changeMPF.php?id=testID">
-                            <span class="changeMPF_selectMember_item_id">
-                                testID
-                            </span>
-                            <span class="changeMPF_selectMember_item_name">
-                                name
-                            </span>/<span class="changeMPF_selectMember_item_handle_name">
-                                handle_name
-                            </span>
-                        </a>
-                        <a class="changeMPF_selectMember_item">
-                            <span class="changeMPF_selectMember_item_id">
-                                testID
-                            </span>
-                            <span class="changeMPF_selectMember_item_name">
-                                name
-                            </span>/<span class="changeMPF_selectMember_item_handle_name">
-                                handle_name
-                            </span>
-                        </a>
+                        <?php
+                            $members = $sql_util->GetAllMembersExceptAdmin();
+                            foreach ($members as $m) {
+                                echo<<<EOF
+                                <a class="changeMPF_selectMember_item" href="./changeMPF.php?id={$m->id}">
+                                    <span class="changeMPF_selectMember_item_id">
+                                        {$m->id}
+                                    </span>
+                                    <span class="changeMPF_selectMember_item_name">
+                                        {$m->name}
+                                    </span>/<span class="changeMPF_selectMember_item_handle_name">
+                                        {$m->handle_name}
+                                    </span>
+                                </a>
+EOF;
+                            }
+                        ?>
                     </div>
                 </div>
                 <div class="menu_page_mini" id="changeAuthority">
