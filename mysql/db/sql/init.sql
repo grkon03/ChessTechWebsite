@@ -43,3 +43,10 @@ CREATE TABLE `JoinableDays` (
     `maybe_joinable` VARCHAR(200) NOT NULL, -- maybe joinable members
     `notjoinable` VARCHAR(200) NOT NULL -- not joinable members
 );
+
+-- Menu
+CREATE TABLE `Menu` (
+    `filepath` VARCHAR(200) NOT NULL PRIMARY KEY, -- file path following 'menu/'
+    `dirname` VARCHAR(200) NOT NULL, -- directory of the file
+    `rank_allowed` INT NOT NULL DEFAULT 1, -- authority rank allowed to access
+)
