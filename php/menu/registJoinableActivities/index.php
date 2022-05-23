@@ -1,7 +1,7 @@
 <?php
     session_start();
 
-    if ($id == "") {
+    if (!isset($_SESSION["id"])) {
         header("Location: ./../login.php?link=../menu/registJoinableActivities/");
     }
 

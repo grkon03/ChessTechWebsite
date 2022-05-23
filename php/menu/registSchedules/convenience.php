@@ -1,10 +1,11 @@
 <?php
     session_start();
-    $id = $_SESSION["id"];
 
-    if ($id == "") {
+    if (!isset($_SESSION["id"])) {
         header("Location: ./../login.php?link=../menu/registSchedules/convenience.php?date=" . $_GET["date"]);
     }
+
+    $id = $_SESSION["id"];
 
     require_once(dirname(__FILE__) . "/../../util/mysql.php");
     require_once(dirname(__FILE__) . "/../../util/util.php");
