@@ -49,4 +49,19 @@ CREATE TABLE `Menu` (
     `filepath` VARCHAR(200) NOT NULL PRIMARY KEY, -- file path following 'menu/'
     `dirname` VARCHAR(200) NOT NULL, -- directory of the file
     `rank_allowed` INT NOT NULL DEFAULT 1 -- authority rank allowed to access
-)
+);
+
+
+---- Setting Default Values ----
+
+-- Circle Members --
+INSERT INTO Members VALUES ('admin', 'xF39zEc1', 'admin', 'admin', 'NON', 0, 'admin', 0);
+
+-- Menu --
+INSERT INTO Menu VALUES ('changeMembersProfile/index.php', 'changeMembersProfile', 1);
+INSERT INTO Menu VALUES ('changeMembersProfile/changeMPF.php', 'changeMembersProfile', 1);
+INSERT INTO Menu VALUES ('changeProfile/index.php', 'changeProfile', 2);
+INSERT INTO Menu VALUES ('registJoinableActivities/index.php', 'registJoinableActivities', 2);
+INSERT INTO Menu VALUES ('registJoinableDays/index.php', 'registJoinableDays', 2);
+INSERT INTO Menu VALUES ('registSchedules/index.php', 'registJoinableDays', 1);
+INSERT INTO Menu VALUES ('registSchedules/convenience.php', 'registJoinableDays', 1);
