@@ -54,6 +54,7 @@
                             </thead>
                             <tbody>
                                 <?php
+                                    $weektemp = array("日", "月", "火", "水", "木", "金", "土");
                                     $members = $sql_util->GetAllMembersExceptAdmin();
                                     $specified_correctly = isset($_GET["dstart"]) && preg_match('/\A[0-9]{4}-[0-9]{1,2}-[0-9]{1,2}\z/', $_GET["dstart"]);
                                     $date_store = new DateTime($specified_correctly ? $_GET["dstart"] : "now");
@@ -95,9 +96,10 @@
 
                                         $day = $date_display->format("Y/m/d");
                                         $day_forurl = $date_display->format("Y-m-d");
+                                        $day_week = $weektemp[intval($date_display->format("w"))];
                                         echo <<<EOF
                                         <tr>
-                                            <td><a href="./convenience.php?date={$day_forurl}">{$day}</a></td>
+                                            <td><a href="./convenience.php?date={$day_forurl}">{$day}({$day_week})</a></td>
                                             <td>{$no_joinable}人</td>
                                             <td>{$no_maybe_joinable}人</td>
                                             <td>{$no_notjoinable}人</td>
