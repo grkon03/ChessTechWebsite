@@ -48,5 +48,5 @@ CREATE TABLE `JoinableDays` (
 CREATE TABLE `Menu` (
     `filepath` VARCHAR(200) NOT NULL PRIMARY KEY, -- file path following 'menu/'
     `dirname` VARCHAR(200) NOT NULL, -- directory of the file
-    `rank_allowed` INT NOT NULL DEFAULT 1, -- authority rank allowed to access
+    `rank_allowed` INT NOT NULL DEFAULT 1 -- authority rank allowed to access
 )
