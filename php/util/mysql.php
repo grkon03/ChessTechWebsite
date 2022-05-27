@@ -1155,5 +1155,32 @@
 
             return $menu;
         }
+
+        // メニューを作成する
+        public function CreateMenu(Menu $m) {
+            if (
+                ($m->filepath == null) ||
+                ($m->dirname == null) ||
+                ($m->rank_allowed == null)
+                ) {
+                return false;
+            }
+
+            if ($this->GetMenu($m->filepath) != null) {
+                return false;
+            }
+
+            $sql = "INSERT INTO Menu VALUES (:filepath, :dirname, :rank_allowed)";
+
+            $stmt = $this->pdo->prepare($sql);
+
+            $stmt->bindValue(":filepath", $m->filepath, PDO::PARAM_STR);
+            $stmt->bindValue(":dirname", $m->dirname, PDO::PARAM_STR);
+            $stmt->bindValue(":ranke_allowed", $m->rank_allowed, PDO::PARAM_STR);
+
+            $stmt->execute();
+
+            return true;
+        }
     }
 ?>

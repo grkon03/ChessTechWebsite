@@ -120,6 +120,10 @@ classes:
                 - GetAllMenu()
                     - Menu テーブルのデータをすべて取得する
                     - Menu 型変数の配列としてデータを返す、存在しなければ null を返す
+                - CreateMenu(Menu $m)
+                    - $m の情報に基づいて Menu テーブルにデータを追加
+                    - filepath が $m->filepath であるようなメニューが存在したら false を返す
+                    - 成功したら true, 失敗したら false 返す
 
 ---------------
 sendmail.php
