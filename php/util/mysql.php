@@ -1182,5 +1182,76 @@
 
             return true;
         }
+
+        // メニューを更新する
+        public function UpdateMenu(string $filepath, Menu $m) {
+            if ($this->GetMenu($filepath) != null) {
+                return false;
+            }
+
+            // もし $m->dirname が $m->filepath に含まれていなかったら false
+            if (strpos($m->filepath, $m->dirname) === false) {
+                return false;
+            }
+
+            $sql = "UPDATE Menu SET ";
+
+            $commma = false;
+            $b_filepath = false;
+            $b_dirname = false;
+            $b_rank_allowed = false;
+
+            if ($m->filepath != null) {
+                $sql .= "filepath = :filepath";
+
+                $comma = true;
+                $b_filepath = true;
+            }
+
+            if ($m->dirname != null) {
+                if ($comma) {
+                    $sql .= ", ";
+                }
+
+                $sql .= "dirname = :dirname";
+
+                $comma = true;
+                $b_dirname = true;
+            }
+
+            if ($m->rank_allowed != null) {
+                if ($comma) {
+                    $sql .= ", ";
+                }
+
+                $sql .= "rank_allowed = :rank_allowed";
+
+                $comma = true;
+                $b_rank_allowed = true;
+            }
+
+            if (!$comma) {
+                return false;
+            }
+
+            $sql .= " WHERE filepath = :old_filepath";
+
+            $stmt = $this->pdo->prepare($sql);
+
+            $stmt->bindValue(":old_filepath", $filepath, PDO::PARAM_STR);
+            if ($b_filepath) {
+                $stmt->bindValue(":filepath", $m->filepath, PDO::PARAM_STR);
+            }
+            if ($b_dirname) {
+                $stmt->bindValue(":dirname", $m->dirname, PDO::PARAM_STR);
+            }
+            if ($b_rank_allowed) {
+                $stmt->bindValue(":rank_allowed", $m->rank_allowed, PDO::PARAM_STR);
+            }
+
+            $stmt->execute();
+
+            return true;
+        }
     }
 ?>

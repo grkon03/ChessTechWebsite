@@ -124,6 +124,9 @@ classes:
                     - $m の情報に基づいて Menu テーブルにデータを追加
                     - filepath が $m->filepath であるようなメニューが存在したら false を返す
                     - 成功したら true, 失敗したら false 返す
+                - UpdateMenu(Menu $m)
+                    - $m の情報に基づいて Menu テーブルのデータを編集
+                    - 成功したら true, 失敗したら false を返す
 
 ---------------
 sendmail.php
