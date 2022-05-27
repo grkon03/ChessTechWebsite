@@ -31,6 +31,12 @@
         public $maybe_joinable = null;
         public $notjoinable = null;
     }
+
+    class Menu {
+        public $filepath = null;
+        public $dirname = null;
+        public $rank_allowed = null;
+    }
     
     // MySQLにPDOでアクセス
 
@@ -1098,6 +1104,30 @@
             }
 
             return false;
+        }
+
+        // メニューを取得する
+        public function GetMenu(string $filepath) {
+            $sql = "SELECT FROM Menu WHERE filepath = :filepath";
+
+            $stmt = $this->pdo->prepare($sql);
+
+            $stmt->bindValue(":filepath", $filepath, PDO::PARAM_STR);
+            $stmt->execute();
+
+            $data = $stmt->fetch();
+
+            if ($data == false) {
+                return null;
+            }
+
+            $menu = new Menu();
+
+            $menu->filepath = $data["filepath"];
+            $menu->dirname = $data["dirname"];
+            $menu->rank_allowed = $data["rank_allowed"];
+
+            return $menu;
         }
     }
 ?>

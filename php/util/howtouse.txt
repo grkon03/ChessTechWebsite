@@ -17,6 +17,8 @@ classes:
         - データベースの Schedules テーブルの情報を格納する型としてのクラス
     - JoinableDay
         - データベースの JoinableDays テーブルの情報を格納する型としてのクラス
+    - Menu
+        - データベースの Menu テーブルの情報を格納する型としてのクラス
     - MYSQL_UTIL
         - データベースを操作するためのAPIを集めたクラス
         variables:
@@ -111,6 +113,10 @@ classes:
                     - date が $date であるようなデータからメンバーを消去する
                     - id が $user_id であるようなメンバーが消去される
                     - 成功したら true, 失敗したら false を返す
+            - Menu テーブル関連
+                - GetMenu(string $filepath)
+                    - filepath が $filepath であるようなデータを Menu テーブルから探す
+                    - 存在したら Menu 型変数としてデータを返す, 存在しなければ null を返す
 
 ---------------
 sendmail.php
