@@ -1108,7 +1108,7 @@
 
         // メニューを取得する
         public function GetMenu(string $filepath) {
-            $sql = "SELECT FROM Menu WHERE filepath = :filepath";
+            $sql = "SELECT * FROM Menu WHERE filepath = :filepath";
 
             $stmt = $this->pdo->prepare($sql);
 
