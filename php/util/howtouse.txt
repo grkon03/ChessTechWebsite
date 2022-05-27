@@ -117,6 +117,9 @@ classes:
                 - GetMenu(string $filepath)
                     - filepath が $filepath であるようなデータを Menu テーブルから探す
                     - 存在したら Menu 型変数としてデータを返す, 存在しなければ null を返す
+                - GetAllMenu()
+                    - Menu テーブルのデータをすべて取得する
+                    - Menu 型変数の配列としてデータを返す、存在しなければ null を返す
 
 ---------------
 sendmail.php

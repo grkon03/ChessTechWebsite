@@ -1129,5 +1129,31 @@
 
             return $menu;
         }
+
+        // 全メニューを取得する
+        public function GetAllMenu() {
+            $sql = "SELECT * FROM Menu";
+            
+            $stmt = $this->pdo->query($sql);
+
+            $data = $stmt->fetchAll();
+
+            if ($data == false) {
+                return null;
+            }
+
+            $menu = array();
+            foreach ($data as $m) {
+                $me = new Menu();
+
+                $me->filepath = $m["filepath"];
+                $me->dirname = $m["dirname"];
+                $me->rank_allowed = $m["rank_allowed"];
+
+                array_push($menu, $me);
+            }
+
+            return $menu;
+        }
     }
 ?>
