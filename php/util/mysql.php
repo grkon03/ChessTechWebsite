@@ -1243,7 +1243,7 @@
 
             $stmt->bindValue(":filepath", $m->filepath, PDO::PARAM_STR);
             $stmt->bindValue(":dirname", $m->dirname, PDO::PARAM_STR);
-            $stmt->bindValue(":ranke_allowed", $m->rank_allowed, PDO::PARAM_STR);
+            $stmt->bindValue(":ranke_allowed", $m->rank_allowed, PDO::PARAM_INT);
 
             $stmt->execute();
 
@@ -1313,7 +1313,7 @@
                 $stmt->bindValue(":dirname", $m->dirname, PDO::PARAM_STR);
             }
             if ($b_rank_allowed) {
-                $stmt->bindValue(":rank_allowed", $m->rank_allowed, PDO::PARAM_STR);
+                $stmt->bindValue(":rank_allowed", $m->rank_allowed, PDO::PARAM_INT);
             }
 
             $stmt->execute();
