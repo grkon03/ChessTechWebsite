@@ -1130,6 +1130,73 @@
             return $menu;
         }
 
+        // メニューを検索する
+        public function GetMenu_byCondition(Menu $m) {
+            $sql = "SELECT * FROM Menu WHERE";
+
+            $and = false;
+            $b_filepath = false;
+            $b_dirname = false;
+            $b_rank_allowed = false;
+
+            if ($m->filepath !== null) {
+                $sql .= " filepath = :filepath";
+
+                $and = true;
+                $b_filepath = true;
+            }
+            if ($m->dirname !== null) {
+                if ($and) {
+                    $sql .= " AND";
+                }
+                $sql .= " dirname = :dirname";
+
+                $and = true;
+                $b_dirname = true;
+            }
+            if ($m->rank_allowed !== null) {
+                if ($and) {
+                    $sql .= " AND";
+                }
+                $sql .= " rank_allowed = :rank_allowed";
+
+                $b_rank_allowed = true;
+            }
+
+            $stmt = $this->pdo->prepare($sql);
+
+            if ($b_filepath) {
+                $stmt->bindValue(":filepath", $m->filepath, PDO::PARAM_STR);
+            }
+            if ($b_dirname) {
+                $stmt->bindValue(":dirname", $m->dirname, PDO::PARAM_STR);
+            }
+            if ($b_rank_allowed) {
+                $stmt->bindValue(":rank_allowed", $m->rank_allowed, PDO::PARAM_INT);
+            }
+
+            $stmt->execute();
+
+            $data = $stmt->fetchAll();
+
+            if ($data === false) {
+                return null;
+            }
+
+            $menu = array();
+            foreach ($data as $e) {
+                $me = new Menu();
+
+                $me->filepath = $e["filepath"];
+                $me->dirname = $e["dirname"];
+                $me->rank_allowed = $e["rank_allowed"];
+
+                array_push($menu, $me);
+            }
+
+            return $menu;
+        }
+
         // 全メニューを取得する
         public function GetAllMenu() {
             $sql = "SELECT * FROM Menu";
