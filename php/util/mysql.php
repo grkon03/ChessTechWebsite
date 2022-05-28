@@ -1197,6 +1197,36 @@
             return $menu;
         }
 
+        // あるランク以上のメニューを取得
+        public function GetMenu_byRank(int $morethan_or_eq) {
+            $sql = "SELECT * FROM Menu WHERE rank_allowed >= :morethan_or_eq";
+
+            $stmt = $this->pdo->prepare($sql);
+            
+            $stmt->bindValue(":morethan_or_eq", $morethan_or_eq, PDO::PARAM_INT);
+
+            $stmt->execute();
+
+            $data = $stmt->fetchAll();
+
+            if ($data == false) {
+                return null;
+            }
+
+            $menu = array();
+            foreach ($data as $m) {
+                $me = new Menu();
+
+                $me->filepath = $m["filepath"];
+                $me->dirname = $m["dirname"];
+                $me->rank_allowed = $m["rank_allowed"];
+
+                array_push($menu, $me);
+            }
+
+            return $menu;
+        }
+
         // 全メニューを取得する
         public function GetAllMenu() {
             $sql = "SELECT * FROM Menu";
