@@ -66,7 +66,7 @@
                                     <tr>
                                         <th>PassWord</th>
                                         <td>
-                                            <input name="pass" value="<?php echo $m->pass; ?>" class="readonly input_text" readonly>
+                                            <input name="pass" type="password" value="<?php echo $m->pass; ?>" class="readonly input_text" readonly>
                                         </td>
                                     </tr>
                                     <tr>
