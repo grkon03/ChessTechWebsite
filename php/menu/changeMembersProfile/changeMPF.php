@@ -48,7 +48,7 @@
                         $m->grade = $_POST["grade"];
                         $m->authority = $_POST["authority"];
                         $m->position = $_POST["position"];
-                        $sql_util->UpdateMember($member);
+                        var_dump($sql_util->UpdateMember($m));
                     }
                 ?>
                 <h2>プロフィールを変更する</h2>
