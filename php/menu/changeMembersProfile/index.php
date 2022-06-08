@@ -68,24 +68,30 @@ EOF;
                 <div class="menu_page_mini" id="changeAuthority">
                     <h3>メンバーの権限ランクを変更する</h3>
                     <p>
-                        権限ランクkがm以上のメンバーの権限ランクをk+1に変更します。
+                        権限ランクkがm以上のメンバーの権限ランクをk+iに変更します。
                     </p>
                     <?php
-                        if (isset($_POST["lessthan"])) {
-                            $m = intval($_POST["lessthan"]);
+                        if (isset($_POST["morethan"]) && isset($_POST["increment"])) {
+                            $m = intval($_POST["morethan"]);
+                            $i = intval($_POST["increrment"]);
                             $members = $sql_util->GetAllMembers();
                             foreach ($members as $mem) {
                                 if (intval($mem->authority) >= $m) {
-                                    $mem->authority += 1;
+                                    $mem->authority += $i;
                                     $sql_util->UpdateMember($mem);
                                 }
+                            }
+                            if ($_POST["changemenu"]) {
+                                $sql_util->ChangeRankMenu($m, $i);
                             }
                             echo "<p style='color: red'>正常に完了しました。</p>";
                         }
                     ?>
-                    <form action="./" method="POST" id="changeAuthority_lessthan">
-                        m = <input name="lessthan" type="number" min="1" step="1" class="changeAuthority_lessthan_text">
-                        <input type="submit" id="changeAuthority_lessthan_submit" value="変更">
+                    <form action="./" method="POST" id="changeAuthority_morethan">
+                        m = <input name="morethan" type="number" min="1" max="100"step="1" class="changeAuthority_morethan_text">
+                        i = <input name="increment" type="number" min="-100" max="100" step="1" class="changeAuthority_morethan_text">
+                        <input type="submit" id="changeAuthority_morethan_submit" value="変更"><br />
+                        <input type="checkbox" name="changemenu" class="changeAuthority_morethan_checkbox" checked> メニューの権限ランクも変更する
                     </form>
                 </div>
             </div>

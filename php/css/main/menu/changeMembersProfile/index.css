@@ -27,12 +27,12 @@
     margin-left: 10px;
 }
 
-#changeAuthority .changeAuthority_lessthan_text {
+#changeAuthority .changeAuthority_morethan_text {
     font-size:20px;
 }
 
 
-#changeAuthority #changeAuthority_lessthan_submit {
+#changeAuthority #changeAuthority_morethan_submit {
     padding: 5px;
     border: 3px solid #333;
     border-radius: 10px;
@@ -40,6 +40,11 @@
     background: #333;
     color: white;
     cursor: pointer;
+}
+
+#changeAuthority #changeAuthority_morethan_checkbox {
+    height: 10px;
+    width: 10px;
 }
 
 @media screen and (max-width: 700px) {
@@ -74,11 +79,11 @@
         background: #333;
     }
     
-    #changeAuthority #changeAuthority_lessthan_submit {
+    #changeAuthority #changeAuthority_morethan_submit {
         transition: 0.1s;
     }
 
-    #changeAuthority #changeAuthority_lessthan_submit:hover {
+    #changeAuthority #changeAuthority_morethan_submit:hover {
         background: #fcfcfc;
         color: #333;
     }
