@@ -129,10 +129,13 @@ classes:
                 - CreateMenu(Menu $m)
                     - $m の情報に基づいて Menu テーブルにデータを追加
                     - filepath が $m->filepath であるようなメニューが存在したら false を返す
-                    - 成功したら true, 失敗したら false 返す
+                    - 成功したら true, 失敗したら false を返す
                 - UpdateMenu(Menu $m)
                     - $m の情報に基づいて Menu テーブルのデータを編集
                     - 成功したら true, 失敗したら false を返す
+                - ChangeRankMenu(int $morethan_or_eq, int $increment)
+                    - rank_allowed が $morethan_or_eq 以上であるデータの rank_allowed を $increment だけ増加させる
+                    - 成功したら true, 失敗したら false　を返す
 
 ---------------
 sendmail.php

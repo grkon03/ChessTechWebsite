@@ -1350,5 +1350,23 @@
 
             return true;
         }
+
+        // ランクが一定以上のメニューのランクを $increment 分だけ増加させる(負だったら減少)
+        public function ChangeRankMenu(int $morethan_or_eq, int $increment) {
+            $menu_moe = $this->GetMenu_ByRank($morethan_or_eq);
+            if ($menu_moe == null) {
+                return false;
+            }
+
+            foreach ($menu_moe as $m) {
+                $m->rank_allowed += $increment;
+                if ($m->rank_allowed <= 0) {
+                    $m->rank_allowed = 0;
+                }
+                $this->UpdateMenu($m->filepath, $m);
+            }
+
+            return true;
+        }
     }
 ?>
