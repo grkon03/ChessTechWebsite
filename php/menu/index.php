@@ -44,6 +44,11 @@
                                 $auth = $member->authority;
 
                                 if ($auth <= 2) {
+                                    $bind = new Menu();
+                                    $bind->rank_allowed = 2;
+                                    $m_r2 = $sql_util->GetMenu_byCondition($bind);
+                                    foreach ($m_r2 as $e) {
+                                    }
                                     echo <<<EOF
                                     <a class="menu_list_item" href="./registJoinableDays/">
                                         活動可能日を登録する
