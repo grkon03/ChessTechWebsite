@@ -48,6 +48,7 @@ CREATE TABLE `JoinableDays` (
 CREATE TABLE `Menu` (
     `filepath` VARCHAR(200) NOT NULL PRIMARY KEY, -- file path following 'menu/'
     `dirname` VARCHAR(200) NOT NULL, -- directory of the file
+    `name` VARCHAR(200) NOT NULL, -- the displayed name of menu
     `rank_allowed` INT NOT NULL DEFAULT 1 -- authority rank allowed to access
 );
 
@@ -58,10 +59,10 @@ CREATE TABLE `Menu` (
 INSERT INTO Members VALUES ('admin', 'xF39zEc1', 'admin', 'admin', 'NON', 0, 'admin', 0);
 
 -- Menu --
-INSERT INTO Menu VALUES ('changeMembersProfile/index.php', 'changeMembersProfile', 1);
-INSERT INTO Menu VALUES ('changeMembersProfile/changeMPF.php', 'changeMembersProfile', 1);
-INSERT INTO Menu VALUES ('changeProfile/index.php', 'changeProfile', 2);
-INSERT INTO Menu VALUES ('registJoinableActivities/index.php', 'registJoinableActivities', 2);
-INSERT INTO Menu VALUES ('registJoinableDays/index.php', 'registJoinableDays', 2);
-INSERT INTO Menu VALUES ('registSchedules/index.php', 'registJoinableDays', 1);
-INSERT INTO Menu VALUES ('registSchedules/convenience.php', 'registJoinableDays', 1);
+INSERT INTO Menu VALUES ('changeMembersProfile/index.php', 'changeMembersProfile', 1, 'メンバーのプロフィールを変更する');
+INSERT INTO Menu VALUES ('changeMembersProfile/changeMPF.php', 'changeMembersProfile', 1, 'メンバーのプロフィールを直接変更する');
+INSERT INTO Menu VALUES ('changeProfile/index.php', 'changeProfile', 2, 'プロフィールを変更する');
+INSERT INTO Menu VALUES ('registJoinableActivities/index.php', 'registJoinableActivities', 2, '参加/非参加予定を登録する');
+INSERT INTO Menu VALUES ('registJoinableDays/index.php', 'registJoinableDays', 2, '活動可能日を登録する');
+INSERT INTO Menu VALUES ('registSchedules/index.php', 'registSchedules', 1, '予定を作成する');
+INSERT INTO Menu VALUES ('registSchedules/convenience.php', 'registSchedules', 1, '各部員の都合');

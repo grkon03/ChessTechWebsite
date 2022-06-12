@@ -36,6 +36,7 @@
         public $filepath = null;
         public $dirname = null;
         public $rank_allowed = null;
+        public $name = null;
     }
     
     // MySQLにPDOでアクセス
@@ -1126,6 +1127,7 @@
             $menu->filepath = $data["filepath"];
             $menu->dirname = $data["dirname"];
             $menu->rank_allowed = $data["rank_allowed"];
+            $menu->name = $data["name"];
 
             return $menu;
         }
@@ -1220,6 +1222,7 @@
                 $me->filepath = $m["filepath"];
                 $me->dirname = $m["dirname"];
                 $me->rank_allowed = $m["rank_allowed"];
+                $me->name = $m["name"];
 
                 array_push($menu, $me);
             }
@@ -1246,6 +1249,7 @@
                 $me->filepath = $m["filepath"];
                 $me->dirname = $m["dirname"];
                 $me->rank_allowed = $m["rank_allowed"];
+                $me->name = $m["name"];
 
                 array_push($menu, $me);
             }
@@ -1267,13 +1271,14 @@
                 return false;
             }
 
-            $sql = "INSERT INTO Menu VALUES (:filepath, :dirname, :rank_allowed)";
+            $sql = "INSERT INTO Menu VALUES (:filepath, :dirname, :rank_allowed, :name)";
 
             $stmt = $this->pdo->prepare($sql);
 
             $stmt->bindValue(":filepath", $m->filepath, PDO::PARAM_STR);
             $stmt->bindValue(":dirname", $m->dirname, PDO::PARAM_STR);
             $stmt->bindValue(":ranke_allowed", $m->rank_allowed, PDO::PARAM_INT);
+            $stmt->bindValue(":name", $m->name, PDO::PARAM_STR);
 
             $stmt->execute();
 
@@ -1282,21 +1287,17 @@
 
         // メニューを更新する
         public function UpdateMenu(string $filepath, Menu $m) {
-            if ($this->GetMenu($filepath) != null) {
-                return false;
-            }
-
-            // もし $m->dirname が $m->filepath に含まれていなかったら false
-            if (strpos($m->filepath, $m->dirname) === false) {
+            if ($this->GetMenu($filepath) == null) {
                 return false;
             }
 
             $sql = "UPDATE Menu SET ";
 
-            $commma = false;
+            $comma = false;
             $b_filepath = false;
             $b_dirname = false;
             $b_rank_allowed = false;
+            $b_name = false;
 
             if ($m->filepath != null) {
                 $sql .= "filepath = :filepath";
@@ -1314,6 +1315,17 @@
 
                 $comma = true;
                 $b_dirname = true;
+            }
+
+            if ($m->name != null) {
+                if ($comma) {
+                    $sql .= ", ";
+                }
+
+                $sql .= "name = :name";
+
+                $comma = true;
+                $b_name = true;
             }
 
             if ($m->rank_allowed != null) {
@@ -1344,6 +1356,9 @@
             }
             if ($b_rank_allowed) {
                 $stmt->bindValue(":rank_allowed", $m->rank_allowed, PDO::PARAM_INT);
+            }
+            if ($b_name) {
+                $stmt->bindValue(":name", $m->name, PDO::PARAM_STR);
             }
 
             $stmt->execute();
